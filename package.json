@@ -3,6 +3,7 @@
   "displayName": "Nix IDE",
   "description": "Nix language support with formatting and error report.",
   "version": "0.0.1",
+  "license": "MIT",
   "engines": {
     "vscode": "^1.47.0"
   },
