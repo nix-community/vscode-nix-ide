@@ -1,0 +1,42 @@
+{
+  "name": "nix-ide",
+  "displayName": "Nix IDE",
+  "description": "Nix language support with formatting and error report.",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.47.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [
+      {
+        "id": "nix",
+        "aliases": [
+          "Nix",
+          "nix"
+        ],
+        "extensions": [
+          ".nix"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "nix",
+        "scopeName": "source.nix",
+        "path": "./syntaxes/nix.tmLanguage"
+      }
+    ]
+  },
+  "devDependencies": {
+    "js-yaml": "^3.14.0",
+    "standard-version": "^8.0.1"
+  },
+  "scripts": {
+    "yml-to-xml": "js-yaml syntaxes/nix.YAML-tmLanguage > syntaxes/nix.tmLanguage.json",
+    "release": "standard-version"
+  }
+}
