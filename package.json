@@ -38,7 +38,7 @@
       {
         "language": "nix",
         "scopeName": "source.nix",
-        "path": "./syntaxes/nix.tmLanguage"
+        "path": "./syntaxes/nix.tmLanguage.json"
       }
     ]
   },
@@ -47,7 +47,7 @@
     "standard-version": "^8.0.1"
   },
   "scripts": {
-    "yml-to-xml": "js-yaml syntaxes/nix.YAML-tmLanguage > syntaxes/nix.tmLanguage.json",
-    "release": "standard-version"
+    "yml2json": "js-yaml syntaxes/nix.YAML-tmLanguage > syntaxes/nix.tmLanguage.json",
+    "release": "yml2json && standard-version"
   }
 }
