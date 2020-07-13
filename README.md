@@ -45,7 +45,8 @@ I have created this since the other nix-language extension hasn't been updated o
 * install dependencies with
 
 ``` 
-  dotnet restore
+  dotnet tool restore
+  dotnet paket restore
   yarn install
 ```
 

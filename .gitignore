@@ -127,3 +127,7 @@ dist
 
 .fake
 .ionide
+
+# latest paket versions
+.paket/
+paket-files/
