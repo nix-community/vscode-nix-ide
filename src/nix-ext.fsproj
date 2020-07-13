@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <RootNamespace>nix_ext</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="Extension.fs" />
+  </ItemGroup>
+
+</Project>

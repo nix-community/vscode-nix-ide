@@ -34,8 +34,21 @@ Just clone the [GitHub repository](https://github.com/bbenoist/vscode-nix) under
 
 I have created this since the other nix-language extension hasn't been updated over an year. I just wanted to add formatting and error detection quickly. Contributions are very welcome. But please follow the below points.
 
-* Indent your code by 2 spaces.
 * Document the purpose of functions and classes.
-* Document other code where useful.
 * When adding a new feature, please mention it in the `README.md` Features section. Use screenshots when applicable.
 * [Conventional Commit](https://www.conventionalcommits.org/en/v1.0.0/) style should be used for commit messages as it is used to generate changelog.
+
+## Development
+
+* `F#/Fable` is used to write the `JS` part of the extension.
+* `dotnet >= 3.1` required
+* install dependencies with
+
+``` 
+  dotnet restore
+  npm install
+```
+
+---
+Special thanks to the [article](https://blog.nojaf.com/2018/12/17/writing-a-vscode-extension-with-fable-2-1/)
+to have all the pieces in one place to develop vscode extension with `Fable` .

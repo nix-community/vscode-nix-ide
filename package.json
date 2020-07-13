@@ -21,6 +21,7 @@
     "type": "git",
     "url": "https://github.com/jnoortheen/vscode-nix-ide"
   },
+  "main": "dist/Extension.js",
   "contributes": {
     "languages": [
       {
@@ -50,11 +51,16 @@
     ]
   },
   "devDependencies": {
+    "fable-compiler": "^2.10.1",
+    "fable-splitter": "^2.2.1",
     "js-yaml": "^3.14.0",
     "standard-version": "^8.0.1"
   },
   "scripts": {
-    "yml2json": "js-yaml syntaxes/nix.YAML-tmLanguage > syntaxes/nix.tmLanguage.json",
-    "release": "yml2json && standard-version"
+    "postinstall": "node ./node_modules/vscode/bin/install",
+    "prebuild": "js-yaml syntaxes/nix.YAML-tmLanguage > syntaxes/nix.tmLanguage.json",
+    "build": "fable-splitter --config splitter.config.js",
+    "watch": "yarn build --watch",
+    "release": "yarn build && standard-version"
   }
 }
