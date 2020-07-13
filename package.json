@@ -22,6 +22,9 @@
     "url": "https://github.com/jnoortheen/vscode-nix-ide"
   },
   "main": "dist/Extension.js",
+  "activationEvents": [
+    "*"
+  ],
   "contributes": {
     "languages": [
       {
@@ -51,13 +54,14 @@
     ]
   },
   "devDependencies": {
+    "@babel/core": "^7.10.4",
+    "@babel/plugin-transform-modules-commonjs": "^7.10.4",
     "fable-compiler": "^2.10.1",
     "fable-splitter": "^2.2.1",
     "js-yaml": "^3.14.0",
     "standard-version": "^8.0.1"
   },
   "scripts": {
-    "postinstall": "node ./node_modules/vscode/bin/install",
     "prebuild": "js-yaml syntaxes/nix.YAML-tmLanguage > syntaxes/nix.tmLanguage.json",
     "build": "fable-splitter --config splitter.config.js",
     "watch": "yarn build --watch",
