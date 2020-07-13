@@ -46,7 +46,7 @@ I have created this since the other nix-language extension hasn't been updated o
 
 ``` 
   dotnet restore
-  npm install
+  yarn install
 ```
 
 ---
