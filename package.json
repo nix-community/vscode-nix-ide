@@ -10,7 +10,8 @@
     "vscode": "^1.47.0"
   },
   "categories": [
-    "Programming Languages"
+    "Programming Languages",
+    "Snippets"
   ],
   "bugs": {
     "url": "https://github.com/jnoortheen/vscode-nix-ide/issues"
@@ -39,6 +40,12 @@
         "language": "nix",
         "scopeName": "source.nix",
         "path": "./syntaxes/nix.tmLanguage.json"
+      }
+    ],
+    "snippets": [
+      {
+        "language": "nix",
+        "path": "./snippets.json"
       }
     ]
   },

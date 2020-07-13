@@ -1,0 +1,22 @@
+{
+  "conditional": {
+    "prefix": ["if"],
+    "body": ["if $1 then $2 else $0"],
+    "description": "Conditional expression"
+  },
+  "let": {
+    "prefix": ["let"],
+    "body": ["let $0;", "in"],
+    "description": "Let expression"
+  },
+  "rec": {
+    "prefix": ["rec"],
+    "body": ["rec { $1", "\t$0}"],
+    "description": "Recursive Set"
+  },
+  "with": {
+    "prefix": ["with"],
+    "body": ["with $0;"],
+    "description": "With expression"
+  }
+}

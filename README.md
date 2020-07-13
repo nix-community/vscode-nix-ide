@@ -10,6 +10,7 @@ Adds [nix](https://nixos.org/) language support for VSCode Editor.
   + with the help of [nixpkgs-format](https://github.com/nix-community/nixpkgs-fmt)
 * Error Report
   + Using `nix-instantiate`
+* Snippets
 
 ## Installation
 
