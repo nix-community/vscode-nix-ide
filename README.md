@@ -12,6 +12,11 @@ Adds [nix](https://nixos.org/) language support for VSCode Editor.
   + Using `nix-instantiate`
 * Snippets
 
+## Todos
+
+* embedded language syntax support for bash
+* path completion - https://github.com/ChristianKohler/PathIntellisense
+
 ## Installation
 
 ### Visual Studio Code
