@@ -51,5 +51,6 @@ I have created this since the other nix-language extension hasn't been updated o
 ```
 
 ---
-Special thanks to the [article](https://blog.nojaf.com/2018/12/17/writing-a-vscode-extension-with-fable-2-1/)
-to have all the pieces in one place to develop vscode extension with `Fable` .
+Special thanks to
+ * [article](https://blog.nojaf.com/2018/12/17/writing-a-vscode-extension-with-fable-2-1/) to have all the pieces in one place to develop vscode extension with `Fable` .
+ * Many of the functions are copied from [vscode-fish](https://github.com/bmalehorn/vscode-fish/)
