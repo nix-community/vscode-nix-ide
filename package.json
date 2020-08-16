@@ -84,6 +84,6 @@
     "build": "tsc -p ./",
     "watch": "yarn build --watch",
     "postinstall": "node ./node_modules/vscode/bin/install",
-    "release": "yarn build && standard-version && vsce publish"
+    "release": "yarn build && standard-version && git push --follow-tags && vsce publish"
   }
 }
