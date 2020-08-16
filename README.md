@@ -25,6 +25,8 @@ Adds [nix](https://nixos.org/) language support for VSCode Editor.
 
 ## Todos
 
+**PRs welcome** for them
+
 * [embedded language](https://code.visualstudio.com/api/language-extensions/syntax-highlight-guide#embedded-languages) syntax support for bash
 * path completion - https://github.com/ChristianKohler/PathIntellisense
 
@@ -32,7 +34,7 @@ Adds [nix](https://nixos.org/) language support for VSCode Editor.
 
 ### Visual Studio Code
 
-Hit `F1` and enter the `ext install nix-ide` command.
+Hit `F1` and enter the `ext install jnoortheen.nix-ide` command or search for `nix-ide` .
 
 ### Installing the extension Locally
 
@@ -51,17 +53,18 @@ I have created this since the other nix-language extension hasn't been updated o
 
 ## Development
 
-* `F#/Fable` is used to write the `JS` part of the extension.
-* `dotnet >= 3.1` required
-* install dependencies with
+* TypeScript is used to develop the extension
 
-``` 
-  dotnet tool restore
-  dotnet paket restore
+``` sh
   yarn install
+  yarn build # this will build the extension
 ```
 
 ---
 Special thanks to
  * [article](https://blog.nojaf.com/2018/12/17/writing-a-vscode-extension-with-fable-2-1/) to have all the pieces in one place to develop vscode extension with `Fable` .
  * The extension [vscode-fish](https://github.com/bmalehorn/vscode-fish/) is modified to work for `nix` .
+
+## Links
+
+* [Extension page](https://marketplace.visualstudio.com/items?itemName=jnoortheen.nix-ide)
