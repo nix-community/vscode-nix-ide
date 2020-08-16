@@ -5,17 +5,24 @@ Adds [nix](https://nixos.org/) language support for VSCode Editor.
 ## Features
 
 * Syntax Highlight
-  + nix code snippets inside `markdown` files also work.
+
   + Thanks to https://github.com/wmertens/sublime-nix for the grammer file
+
+  ![](./images/docs/nix-syntax-highlight.png)
+
+  + nix code snippets inside `markdown` files also work.
+
+  ![](./images/docs/md-embed-nix.png)
+
 * Formatting support
   + with the help of [nixpkgs-format](https://github.com/nix-community/nixpkgs-fmt)
 * Error Report
-  + Using `nix-instantiate`
+  + Using `nix-instantiate` errors reported
 * Snippets
 
 ## Todos
 
-* embedded language syntax support for bash
+* [embedded language](https://code.visualstudio.com/api/language-extensions/syntax-highlight-guide#embedded-languages) syntax support for bash
 * path completion - https://github.com/ChristianKohler/PathIntellisense
 
 ## Installation
