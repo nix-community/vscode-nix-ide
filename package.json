@@ -21,7 +21,7 @@
     "type": "git",
     "url": "https://github.com/jnoortheen/vscode-nix-ide"
   },
-  "main": "dist/Extension.js",
+  "main": "dist/extension.js",
   "activationEvents": [
     "*"
   ],
