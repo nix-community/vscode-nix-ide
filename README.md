@@ -5,6 +5,7 @@ Adds [nix](https://nixos.org/) language support for VSCode Editor.
 ## Features
 
 * Syntax Highlight
+  + nix code snippets inside `markdown` files also work.
   + Thanks to https://github.com/wmertens/sublime-nix for the grammer file
 * Formatting support
   + with the help of [nixpkgs-format](https://github.com/nix-community/nixpkgs-fmt)
@@ -53,4 +54,4 @@ I have created this since the other nix-language extension hasn't been updated o
 ---
 Special thanks to
  * [article](https://blog.nojaf.com/2018/12/17/writing-a-vscode-extension-with-fable-2-1/) to have all the pieces in one place to develop vscode extension with `Fable` .
- * Many of the functions are copied from [vscode-fish](https://github.com/bmalehorn/vscode-fish/)
+ * The extension [vscode-fish](https://github.com/bmalehorn/vscode-fish/) is modified to work for `nix` .

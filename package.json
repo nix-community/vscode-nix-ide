@@ -44,6 +44,16 @@
         "language": "nix",
         "scopeName": "source.nix",
         "path": "./syntaxes/nix.tmLanguage.json"
+      },
+      {
+        "scopeName": "markdown.nix.codeblock",
+        "path": "./syntaxes/injection.json",
+        "injectTo": [
+          "text.html.markdown"
+        ],
+        "embeddedLanguages": {
+          "meta.embedded.block.nix": "nix"
+        }
       }
     ],
     "snippets": [
@@ -64,7 +74,7 @@
     "vscode": "^1.1.25"
   },
   "scripts": {
-    "prebuild": "js-yaml syntaxes/nix.YAML-tmLanguage > syntaxes/nix.tmLanguage.json",
+    "prebuild": "js-yaml syntaxes/nix.YAML-tmLanguage > syntaxes/nix.tmLanguage.json && js-yaml syntaxes/injection.yml > syntaxes/injection.json",
     "build": "tsc -p ./",
     "watch": "yarn build --watch",
     "postinstall": "node ./node_modules/vscode/bin/install",
