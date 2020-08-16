@@ -1,6 +1,7 @@
 import * as vscode from "vscode";
 import { ExtensionContext } from "vscode";
 import { formattingProviders } from "./formatter";
+import { startLinting } from "./linter";
 
 /**
  * Activate this extension.
@@ -12,7 +13,7 @@ import { formattingProviders } from "./formatter";
  * @return A promise for the initialization
  */
 export const activate = async (context: ExtensionContext): Promise<any> => {
-  // startLinting(context);
+  startLinting(context);
 
   let subs = [
     vscode.languages.registerDocumentFormattingEditProvider,

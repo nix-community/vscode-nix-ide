@@ -11,7 +11,12 @@
   },
   "categories": [
     "Programming Languages",
+    "Formatters",
     "Snippets"
+  ],
+  "keywords": [
+    "nix",
+    "IDE"
   ],
   "bugs": {
     "url": "https://github.com/jnoortheen/vscode-nix-ide/issues"
@@ -23,7 +28,7 @@
   },
   "main": "dist/extension.js",
   "activationEvents": [
-    "*"
+    "onLanguage:nix"
   ],
   "contributes": {
     "languages": [
