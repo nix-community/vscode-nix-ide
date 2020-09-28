@@ -12,10 +12,10 @@ import { startLinting } from "./linter";
  * @param context The context for this extension
  * @return A promise for the initialization
  */
-export const activate = async (context: ExtensionContext): Promise<any> => {
-  startLinting(context);
+export async function activate(context: ExtensionContext): Promise<void> {
+  await startLinting(context);
 
-  let subs = [
+  const subs = [
     vscode.languages.registerDocumentFormattingEditProvider,
     vscode.languages.registerDocumentRangeFormattingEditProvider,
   ].map((func) => func("nix", formattingProviders));

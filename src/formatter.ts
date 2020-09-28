@@ -6,7 +6,7 @@ import {
   TextDocument,
   TextEdit,
 } from "vscode";
-import { runInWorkspace } from "./process-runner";
+import { IProcessResult, runInWorkspace } from "./process-runner";
 
 const FORMATTER = "nixpkgs-fmt";
 
@@ -24,14 +24,17 @@ const getFormatRangeEdits = async (
   const actualRange = document.validateRange(
     range || new Range(0, 0, Number.MAX_VALUE, Number.MAX_VALUE)
   );
+  let result: IProcessResult;
   try {
-    var result = await runInWorkspace(
+    result = await runInWorkspace(
       vscode.workspace.getWorkspaceFolder(document.uri),
       [FORMATTER],
       document.getText(actualRange)
     );
   } catch (error) {
-    vscode.window.showErrorMessage(`Failed to run ${FORMATTER}: ${error}`);
+    if (error instanceof Error) {
+      await vscode.window.showErrorMessage(`Failed to run ${FORMATTER}: ${error.message}`);
+    }
     // Re-throw the error to make the promise fail
     throw error;
   }
