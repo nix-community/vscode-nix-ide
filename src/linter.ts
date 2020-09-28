@@ -77,22 +77,25 @@ const shellOutputToDiagnostics = (
  *
  * @param context The extension context
  */
-export const startLinting = (context: ExtensionContext): void => {
+export async function startLinting(context: ExtensionContext): Promise<void> {
   const diagnostics = vscode.languages.createDiagnosticCollection("nix");
   context.subscriptions.push(diagnostics);
 
   const lint = async (document: TextDocument) => {
     if (isSavedDocument(document)) {
       const workspaceFolder = vscode.workspace.getWorkspaceFolder(document.uri);
+      let d: ReadonlyArray<Diagnostic>
       try {
         const result = await runInWorkspace(workspaceFolder, [
           "nix-instantiate",
           "--parse",
           document.fileName,
         ]);
-        var d = shellOutputToDiagnostics(document, result.stderr);
+        d = shellOutputToDiagnostics(document, result.stderr);
       } catch (error) {
-        vscode.window.showErrorMessage(error.toString());
+        if (error instanceof Error) {
+          await vscode.window.showErrorMessage(error.message);
+        }
         diagnostics.delete(document.uri);
         return;
       }
@@ -102,8 +105,9 @@ export const startLinting = (context: ExtensionContext): void => {
 
   vscode.workspace.onDidOpenTextDocument(lint, null, context.subscriptions);
   vscode.workspace.onDidSaveTextDocument(lint, null, context.subscriptions);
-  vscode.workspace.textDocuments.forEach(lint);
-
+  for await (const textDocument of vscode.workspace.textDocuments) {
+    await lint(textDocument);
+  }
   // Remove diagnostics for closed files
   vscode.workspace.onDidCloseTextDocument(
     (d) => diagnostics.delete(d.uri),

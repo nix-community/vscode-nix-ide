@@ -40,7 +40,7 @@ const isProcessError = (error: Error): error is IProcessError =>
 /**
  * The result of a process.
  */
-interface IProcessResult {
+export interface IProcessResult {
   /**
    * The integral exit code.
    */
