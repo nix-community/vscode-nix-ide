@@ -7,4 +7,3 @@ updates:
     # Check the npm registry for updates every week (weekdays)
     schedule:
       interval: "weekly"
-      
