@@ -78,7 +78,7 @@
     "prettier": "^2.0.0",
     "standard-version": "^9.0",
     "typescript": "^4.0.3",
-    "vsce": "^1.81.0",
+    "vsce": "^1.81.1",
     "vscode": "^1.1.25"
   },
   "scripts": {
