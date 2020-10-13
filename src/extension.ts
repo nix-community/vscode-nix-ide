@@ -1,24 +1,18 @@
-import * as vscode from "vscode";
-import { ExtensionContext } from "vscode";
-import { formattingProviders } from "./formatter";
-import { startLinting } from "./linter";
+import { ExtensionContext } from 'vscode';
+import * as client from './client';
 
 /**
  * Activate this extension.
  *
- * Format with nixpkgs-format
- * validate with nix-instantiate
+ * Format and validate with {@link https://github.com/nix-community/rnix-lsp|rnix-lsp}
  *
  * @param context The context for this extension
  * @return A promise for the initialization
  */
 export async function activate(context: ExtensionContext): Promise<void> {
-  await startLinting(context);
+  await client.activate(context);
+}
 
-  const subs = [
-    vscode.languages.registerDocumentFormattingEditProvider,
-    vscode.languages.registerDocumentRangeFormattingEditProvider,
-  ].map((func) => func("nix", formattingProviders));
-
-  context.subscriptions.concat(subs);
-};
+export async function deactivate(): Promise<void> {
+  await client.deactivate();
+}

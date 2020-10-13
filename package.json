@@ -66,7 +66,17 @@
         "language": "nix",
         "path": "./snippets.json"
       }
-    ]
+    ],
+    "configuration": {
+      "title": "Nix",
+      "properties": {
+        "nix.serverPath": {
+          "type": "string",
+          "default": "",
+          "description": "Location of the nix language server"
+        }
+      }
+    }
   },
   "devDependencies": {
     "@types/node": "^14.11.8",
@@ -88,5 +98,8 @@
     "postinstall": "node ./node_modules/vscode/bin/install",
     "release": "yarn build && standard-version && git push --follow-tags && vsce publish",
     "lint": "eslint --ext ts src"
+  },
+  "dependencies": {
+    "vscode-languageclient": "6.1.3"
   }
 }
