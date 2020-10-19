@@ -1577,11 +1577,6 @@ human-signals@^1.1.1:
   resolved "https://registry.yarnpkg.com/human-signals/-/human-signals-1.1.1.tgz#c5b1cd14f50aeae09ab6c59fe63ba3395fe4dfa3"
   integrity sha512-SEQu7vl8KjNL2eoGBLF3+wAjpsNfA9XMlXAYj/3EdaNfAlxKthD1xjEQfGOUhllCGGJVNY34bRr6lPINhNjyZw==
 
-husky@^5.0.0-beta.0:
-  version "5.0.0-beta.0"
-  resolved "https://registry.yarnpkg.com/husky/-/husky-5.0.0-beta.0.tgz#b09c5a7da1da884cfd9ff0d7cfd328b77e068516"
-  integrity sha512-gemLvVKIeuSuu+xp+hY5DUNjNSNk4YIgdsFhC3Wwv6tpc8VIGNR+0g+5uOpsiNNlAekcaMfO06mwSSokqLAlhQ==
-
 ignore@^4.0.6:
   version "4.0.6"
   resolved "https://registry.yarnpkg.com/ignore/-/ignore-4.0.6.tgz#750e3db5862087b4737ebac8207ffd1ef27b25fc"
@@ -1775,6 +1770,11 @@ kind-of@^6.0.3:
   version "6.0.3"
   resolved "https://registry.yarnpkg.com/kind-of/-/kind-of-6.0.3.tgz#07c05034a6c349fa06e24fa35aa76db4580ce4dd"
   integrity sha512-dcS1ul+9tmeD95T+x28/ehLgd9mENa3LsvDTtzm3vyBEO7RPptvAD+t44WVXaUjTBRcrpFeFlC8WCruUR456hw==
+
+lefthook@^0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/lefthook/-/lefthook-0.0.1.tgz#0b70628fc3bf610ab5417e1927c75624021ca59e"
+  integrity sha512-2ggyyCuCxZA8xTHSNEo2H8PR1Tz45w1n26uIH3AIPV4ASw4zak1HArrMIwgVedrjcqpBIygCgzr6b0I9TU0wUw==
 
 leven@^3.1.0:
   version "3.1.0"
