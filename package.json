@@ -2,7 +2,7 @@
   "name": "nix-ide",
   "displayName": "Nix IDE",
   "description": "Nix language support with formatting and error report.",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "publisher": "jnoortheen",
   "icon": "images/icon.png",
   "license": "MIT",
@@ -91,7 +91,7 @@
     "build": "tsc -p ./",
     "watch": "yarn build --watch",
     "postinstall": "node ./node_modules/vscode/bin/install && husky install",
-    "release": "yarn build && standard-version && git push --follow-tags && vsce publish",
+    "release": "standard-version && git push --follow-tags",
     "lint": "eslint --ext ts src"
   }
 }
