@@ -92,6 +92,7 @@
     "watch": "yarn build --watch",
     "postinstall": "node ./node_modules/vscode/bin/install && husky install",
     "release": "standard-version && git push --follow-tags",
+    "pkg-release": "vsce publish && ovsx publish --pat $OVS_PAT",
     "lint": "eslint --ext ts src"
   }
 }
