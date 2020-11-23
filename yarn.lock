@@ -1682,10 +1682,10 @@ human-signals@^1.1.1:
   resolved "https://registry.yarnpkg.com/human-signals/-/human-signals-1.1.1.tgz#c5b1cd14f50aeae09ab6c59fe63ba3395fe4dfa3"
   integrity sha512-SEQu7vl8KjNL2eoGBLF3+wAjpsNfA9XMlXAYj/3EdaNfAlxKthD1xjEQfGOUhllCGGJVNY34bRr6lPINhNjyZw==
 
-husky@^5.0.0-beta.0:
-  version "5.0.0-beta.0"
-  resolved "https://registry.yarnpkg.com/husky/-/husky-5.0.0-beta.0.tgz#b09c5a7da1da884cfd9ff0d7cfd328b77e068516"
-  integrity sha512-gemLvVKIeuSuu+xp+hY5DUNjNSNk4YIgdsFhC3Wwv6tpc8VIGNR+0g+5uOpsiNNlAekcaMfO06mwSSokqLAlhQ==
+husky@^5.0.4:
+  version "5.0.4"
+  resolved "https://registry.yarnpkg.com/husky/-/husky-5.0.4.tgz#24e666d560f340ce70bf58e7658eb574e3bddcca"
+  integrity sha512-35tdr4zrmJrpMconZggELF8zzNuddp2NEpPc4AjplPoYJauPZU6WuvCCrJYOTZv5UUj9C15ikQWCcTXk4jJj9Q==
 
 ignore@^4.0.6:
   version "4.0.6"
