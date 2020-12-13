@@ -12,4 +12,5 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           # merge-minor: true
-          merge-patch: true
+          # merge-patch: true
+          approve-minor: true
