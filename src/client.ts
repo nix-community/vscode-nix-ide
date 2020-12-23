@@ -1,12 +1,12 @@
 // from PR of https://github.com/nix-community/vscode-nix-ide/pull/16/
 
 import { env, ExtensionContext, Uri, window, workspace } from "vscode";
+import { LanguageClientOptions } from "vscode-languageclient";
 import {
   Executable,
   LanguageClient,
-  LanguageClientOptions,
   ServerOptions,
-} from "vscode-languageclient";
+} from "vscode-languageclient/node";
 import { config, UriMessageItem } from "./configuration";
 
 let client: LanguageClient;
