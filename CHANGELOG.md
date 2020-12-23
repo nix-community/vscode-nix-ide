@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.8](https://github.com/jnoortheen/vscode-nix-ide/compare/v0.1.7...v0.1.8) (2020-12-23)
+
+
+### Features
+
+* create vsix artifacts part of release ([6e2c1fe](https://github.com/jnoortheen/vscode-nix-ide/commit/6e2c1fe962744936669b47a5b42b57f6d19b304c))
+
 ### [0.1.7](https://github.com/jnoortheen/vscode-nix-ide/compare/v0.1.6...v0.1.7) (2020-12-23)
 
 ### [0.1.6](https://github.com/jnoortheen/vscode-nix-ide/compare/v0.1.5...v0.1.6) (2020-12-23)
