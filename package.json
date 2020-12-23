@@ -66,7 +66,22 @@
         "language": "nix",
         "path": "./snippets.json"
       }
-    ]
+    ],
+    "configuration": {
+      "title": "NixIDE",
+      "properties": {
+        "nix.serverPath": {
+          "type": "string",
+          "default": "",
+          "description": "Location of the rnix language server. By default rnix from $PATH is used (if enableLanguageServer is true.)"
+        },
+        "nix.enableLanguageServer": {
+          "type": "boolean",
+          "default": false,
+          "description": "Setting this would disable nix-instantiate and nixpkgs-fmt"
+        }
+      }
+    }
   },
   "devDependencies": {
     "@commitlint/cli": "^11.0.0",
@@ -94,5 +109,8 @@
     "release": "standard-version && git push --follow-tags",
     "pkg-release": "vsce publish && ovsx publish --pat $OVS_PAT",
     "lint": "eslint --ext ts src"
+  },
+  "dependencies": {
+    "vscode-languageclient": "^7.0.0"
   }
 }
