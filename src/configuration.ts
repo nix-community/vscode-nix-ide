@@ -13,16 +13,16 @@ export class Config {
     return vscode.workspace.getConfiguration(this.rootSection);
   }
 
-  private get<T>(path: string): T {
-    return this.cfg.get<T>(path)!;
+  private get<T>(path: string, def_val: T): T {
+    return this.cfg.get<T>(path) ?? def_val;
   }
 
   get serverPath(): string {
-    return this.get<string>("serverPath");
+    return this.get<string>("serverPath", "rnix-lsp");
   }
 
   get LSPEnabled(): boolean {
-    return this.get<boolean>("enableLanguageServer");
+    return this.get<boolean>("enableLanguageServer", false);
   }
 }
 export const config = new Config();

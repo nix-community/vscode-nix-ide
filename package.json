@@ -72,13 +72,13 @@
       "properties": {
         "nix.serverPath": {
           "type": "string",
-          "default": "",
-          "description": "Location of the rnix language server. By default rnix from $PATH is used (if enableLanguageServer is true.)"
+          "default": "rnix-lsp",
+          "description": "Location of the nix language server command."
         },
         "nix.enableLanguageServer": {
           "type": "boolean",
           "default": false,
-          "description": "Setting this would disable nix-instantiate and nixpkgs-fmt"
+          "description": "Use LSP instead of nix-instantiate and nixpkgs-fmt."
         }
       }
     }
@@ -87,6 +87,7 @@
     "@commitlint/cli": "^11.0.0",
     "@commitlint/config-conventional": "^11.0.0",
     "@commitlint/prompt-cli": "^11.0.0",
+    "@types/command-exists": "^1.2.0",
     "@types/node": "^14.14.14",
     "@types/vscode": "*",
     "@typescript-eslint/eslint-plugin": "^4.10.0",
@@ -111,6 +112,7 @@
     "lint": "eslint --ext ts src"
   },
   "dependencies": {
+    "command-exists": "^1.2.9",
     "vscode-languageclient": "^7.0.0"
   }
 }

@@ -9,12 +9,16 @@ import {
 } from "vscode-languageclient/node";
 import { config, UriMessageItem } from "./configuration";
 
+import commandExists = require("command-exists");
+
 let client: LanguageClient;
 
 export async function activate(context: ExtensionContext): Promise<void> {
-  if (config.serverPath === undefined || config.serverPath === "") {
+  const cmdExists = await commandExists(config.serverPath);
+
+  if (!cmdExists) {
     const selection = await window.showErrorMessage<UriMessageItem>(
-      "Unable to find Nix language server",
+      `Command ${config.serverPath} not found in $PATH`,
       {
         title: "Install language server",
         uri: Uri.parse("https://github.com/nix-community/rnix-lsp"),

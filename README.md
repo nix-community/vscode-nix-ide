@@ -14,10 +14,13 @@ Adds [nix](https://nixos.org/) language support for VSCode Editor.
 
   ![](./images/docs/md-embed-nix.png)
 
-* Formatting support
-  + with the help of [nixpkgs-format](https://github.com/nix-community/nixpkgs-fmt)
-* Error Report
-  + Using `nix-instantiate` errors reported
+* Full editing support with [rnix-LSP](https://github.com/nix-community/rnix-lsp)
+
+* When `Language Server` support is not enabled the following tools are used to
+  * Formatting support
+    + with the help of [nixpkgs-format](https://github.com/nix-community/nixpkgs-fmt)
+  * Error Report
+    + Using `nix-instantiate` errors reported
 
   ![](./images/docs/linting.png)
 
