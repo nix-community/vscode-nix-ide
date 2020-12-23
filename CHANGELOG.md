@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.6](https://github.com/jnoortheen/vscode-nix-ide/compare/v0.1.5...v0.1.6) (2020-12-23)
+
+
+### Features
+
+* add rnix LSP support ([ec3dee3](https://github.com/jnoortheen/vscode-nix-ide/commit/ec3dee34ba273d181593e647f305de10d54e5e10)), closes [#10](https://github.com/jnoortheen/vscode-nix-ide/issues/10)
+* check rnix-lsp and suggest if not installed ([e09563f](https://github.com/jnoortheen/vscode-nix-ide/commit/e09563f849fd7cb9d28c688a1c0c3bd2da890041))
+
+
+### Bug Fixes
+
+* since update to lsp-client v7 ([e3fa686](https://github.com/jnoortheen/vscode-nix-ide/commit/e3fa686464dcac5319ddae5a5d23904c4f5bc487))
+
 ### [0.1.5](https://github.com/jnoortheen/vscode-nix-ide/compare/v0.1.3...v0.1.5) (2020-10-24)
 
 ### [0.1.3](https://github.com/jnoortheen/vscode-nix-ide/compare/v0.1.2...v0.1.3) (2020-08-16)
