@@ -131,3 +131,5 @@ dist
 # latest paket versions
 .paket/
 paket-files/
+
+*.vsix
