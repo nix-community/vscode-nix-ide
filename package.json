@@ -91,7 +91,7 @@
     "@types/node": "^14.14.21",
     "@types/vscode": "*",
     "@typescript-eslint/eslint-plugin": "^4.13.0",
-    "@typescript-eslint/parser": "^4.9.1",
+    "@typescript-eslint/parser": "^4.13.0",
     "eslint": "^7.17.0",
     "eslint-config-prettier": "^7.1.0",
     "husky": "^5.0.6",
