@@ -92,7 +92,7 @@
     "@types/vscode": "*",
     "@typescript-eslint/eslint-plugin": "^4.14.1",
     "@typescript-eslint/parser": "^4.14.0",
-    "eslint": "^7.18.0",
+    "eslint": "^7.19.0",
     "eslint-config-prettier": "^7.2.0",
     "husky": "^5.0.6",
     "js-yaml": "^4.0.0",
