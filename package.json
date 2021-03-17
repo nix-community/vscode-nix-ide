@@ -93,7 +93,7 @@
     "@typescript-eslint/eslint-plugin": "^4.15.2",
     "@typescript-eslint/parser": "^4.15.2",
     "eslint": "^7.21.0",
-    "eslint-config-prettier": "^7.2.0",
+    "eslint-config-prettier": "^8.1.0",
     "husky": "^5.1.2",
     "js-yaml": "^4.0.0",
     "ovsx": "^0.1.0-next.9321255",
