@@ -71,10 +71,10 @@ jobs:
       #   with:
       #     pat: ${{ secrets.VS_MARKETPLACE_TOKEN }}
       #     registryUrl: https://marketplace.visualstudio.com
-      - name: upload vsix
-        uses: Roang-zero1/github-upload-release-artifacts-action@master
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        if: startsWith(github.ref, 'refs/tags/')
         with:
-          args:
-          - nix-ide*.vsix
+          files: nix-ide*.vsix
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
