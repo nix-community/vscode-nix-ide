@@ -679,6 +679,11 @@ cheerio@^1.0.0-rc.1:
     parse5 "^6.0.0"
     parse5-htmlparser2-tree-adapter "^6.0.0"
 
+ci-info@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/ci-info/-/ci-info-2.0.0.tgz#67a9e964be31a51e15e5010d58e6f12834002f46"
+  integrity sha512-5tK7EtrZ0N+OLFMthtqOj4fI2Jeb88C4CAZPu25LDVUgXJ0A3Js4PMGqrn0JU1W0Mh1/Z8wZzYPxqUrXeBboCQ==
+
 cli-cursor@^1.0.1, cli-cursor@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/cli-cursor/-/cli-cursor-1.0.2.tgz#64da3f7d56a54412e59794bd62dc35295e8f2987"
@@ -1422,6 +1427,11 @@ flatted@^3.1.0:
   resolved "https://registry.yarnpkg.com/flatted/-/flatted-3.1.0.tgz#a5d06b4a8b01e3a63771daa5cb7a1903e2e57067"
   integrity sha512-tW+UkmtNg/jv9CSofAKvgVcO7c2URjhTdW1ZTkcAritblu8tajiYy7YisnIflEwtKssCtOxpnBRoCB7iap0/TA==
 
+follow-redirects@^1.13.2:
+  version "1.13.3"
+  resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.13.3.tgz#e5598ad50174c1bc4e872301e82ac2cd97f90267"
+  integrity sha512-DUgl6+HDzB0iEptNQEXLx/KhTmDb8tZUHSeLqpnjpknR70H0nC2t9N73BK6fN4hOvJ84pKlIQVQ4k5FFlBedKA==
+
 fs-access@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/fs-access/-/fs-access-1.0.1.tgz#d6a87f262271cefebec30c553407fb995da8777a"
@@ -1750,6 +1760,13 @@ is-arrayish@^0.2.1:
   version "0.2.1"
   resolved "https://registry.yarnpkg.com/is-arrayish/-/is-arrayish-0.2.1.tgz#77c99840527aa8ecb1a8ba697b80645a7a926a9d"
   integrity sha1-d8mYQFJ6qOyxqLppe4BkWnqSap0=
+
+is-ci@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/is-ci/-/is-ci-2.0.0.tgz#6bc6334181810e04b5c22b3d589fdca55026404c"
+  integrity sha512-YfJT7rkpQB0updsdHLGWrvhBJfcfzNNawYDNIyQXJz0IViGf75O8EBPKSdvw2rF+LGCsX4FZ8tcr3b19LcZq4w==
+  dependencies:
+    ci-info "^2.0.0"
 
 is-core-module@^2.1.0:
   version "2.2.0"
@@ -2294,12 +2311,16 @@ osenv@^0.1.3:
     os-homedir "^1.0.0"
     os-tmpdir "^1.0.0"
 
-ovsx@^0.1.0-next.9321255:
-  version "0.1.0-next.9321255"
-  resolved "https://registry.yarnpkg.com/ovsx/-/ovsx-0.1.0-next.9321255.tgz#dbb679e2eacf28017cfd474487a94008426d024d"
-  integrity sha512-gGQRzQWHBT6VdjZZgGxQUN1oaRxBuKcTkhtkL9AMstLqIu+tVmbTjJIE/j/RQeSumsn+HPoXysjnR0fzKsHkdQ==
+ovsx@^0.1.0-next.a9154dc:
+  version "0.1.0-next.a9154dc"
+  resolved "https://registry.yarnpkg.com/ovsx/-/ovsx-0.1.0-next.a9154dc.tgz#40a385deae0e30ef99f695f7cdce8849b39acc7b"
+  integrity sha512-5G43mTutL2XNIFwnKXNSlnH2Ne+Tk9p+aRzD+fRhb38FxS4jwsY4YvEhZODiIEyWPKDcZwJbfgBIFOMkmJ/vig==
   dependencies:
-    vsce "^1.73.0"
+    commander "^6.1.0"
+    follow-redirects "^1.13.2"
+    is-ci "^2.0.0"
+    leven "^3.1.0"
+    vsce "~1.84.0"
 
 p-limit@^1.1.0:
   version "1.3.0"
@@ -3232,10 +3253,36 @@ vorpal@^1.12.0:
     strip-ansi "^3.0.0"
     wrap-ansi "^2.0.0"
 
-vsce@^1.73.0, vsce@^1.87.0:
+vsce@^1.87.0:
   version "1.87.0"
   resolved "https://registry.yarnpkg.com/vsce/-/vsce-1.87.0.tgz#d592142c8781c984bc49dec60be940f9d26528e6"
   integrity sha512-7Ow05XxIM4gHBq/Ho3hefdmiZG0fddHtu0M0XJ1sojyZBvxPxTHaMuBsRnfnMzgCqxDTFI5iLr94AgiwQnhOMQ==
+  dependencies:
+    azure-devops-node-api "^7.2.0"
+    chalk "^2.4.2"
+    cheerio "^1.0.0-rc.1"
+    commander "^6.1.0"
+    denodeify "^1.2.1"
+    glob "^7.0.6"
+    leven "^3.1.0"
+    lodash "^4.17.15"
+    markdown-it "^10.0.0"
+    mime "^1.3.4"
+    minimatch "^3.0.3"
+    osenv "^0.1.3"
+    parse-semver "^1.1.1"
+    read "^1.0.7"
+    semver "^5.1.0"
+    tmp "0.0.29"
+    typed-rest-client "1.2.0"
+    url-join "^1.1.0"
+    yauzl "^2.3.1"
+    yazl "^2.2.2"
+
+vsce@~1.84.0:
+  version "1.84.0"
+  resolved "https://registry.yarnpkg.com/vsce/-/vsce-1.84.0.tgz#1c489212bfde2f37e20dbeb17954e56903f38bee"
+  integrity sha512-mRJDTMC/1GO7byz6dleY28CZo97cM1p0nU3EEMT5bGMpi5Yga3dKdgTvmwgSQF5BYWozNSNSqN1zih5SYzMZjA==
   dependencies:
     azure-devops-node-api "^7.2.0"
     chalk "^2.4.2"

@@ -96,7 +96,7 @@
     "eslint-config-prettier": "^8.1.0",
     "husky": "^5.1.2",
     "js-yaml": "^4.0.0",
-    "ovsx": "^0.1.0-next.9321255",
+    "ovsx": "^0.1.0-next.a9154dc",
     "prettier": "^2.2.1",
     "pretty-quick": "^3.1.0",
     "standard-version": "^9.1",
@@ -108,9 +108,9 @@
     "build": "tsc -p ./",
     "watch": "yarn build --watch",
     "postinstall": "husky install",
-    "release": "standard-version && git push --follow-tags",
+    "release": "yarn install && yarn lint && yarn build && standard-version && git push --follow-tags",
     "package": "vsce package",
-    "publish": "vsce publish && ovsx publish --pat $OVS_PAT",
+    "publish": "yarn package && vsce publish && ovsx publish --pat $OVS_PAT",
     "lint": "eslint --ext ts src"
   },
   "dependencies": {
