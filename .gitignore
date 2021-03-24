@@ -133,3 +133,6 @@ dist
 paket-files/
 
 *.vsix
+
+# some misc. proj. files
+.local/

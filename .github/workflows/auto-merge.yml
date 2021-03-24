@@ -1,16 +1,16 @@
-name: Auto-merge minor/patch
-on:
-  schedule:
-    # run daily at 4am
-    - cron: "0 4 * * *"
-jobs:
-  test:
-    name: Auto-merge minor and patch updates
-    runs-on: ubuntu-18.04
-    steps:
-      - uses: koj-co/dependabot-pr-action@master
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          # merge-minor: true
-          # merge-patch: true
-          approve-minor: true
+# name: Auto-merge minor/patch
+# on:
+#   schedule:
+#     # run daily at 4am
+#     - cron: "0 4 * * *"
+# jobs:
+#   test:
+#     name: Auto-merge minor and patch updates
+#     runs-on: ubuntu-18.04
+#     steps:
+#       - uses: koj-co/dependabot-pr-action@master
+#         with:
+#           token: ${{ secrets.GITHUB_TOKEN }}
+#           # merge-minor: true
+#           # merge-patch: true
+#           approve-minor: true
