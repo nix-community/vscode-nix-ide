@@ -84,7 +84,7 @@
     }
   },
   "devDependencies": {
-    "@commitlint/cli": "^11.0.0",
+    "@commitlint/cli": "^12.1.1",
     "@commitlint/config-conventional": "^12.0.1",
     "@commitlint/prompt-cli": "^12.0.1",
     "@types/command-exists": "^1.2.0",
