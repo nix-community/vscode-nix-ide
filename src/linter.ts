@@ -42,7 +42,8 @@ const getErrors = (text: string): ReadonlyArray<LintErrorType> => {
     results.push({
       msg: match[1],
       row: parseInt(match[2]),
-      col: parseInt(match[3]),
+      // nix starts column indizes 0-indexed, but vscode is 1-indexed
+      col: 1 + parseInt(match[3]),
     });
     match = pattern.exec(text);
   }
