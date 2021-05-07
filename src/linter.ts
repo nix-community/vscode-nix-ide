@@ -35,7 +35,11 @@ interface LintErrorType {
  */
 const getErrors = (text: string): ReadonlyArray<LintErrorType> => {
   const results = [];
-  const pattern = /^error: (.+), at .+:(\d+):(\d+)$/gm;
+  // matches both syntax error messages, like:
+  // `error: syntax error, unexpected ']', expecting ';', at /home/foo/bar/shell.nix:19:3`
+  // as well as symbol error messages, like
+  // `error: undefined variable 'openjdk' at /home/foo/bar/shell.nix:14:5`
+  const pattern = /^error: (.+) at .+:(\d+):(\d+)$/gm;
   // We need to loop through the regexp here, so a let is required
   let match = pattern.exec(text);
   while (match !== null) {
