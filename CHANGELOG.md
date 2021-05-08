@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.11](https://github.com/jnoortheen/vscode-nix-ide/compare/v0.1.10...v0.1.11) (2021-05-08)
+
+
+### Features
+
+* **linter:** Allow symbol errors to show (static analysys) ([041dffc](https://github.com/jnoortheen/vscode-nix-ide/commit/041dffc92fae798c41ed211ee805ee6ce5772c5f))
+
 ### [0.1.10](https://github.com/jnoortheen/vscode-nix-ide/compare/v0.1.9...v0.1.10) (2021-03-24)
 
 ### [0.1.9](https://github.com/jnoortheen/vscode-nix-ide/compare/v0.1.8...v0.1.9) (2021-03-24)
