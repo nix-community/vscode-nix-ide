@@ -90,7 +90,7 @@
     "@types/command-exists": "^1.2.0",
     "@types/node": "^15.0.2",
     "@types/vscode": "*",
-    "@typescript-eslint/eslint-plugin": "^4.22.0",
+    "@typescript-eslint/eslint-plugin": "^4.26.0",
     "@typescript-eslint/parser": "^4.19.0",
     "eslint": "^7.21.0",
     "eslint-config-prettier": "^8.1.0",
