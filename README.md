@@ -65,6 +65,14 @@ Just clone the [GitHub repository](https://github.com/bbenoist/vscode-nix) under
   yarn build # this will build the extension
 ```
 
+## Releasing a new version
+
+```sh
+  export OVS_PAT=...
+  yarn release
+  yarn upload
+```
+
 ---
 Special thanks to
  * [article](https://blog.nojaf.com/2018/12/17/writing-a-vscode-extension-with-fable-2-1/) to have all the pieces in one place to develop vscode extension with `Fable` .

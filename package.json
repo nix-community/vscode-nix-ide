@@ -110,7 +110,7 @@
     "postinstall": "husky install",
     "release": "yarn install && yarn lint && yarn build && standard-version && git push --follow-tags && yarn run publish",
     "package": "vsce package",
-    "publish": "yarn package && vsce publish && ovsx publish --pat $OVS_PAT",
+    "upload": "yarn package && vsce publish && ovsx publish --pat $OVS_PAT",
     "lint": "eslint --ext ts src"
   },
   "dependencies": {
