@@ -2,7 +2,7 @@
   "name": "nix-ide",
   "displayName": "Nix IDE",
   "description": "Nix language support with formatting and error report.",
-  "version": "0.1.13",
+  "version": "0.1.12",
   "publisher": "jnoortheen",
   "icon": "images/icon.png",
   "license": "MIT",
@@ -110,7 +110,7 @@
     "postinstall": "husky install",
     "release": "yarn install && yarn lint && yarn build && standard-version && git push --follow-tags && yarn run publish",
     "package": "vsce package",
-    "upload": "yarn package && vsce publish && ovsx publish --pat $OVS_PAT",
+    "publish": "yarn package && vsce publish && ovsx publish --pat $OVS_PAT",
     "lint": "eslint --ext ts src"
   },
   "dependencies": {

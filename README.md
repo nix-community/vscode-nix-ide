@@ -70,7 +70,6 @@ Just clone the [GitHub repository](https://github.com/bbenoist/vscode-nix) under
 ```sh
   export OVS_PAT=...
   yarn release
-  yarn upload
 ```
 
 ---
