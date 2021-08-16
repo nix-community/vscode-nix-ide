@@ -1,4 +1,4 @@
-import * as vscode from "vscode";
+import { WorkspaceConfiguration, workspace } from "vscode";
 
 import { MessageItem, Uri } from "vscode";
 
@@ -9,8 +9,8 @@ export interface UriMessageItem extends MessageItem {
 export class Config {
   readonly rootSection = "nix";
 
-  private get cfg(): vscode.WorkspaceConfiguration {
-    return vscode.workspace.getConfiguration(this.rootSection);
+  private get cfg(): WorkspaceConfiguration {
+    return workspace.getConfiguration(this.rootSection);
   }
 
   private get<T>(path: string, def_val: T): T {
