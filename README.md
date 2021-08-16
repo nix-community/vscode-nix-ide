@@ -17,10 +17,10 @@ Adds [nix](https://nixos.org/) language support for VSCode Editor.
 * Full editing support with [rnix-LSP](https://github.com/nix-community/rnix-lsp)
 
 * When `Language Server` support is not enabled the following tools are used to
-  * Formatting support
-    + with the help of [nixpkgs-format](https://github.com/nix-community/nixpkgs-fmt)
-  * Error Report
-    + Using `nix-instantiate` errors reported
+  + Formatting support
+    - with the help of [nixpkgs-format](https://github.com/nix-community/nixpkgs-fmt)
+  + Error Report
+    - Using `nix-instantiate` errors reported
 
   ![](./images/docs/linting.png)
 
@@ -39,6 +39,10 @@ Adds [nix](https://nixos.org/) language support for VSCode Editor.
 
 Hit `F1` and enter the `ext install jnoortheen.nix-ide` command or search for `nix-ide` .
 
+### *.vsix file
+
+The extension can be downloaded from the release page.
+
 ### Installing the extension Locally
 
 Just clone the [GitHub repository](https://github.com/bbenoist/vscode-nix) under your local extensions folder:
@@ -48,8 +52,6 @@ Just clone the [GitHub repository](https://github.com/bbenoist/vscode-nix) under
 
 ## Contributing
 
-I have created this since the other nix-language extension hasn't been updated over an year. I just wanted to add formatting and error detection quickly. Contributions are very welcome. But please follow the below points.
-
 * Document the purpose of functions and classes.
 * When adding a new feature, please mention it in the `README.md` Features section. Use screenshots when applicable.
 * [Conventional Commit](https://www.conventionalcommits.org/en/v1.0.0/) style should be used for commit messages as it is used to generate changelog.
@@ -58,7 +60,7 @@ I have created this since the other nix-language extension hasn't been updated o
 
 * TypeScript is used to develop the extension
 
-``` sh
+```sh
   yarn install
   yarn build # this will build the extension
 ```
