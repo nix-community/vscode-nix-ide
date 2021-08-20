@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.16](https://github.com/jnoortheen/vscode-nix-ide/compare/v0.1.15...v0.1.16) (2021-08-20)
+
+
+### Features
+
+* add esbuild bundling ([2ee7a3f](https://github.com/jnoortheen/vscode-nix-ide/commit/2ee7a3f99e25c895fa39be3cde210d7a748d4bee))
+
 ### [0.1.15](https://github.com/jnoortheen/vscode-nix-ide/compare/v0.1.14...v0.1.15) (2021-08-16)
 
 ### [0.1.14](https://github.com/jnoortheen/vscode-nix-ide/compare/v0.1.13...v0.1.14) (2021-08-16)
