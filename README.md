@@ -67,8 +67,9 @@ Just clone the [GitHub repository](https://github.com/bbenoist/vscode-nix) under
 
 ## Releasing a new version
 
+* fill `.env` from `.env.template`
+
 ```sh
-  export OVS_PAT=...
   yarn release
 ```
 
