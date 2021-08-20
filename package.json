@@ -92,6 +92,7 @@
     "@types/vscode": "*",
     "@typescript-eslint/eslint-plugin": "^4.26.0",
     "@typescript-eslint/parser": "^4.26.1",
+    "del-cli": "^4.0.1",
     "env-cmd": "^10.1.0",
     "esbuild": "^0.12.21",
     "eslint": "^7.21.0",
@@ -111,7 +112,8 @@
     "build": "yarn run build-base -- --sourcemap --minify",
     "watch": "yarn run build-base -- --sourcemap --watch",
     "postinstall": "husky install",
-    "release": "yarn install && yarn lint && yarn build && standard-version && git push --follow-tags && yarn run publish",
+    "clean": "yarn del dist",
+    "release": "yarn install && yarn lint && yarn clean && yarn build && standard-version && git push --follow-tags && yarn run publish",
     "package": "vsce package",
     "publish": "yarn package && vsce publish && env-cmd --expand-envs ovsx publish --pat $OVS_PAT",
     "lint": "eslint --ext ts src"
