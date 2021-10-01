@@ -91,7 +91,7 @@
     "@types/node": "^16.0",
     "@types/vscode": "*",
     "@typescript-eslint/eslint-plugin": "^4.26.0",
-    "@typescript-eslint/parser": "^4.26.1",
+    "@typescript-eslint/parser": "^4.32.0",
     "del-cli": "^4.0.1",
     "env-cmd": "^10.1.0",
     "esbuild": "^0.12.21",
