@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.17](https://github.com/jnoortheen/vscode-nix-ide/compare/v0.1.16...v0.1.17) (2021-10-12)
+
+
+### Features
+
+* make the formatter path configurable ([03c25cb](https://github.com/jnoortheen/vscode-nix-ide/commit/03c25cb57dc36cf23dd2641abe3d34fbec01eb4a))
+
+
+### Bug Fixes
+
+* release to ovsx registry ([b07688e](https://github.com/jnoortheen/vscode-nix-ide/commit/b07688ec19d97337be8e8b1371e911b6b908884a))
+
 ### [0.1.16](https://github.com/jnoortheen/vscode-nix-ide/compare/v0.1.15...v0.1.16) (2021-08-20)
 
 
