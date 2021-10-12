@@ -7,8 +7,9 @@ import {
   TextEdit,
 } from "vscode";
 import { IProcessResult, runInWorkspace } from "./process-runner";
+import { config } from "./configuration";
 
-const FORMATTER = "nixpkgs-fmt";
+const FORMATTER = config.formatterPath;
 
 /**
  * Get text edits to format a range in a document.
@@ -33,7 +34,9 @@ const getFormatRangeEdits = async (
     );
   } catch (error) {
     if (error instanceof Error) {
-      await vscode.window.showErrorMessage(`Failed to run ${FORMATTER}: ${error.message}`);
+      await vscode.window.showErrorMessage(
+        `Failed to run ${FORMATTER}: ${error.message}`
+      );
     }
     // Re-throw the error to make the promise fail
     throw error;
