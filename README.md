@@ -18,7 +18,7 @@ Adds [nix](https://nixos.org/) language support for VSCode Editor.
 
 * When `Language Server` support is not enabled the following tools are used to
   + Formatting support
-    - with the help of [nixpkgs-format](https://github.com/nix-community/nixpkgs-fmt)
+    - with the help of [nixpkgs-format](https://github.com/nix-community/nixpkgs-fmt) or other tools as specified by the `nix.formatterPath` option
   + Error Report
     - Using `nix-instantiate` errors reported
 
