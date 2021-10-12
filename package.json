@@ -70,6 +70,11 @@
     "configuration": {
       "title": "NixIDE",
       "properties": {
+        "nix.formatterPath": {
+          "type": "string",
+          "default": "nixpkgs-fmt",
+          "description": "Location of the nix formatter command."
+        },
         "nix.serverPath": {
           "type": "string",
           "default": "rnix-lsp",
@@ -90,7 +95,7 @@
     "@types/command-exists": "^1.2.0",
     "@types/node": "^16.0",
     "@types/vscode": "*",
-    "@typescript-eslint/eslint-plugin": "^4.26.0",
+    "@typescript-eslint/eslint-plugin": "^4.33.0",
     "@typescript-eslint/parser": "^4.26.1",
     "del-cli": "^4.0.1",
     "env-cmd": "^10.1.0",
