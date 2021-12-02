@@ -108,7 +108,7 @@
     "pretty-quick": "^3.1.0",
     "standard-version": "^9.1",
     "typescript": "^4.5.2",
-    "vsce": "^1.87.0"
+    "vsce": "^2.5.1"
   },
   "scripts": {
     "prebuild": "js-yaml syntaxes/nix.YAML-tmLanguage > syntaxes/nix.tmLanguage.json && js-yaml syntaxes/injection.yml > syntaxes/injection.json",
