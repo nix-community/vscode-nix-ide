@@ -86,6 +86,12 @@
           "description": "Use LSP instead of nix-instantiate and nixpkgs-fmt."
         }
       }
+    },
+    "configurationDefaults": {
+      "[nix]": {
+        "editor.insertSpaces": true,
+        "editor.tabSize": 2
+      }
     }
   },
   "devDependencies": {
