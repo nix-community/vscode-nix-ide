@@ -2,11 +2,11 @@ name: VSCode CI
 
 on:
   push:
-    branches: [master]
+    branches: [master, main]
     tags:
       - "v*"
   pull_request:
-    branches: [master]
+    branches: [master, main]
 
 jobs:
   build:
