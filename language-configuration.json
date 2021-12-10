@@ -41,8 +41,7 @@
             "open": "\"",
             "close": "\"",
             "notIn": [
-                "string",
-                "comment"
+                "string"
             ]
         },
         {
