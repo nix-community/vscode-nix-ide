@@ -37,450 +37,452 @@
 ---
 name: Nix
 scopeName: source.nix
-fileTypes: [ "nix" ]
+fileTypes: ["nix"]
 uuid: 0514fd5f-acb6-436d-b42c-7643e6d36c8f
 
 patterns:
-- include: '#expression'
+  - include: "#expression"
 
 repository:
-
   expression:
     patterns:
-    - include: '#parens-and-cont'
-    - include: '#list-and-cont'
-    - include: '#string'
-    - include: '#interpolation'
-    - include: '#with-assert'
-    - include: '#function-for-sure'
-    - include: '#attrset-for-sure'
-    - include: '#attrset-or-function'
-    - include: '#let'
-    - include: '#if'
-    - include: '#operator-unary'
-    - include: '#constants'
-    - include: '#bad-reserved'
-    - include: '#parameter-name-and-cont'
-    - include: '#others'
+      - include: "#parens-and-cont"
+      - include: "#list-and-cont"
+      - include: "#string"
+      - include: "#interpolation"
+      - include: "#with-assert"
+      - include: "#function-for-sure"
+      - include: "#attrset-for-sure"
+      - include: "#attrset-or-function"
+      - include: "#let"
+      - include: "#if"
+      - include: "#operator-unary"
+      - include: "#constants"
+      - include: "#bad-reserved"
+      - include: "#parameter-name-and-cont"
+      - include: "#others"
   expression-cont:
     begin: (?=.?)
     end: (?=([\])};,]|\b(else|then)\b))
     patterns:
-    - include: '#parens'
-    - include: '#list'
-    - include: '#string'
-    - include: '#interpolation'
-    - include: '#function-for-sure'
-    - include: '#attrset-for-sure'
-    - include: '#attrset-or-function'
-    - name: keyword.operator.nix
-      match: (\bor\b|\.|==|!=|!|\<\=|\<|\>\=|\>|&&|\|\||-\>|//|\?|\+\+|-|\*|/(?=([^*]|$))|\+)
-    - include: '#constants'
-    - include: '#bad-reserved'
-    - include: '#parameter-name'
-    - include: '#others'
+      - include: "#parens"
+      - include: "#list"
+      - include: "#string"
+      - include: "#interpolation"
+      - include: "#function-for-sure"
+      - include: "#attrset-for-sure"
+      - include: "#attrset-or-function"
+      - name: keyword.operator.nix
+        match: (\bor\b|\.|==|!=|!|\<\=|\<|\>\=|\>|&&|\|\||-\>|//|\?|\+\+|-|\*|/(?=([^*]|$))|\+)
+      - include: "#constants"
+      - include: "#bad-reserved"
+      - include: "#parameter-name"
+      - include: "#others"
 
   parens:
     begin: \(
     beginCaptures:
-      '0': {name: punctuation.definition.expression.nix }
+      "0": { name: punctuation.definition.expression.nix }
     end: \)
     endCaptures:
-      '0': {name: punctuation.definition.expression.nix }
+      "0": { name: punctuation.definition.expression.nix }
     patterns:
-    - include: '#expression'
+      - include: "#expression"
   parens-and-cont:
     begin: (?=\()
     end: (?=([\])};,]|\b(else|then)\b))
     patterns:
-    - include: '#parens'
-    - include: '#expression-cont'
+      - include: "#parens"
+      - include: "#expression-cont"
 
   list:
     begin: \[
     beginCaptures:
-      '0': {name: punctuation.definition.list.nix }
+      "0": { name: punctuation.definition.list.nix }
     end: \]
     endCaptures:
-      '0': {name: punctuation.definition.list.nix }
+      "0": { name: punctuation.definition.list.nix }
     patterns:
-    - include: '#expression'
+      - include: "#expression"
   list-and-cont:
     begin: (?=\[)
     end: (?=([\])};,]|\b(else|then)\b))
     patterns:
-    - include: '#list'
-    - include: '#expression-cont'
+      - include: "#list"
+      - include: "#expression-cont"
 
   attrset-for-sure:
     patterns:
-    - begin: (?=\brec\b)
-      end: (?=([\])};,]|\b(else|then)\b))
-      patterns:
-      - begin: \brec\b
-        end: (?=\{)
-        beginCaptures:
-          '0': {name: keyword.other.nix}
+      - begin: (?=\brec\b)
+        end: (?=([\])};,]|\b(else|then)\b))
         patterns:
-        - include: '#others'
-      - include: '#attrset-definition'
-      - include: '#others'
-    - begin: (?=\{\s*(\}|[^,?]*(=|;)))
-      end: (?=([\])};,]|\b(else|then)\b))
-      patterns:
-      - include: '#attrset-definition'
-      - include: '#others'
+          - begin: \brec\b
+            end: (?=\{)
+            beginCaptures:
+              "0": { name: keyword.other.nix }
+            patterns:
+              - include: "#others"
+          - include: "#attrset-definition"
+          - include: "#others"
+      - begin: (?=\{\s*(\}|[^,?]*(=|;)))
+        end: (?=([\])};,]|\b(else|then)\b))
+        patterns:
+          - include: "#attrset-definition"
+          - include: "#others"
 
   attrset-definition:
     begin: (?=\{)
     end: (?=([\])};,]|\b(else|then)\b))
     patterns:
-    - begin: (\{)
-      end: (\})
-      beginCaptures: {"0":{name: punctuation.definition.attrset.nix}}
-      endCaptures: {"0":{name: punctuation.definition.attrset.nix}}
-      patterns:
-      - include: '#attrset-contents'
-    - begin: (?<=\})
-      end: (?=([\])};,]|\b(else|then)\b))
-      patterns:
-      - include: '#expression-cont'
+      - begin: (\{)
+        end: (\})
+        beginCaptures: { "0": { name: punctuation.definition.attrset.nix } }
+        endCaptures: { "0": { name: punctuation.definition.attrset.nix } }
+        patterns:
+          - include: "#attrset-contents"
+      - begin: (?<=\})
+        end: (?=([\])};,]|\b(else|then)\b))
+        patterns:
+          - include: "#expression-cont"
   attrset-definition-brace-opened:
     patterns:
-    - begin: (?<=\})
-      end: (?=([\])};,]|\b(else|then)\b))
-      patterns:
-      - include: '#expression-cont'
-    - begin: (?=.?)
-      end: \}
-      endCaptures: {"0":{name: punctuation.definition.attrset.nix}}
-      patterns:
-      - include: '#attrset-contents'
+      - begin: (?<=\})
+        end: (?=([\])};,]|\b(else|then)\b))
+        patterns:
+          - include: "#expression-cont"
+      - begin: (?=.?)
+        end: \}
+        endCaptures: { "0": { name: punctuation.definition.attrset.nix } }
+        patterns:
+          - include: "#attrset-contents"
 
   attrset-contents:
     patterns:
-    - include: '#attribute-inherit'
-    - include: '#bad-reserved'
-    - include: '#attribute-bind'
-    - include: '#others'
+      - include: "#attribute-inherit"
+      - include: "#bad-reserved"
+      - include: "#attribute-bind"
+      - include: "#others"
 
   function-header-open-brace:
     begin: \{
     end: (?=\})
     beginCaptures:
-      '0': {name: punctuation.definition.entity.function.2.nix}
+      "0": { name: punctuation.definition.entity.function.2.nix }
     patterns:
-    - include: '#function-contents'
+      - include: "#function-contents"
   function-header-close-brace-no-arg:
     begin: \}
     end: (?=\:)
     beginCaptures:
-      '0': {name: punctuation.definition.entity.function.nix}
+      "0": { name: punctuation.definition.entity.function.nix }
     patterns:
-    - include: '#others'
+      - include: "#others"
   function-header-terminal-arg:
     begin: (?=@)
     end: (?=\:)
     patterns:
-    - begin: \@
-      end: (?=\:)
-      patterns:
-      - begin: (\b[a-zA-Z\_][a-zA-Z0-9\_\'\-]*)
+      - begin: \@
         end: (?=\:)
-        name: variable.parameter.function.3.nix
-      - include: '#others'
-    - include: '#others'
+        patterns:
+          - begin: (\b[a-zA-Z\_][a-zA-Z0-9\_\'\-]*)
+            end: (?=\:)
+            name: variable.parameter.function.3.nix
+          - include: "#others"
+      - include: "#others"
   function-header-close-brace-with-arg:
     begin: \}
     end: (?=\:)
     beginCaptures:
-      '0': {name: punctuation.definition.entity.function.nix}
+      "0": { name: punctuation.definition.entity.function.nix }
     patterns:
-    - include: '#function-header-terminal-arg'
-    - include: '#others'
+      - include: "#function-header-terminal-arg"
+      - include: "#others"
   function-header-until-colon-no-arg:
     begin: (?=\{)
     end: (?=\:)
     patterns:
-    - include: '#function-header-open-brace'
-    - include: '#function-header-close-brace-no-arg'
+      - include: "#function-header-open-brace"
+      - include: "#function-header-close-brace-no-arg"
   function-header-until-colon-with-arg:
     begin: (?=\{)
     end: (?=\:)
     patterns:
-    - include: '#function-header-open-brace'
-    - include: '#function-header-close-brace-with-arg'
+      - include: "#function-header-open-brace"
+      - include: "#function-header-close-brace-with-arg"
   function-body-from-colon:
     begin: (\:)
     end: (?=([\])};,]|\b(else|then)\b))
     beginCaptures:
-      '0': {name: punctuation.definition.function.nix}
+      "0": { name: punctuation.definition.function.nix }
     patterns:
-    - include: '#expression'
+      - include: "#expression"
   function-definition:
     begin: (?=.?)
     end: (?=([\])};,]|\b(else|then)\b))
     patterns:
-    - include: '#function-body-from-colon'
-    # Chained expressions for [arg@]{a,b,c?xxx}[@arg]:yyy
-    - begin: (?=.?)
-      end: (?=\:)
-      patterns:
-      # arg @ { ...
-      - begin: (\b[a-zA-Z\_][a-zA-Z0-9\_\'\-]*)
-        end: (?=\:)
-        beginCaptures:
-          '0': {name: variable.parameter.function.4.nix}
-        patterns:
-        - begin: \@
-          end: (?=\:)
-          patterns:
-          - include: '#function-header-until-colon-no-arg'
-          - include: '#others'
-        - include: '#others'
-      # { ...
-      - begin: (?=\{)
+      - include: "#function-body-from-colon"
+      # Chained expressions for [arg@]{a,b,c?xxx}[@arg]:yyy
+      - begin: (?=.?)
         end: (?=\:)
         patterns:
-        - include: '#function-header-until-colon-with-arg'
-    - include: '#others'
+          # arg @ { ...
+          - begin: (\b[a-zA-Z\_][a-zA-Z0-9\_\'\-]*)
+            end: (?=\:)
+            beginCaptures:
+              "0": { name: variable.parameter.function.4.nix }
+            patterns:
+              - begin: \@
+                end: (?=\:)
+                patterns:
+                  - include: "#function-header-until-colon-no-arg"
+                  - include: "#others"
+              - include: "#others"
+          # { ...
+          - begin: (?=\{)
+            end: (?=\:)
+            patterns:
+              - include: "#function-header-until-colon-with-arg"
+      - include: "#others"
   function-definition-brace-opened:
     begin: (?=.?)
     end: (?=([\])};,]|\b(else|then)\b))
     patterns:
-    - include: '#function-body-from-colon'
-    # Chained expressions for a,b,c?xxx}[@arg]:yyy
-    - begin: (?=.?)
-      end: (?=\:)
-      patterns:
-      - include: '#function-header-close-brace-with-arg'
+      - include: "#function-body-from-colon"
+      # Chained expressions for a,b,c?xxx}[@arg]:yyy
       - begin: (?=.?)
-        end: (?=\})
+        end: (?=\:)
         patterns:
-        - include: '#function-contents'
-    - include: '#others'
+          - include: "#function-header-close-brace-with-arg"
+          - begin: (?=.?)
+            end: (?=\})
+            patterns:
+              - include: "#function-contents"
+      - include: "#others"
 
   function-for-sure:
     patterns:
-    # x: ... | {stuff}: ... | {a, b ? c, ... | arg @ {...
-    - begin: (?=(\b[a-zA-Z\_][a-zA-Z0-9\_\'\-]*\s*[:@]|\{[^}]*\}\s*:|\{[^#}"'/=]*[,\?]))
-      end: (?=([\])};,]|\b(else|then)\b))
-      patterns:
-      - include: '#function-definition'
+      # x: ... | {stuff}: ... | {a, b ? c, ... | arg @ {...
+      - begin: (?=(\b[a-zA-Z\_][a-zA-Z0-9\_\'\-]*\s*[:@]|\{[^}]*\}\s*:|\{[^#}"'/=]*[,\?]))
+        end: (?=([\])};,]|\b(else|then)\b))
+        patterns:
+          - include: "#function-definition"
 
   function-contents:
     patterns:
-    - include: '#bad-reserved'
-    - include: '#function-parameter'
-    - include: '#others'
+      - include: "#bad-reserved"
+      - include: "#function-parameter"
+      - include: "#others"
 
   attrset-or-function:
     begin: \{
     beginCaptures:
-      '0': {name: punctuation.definition.attrset-or-function.nix}
+      "0": { name: punctuation.definition.attrset-or-function.nix }
     # Note the absence of a comma here, otherwise comma-first fails
     end: (?=([\])};]|\b(else|then)\b))
     patterns:
-    # We have no clue what to expect so we allow both until we hit one
-    # attrset contents => treat the rest as attrset
-    - begin: (?=(\s*\}|\"|\binherit\b|\b[a-zA-Z\_][a-zA-Z0-9\_\'\-]*(\s*\.|\s*=[^=])))
-      end: (?=([\])};,]|\b(else|then)\b))
-      patterns:
-      - include: '#attrset-definition-brace-opened'
-    # function contents => treat the rest as function header
-    - begin: (?=(\.\.\.|\b[a-zA-Z\_][a-zA-Z0-9\_\'\-]*\s*[,?]))
-      end: (?=([\])};,]|\b(else|then)\b))
-      patterns:
-      - include: '#function-definition-brace-opened'
-    # this line has no hints, eat the first word of the set
-    - include: '#bad-reserved'
-    - begin: \b[a-zA-Z\_][a-zA-Z0-9\_\'\-]*
-      # Note the absence of a comma here, otherwise comma-first fails
-      end: (?=([\])};]|\b(else|then)\b))
-      # unmatched first word is likely a function call
-      beginCaptures: {'0': {name: variable.parameter.function.maybe.nix}}
-      patterns:
-      - begin: (?=\.)
+      # We have no clue what to expect so we allow both until we hit one
+      # attrset contents => treat the rest as attrset
+      - begin: (?=(\s*\}|\"|\binherit\b|\$\{|\b[a-zA-Z\_][a-zA-Z0-9\_\'\-]*(\s*\.|\s*=[^=])))
         end: (?=([\])};,]|\b(else|then)\b))
         patterns:
-        - include: '#attrset-definition-brace-opened'
-      # Note the \s*, this matches before the end-of-expr matches except at beginning
-      - begin: \s*(\,)
-        beginCaptures: {'1': {name: keyword.operator.nix}}
+          - include: "#attrset-definition-brace-opened"
+      # function contents => treat the rest as function header
+      - begin: (?=(\.\.\.|\b[a-zA-Z\_][a-zA-Z0-9\_\'\-]*\s*[,?]))
         end: (?=([\])};,]|\b(else|then)\b))
         patterns:
-        - include: '#function-definition-brace-opened'
-      - begin: (?=\=)
-        end: (?=([\])};,]|\b(else|then)\b))
+          - include: "#function-definition-brace-opened"
+      # this line has no hints, eat the first word of the set
+      - include: "#bad-reserved"
+      - begin: \b[a-zA-Z\_][a-zA-Z0-9\_\'\-]*
+        # Note the absence of a comma here, otherwise comma-first fails
+        end: (?=([\])};]|\b(else|then)\b))
+        # unmatched first word is likely a function call
+        beginCaptures: { "0": { name: variable.parameter.function.maybe.nix } }
         patterns:
-        - include: '#attribute-bind-from-equals'
-        - include: '#attrset-definition-brace-opened'
-      - begin: (?=\?)
-        end: (?=([\])};,]|\b(else|then)\b))
-        patterns:
-        - include: '#function-parameter-default'
-        - begin: \,
-          beginCaptures:
-            '0': {name: keyword.operator.nix}
-          end: (?=([\])};,]|\b(else|then)\b))
-          patterns:
-          - include: '#function-definition-brace-opened'
-      - include: '#others'
-    - include: '#others'
+          - begin: (?=\.)
+            end: (?=([\])};,]|\b(else|then)\b))
+            patterns:
+              - include: "#attrset-definition-brace-opened"
+          # Note the \s*, this matches before the end-of-expr matches except at beginning
+          - begin: \s*(\,)
+            beginCaptures: { "1": { name: keyword.operator.nix } }
+            end: (?=([\])};,]|\b(else|then)\b))
+            patterns:
+              - include: "#function-definition-brace-opened"
+          - begin: (?=\=)
+            end: (?=([\])};,]|\b(else|then)\b))
+            patterns:
+              - include: "#attribute-bind-from-equals"
+              - include: "#attrset-definition-brace-opened"
+          - begin: (?=\?)
+            end: (?=([\])};,]|\b(else|then)\b))
+            patterns:
+              - include: "#function-parameter-default"
+              - begin: \,
+                beginCaptures:
+                  "0": { name: keyword.operator.nix }
+                end: (?=([\])};,]|\b(else|then)\b))
+                patterns:
+                  - include: "#function-definition-brace-opened"
+          - include: "#others"
+      - include: "#others"
 
   with-assert:
     begin: (?<![\w'-])(with|assert)(?![\w'-])
     beginCaptures:
-      '0': {name: keyword.other.nix}
+      "0": { name: keyword.other.nix }
     end: \;
     patterns:
-    - include: '#expression'
+      - include: "#expression"
 
   let:
     begin: (?=\blet\b)
     end: (?=([\])};,]|\b(else|then)\b))
     patterns:
-    - begin: \blet\b
-      beginCaptures:
-        '0': {name: keyword.other.nix}
-      end: (?=([\])};,]|\b(in|else|then)\b))
-      patterns:
-      # {}, rare sugar for (rec {...;body=x;}).body
-      - begin: (?=\{)
+      - begin: \blet\b
+        beginCaptures:
+          "0": { name: keyword.other.nix }
+        end: (?=([\])};,]|\b(in|else|then)\b))
+        patterns:
+          # {}, rare sugar for (rec {...;body=x;}).body
+          - begin: (?=\{)
+            end: (?=([\])};,]|\b(else|then)\b))
+            patterns:
+              - begin: \{
+                end: \}
+                patterns:
+                  - include: "#attrset-contents"
+              - begin: (^|(?<=\}))
+                end: (?=([\])};,]|\b(else|then)\b))
+                patterns:
+                  - include: "#expression-cont"
+              - include: "#others"
+          - include: "#attrset-contents"
+          - include: "#others"
+      - begin: \bin\b
+        beginCaptures:
+          "0": { name: keyword.other.nix }
         end: (?=([\])};,]|\b(else|then)\b))
         patterns:
-        - begin: \{
-          end: \}
-          patterns:
-          - include: '#attrset-contents'
-        - begin: (^|(?<=\}))
-          end: (?=([\])};,]|\b(else|then)\b))
-          patterns:
-          - include: '#expression-cont'
-        - include: '#others'
-      - include: '#attrset-contents'
-      - include: '#others'
-    - begin: \bin\b
-      beginCaptures:
-        '0': {name: keyword.other.nix}
-      end: (?=([\])};,]|\b(else|then)\b))
-      patterns:
-      - include: '#expression'
+          - include: "#expression"
 
   if:
     begin: (?=\bif\b)
     end: (?=([\])};,]|\b(else|then)\b))
     patterns:
-    # We need to chop up else and then so the end condition
-    # doesn't occur prematurely
-    - begin: \bif\b
-      end: \bth(?=en\b)
-      beginCaptures: {'0': {name: keyword.other.nix}}
-      endCaptures: {'0': {name: keyword.other.nix}}
-      patterns:
-      - include: '#expression'
-    - begin: (?<=th)en\b
-      end: \bel(?=se\b)
-      beginCaptures: {'0': {name: keyword.other.nix}}
-      endCaptures: {'0': {name: keyword.other.nix}}
-      patterns:
-      - include: '#expression'
-    - begin: (?<=el)se\b
-      end: (?=([\])};,]|\b(else|then)\b))
-      endCaptures: {'0': {name: keyword.other.nix}}
-      beginCaptures: {'0': {name: keyword.other.nix}}
-      patterns:
-      - include: '#expression'
+      # We need to chop up else and then so the end condition
+      # doesn't occur prematurely
+      - begin: \bif\b
+        end: \bth(?=en\b)
+        beginCaptures: { "0": { name: keyword.other.nix } }
+        endCaptures: { "0": { name: keyword.other.nix } }
+        patterns:
+          - include: "#expression"
+      - begin: (?<=th)en\b
+        end: \bel(?=se\b)
+        beginCaptures: { "0": { name: keyword.other.nix } }
+        endCaptures: { "0": { name: keyword.other.nix } }
+        patterns:
+          - include: "#expression"
+      - begin: (?<=el)se\b
+        end: (?=([\])};,]|\b(else|then)\b))
+        endCaptures: { "0": { name: keyword.other.nix } }
+        beginCaptures: { "0": { name: keyword.other.nix } }
+        patterns:
+          - include: "#expression"
 
   function-body:
     begin: (@\s*([a-zA-Z\_][a-zA-Z0-9\_\'\-]*)\s*)?(\:)
     end: (?=([\])};,]|\b(else|then)\b))
     patterns:
-    - include: '#expression'
+      - include: "#expression"
 
   comment-remark:
     match: (TODO|FIXME|BUG|\!\!\!):?
     captures:
-      '1': {name: markup.bold.comment.nix }
+      "1": { name: markup.bold.comment.nix }
   comment:
     patterns:
-    - name: comment.block.nix
-      begin: /\*([^*]|\*[^\/])*
-      end: \*\/
-      patterns:
-      - include: '#comment-remark'
-    - name: comment.line.number-sign.nix
-      begin: \#
-      end: $
-      patterns:
-      - include: '#comment-remark'
+      - name: comment.block.nix
+        begin: /\*([^*]|\*[^\/])*
+        end: \*\/
+        patterns:
+          - include: "#comment-remark"
+      - name: comment.line.number-sign.nix
+        begin: \#
+        end: $
+        patterns:
+          - include: "#comment-remark"
 
   interpolation:
     name: markup.italic
     begin: \$\{
-    beginCaptures: {"0": {name: punctuation.section.embedded.begin.nix}}
+    beginCaptures: { "0": { name: punctuation.section.embedded.begin.nix } }
     end: \}
-    endCaptures: {"0": {name: punctuation.section.embedded.end.nix}}
+    endCaptures: { "0": { name: punctuation.section.embedded.end.nix } }
     patterns:
-    - include: '#expression'
+      - include: "#expression"
 
   string-quoted:
     name: string.quoted.double.nix
     begin: \"
     end: \"
-    beginCaptures: {'0': {name: punctuation.definition.string.double.start.nix}}
-    endCaptures: {'0': {name: punctuation.definition.string.double.end.nix}}
+    beginCaptures:
+      { "0": { name: punctuation.definition.string.double.start.nix } }
+    endCaptures: { "0": { name: punctuation.definition.string.double.end.nix } }
     patterns:
-    - match: \\.
-      name: constant.character.escape.nix
-    - include: '#interpolation'
+      - match: \\.
+        name: constant.character.escape.nix
+      - include: "#interpolation"
 
   string:
     patterns:
-    - begin: (?=\'\')
-      end: (?=([\])};,]|\b(else|then)\b))
-      patterns:
-      - name: string.quoted.other.nix
-        begin: \'\'
-        end: \'\'(?!\$|\'|\\.)
-        beginCaptures: {'0': {name: punctuation.definition.string.other.start.nix}}
-        endCaptures: {'0': {name: punctuation.definition.string.other.end.nix}}
+      - begin: (?=\'\')
+        end: (?=([\])};,]|\b(else|then)\b))
         patterns:
-        - name: constant.character.escape.nix
-          match: \'\'(\$|\'|\\.)
-        - include: '#interpolation'
-      - include: '#expression-cont'
-    - begin: (?=\")
-      end: (?=([\])};,]|\b(else|then)\b))
-      patterns:
-      - include: '#string-quoted'
-      - include: '#expression-cont'
-    - begin: (~?[a-zA-Z0-9\.\_\-\+]*(\/[a-zA-Z0-9\.\_\-\+]+)+)
-      beginCaptures: {"0": {name: string.unquoted.path.nix}}
-      end: (?=([\])};,]|\b(else|then)\b))
-      patterns:
-      - include: '#expression-cont'
-    - begin: (\<[a-zA-Z0-9\.\_\-\+]+(\/[a-zA-Z0-9\.\_\-\+]+)*\>)
-      beginCaptures: {"0": {name: string.unquoted.spath.nix}}
-      end: (?=([\])};,]|\b(else|then)\b))
-      patterns:
-      - include: '#expression-cont'
-    - begin: ([a-zA-Z][a-zA-Z0-9\+\-\.]*\:[a-zA-Z0-9\%\/\?\:\@\&\=\+\$\,\-\_\.\!\~\*\']+)
-      beginCaptures: {"0": {name: string.unquoted.url.nix}}
-      end: (?=([\])};,]|\b(else|then)\b))
-      patterns:
-      - include: '#expression-cont'
+          - name: string.quoted.other.nix
+            begin: \'\'
+            end: \'\'(?!\$|\'|\\.)
+            beginCaptures:
+              { "0": { name: punctuation.definition.string.other.start.nix } }
+            endCaptures:
+              { "0": { name: punctuation.definition.string.other.end.nix } }
+            patterns:
+              - name: constant.character.escape.nix
+                match: \'\'(\$|\'|\\.)
+              - include: "#interpolation"
+          - include: "#expression-cont"
+      - begin: (?=\")
+        end: (?=([\])};,]|\b(else|then)\b))
+        patterns:
+          - include: "#string-quoted"
+          - include: "#expression-cont"
+      - begin: (~?[a-zA-Z0-9\.\_\-\+]*(\/[a-zA-Z0-9\.\_\-\+]+)+)
+        beginCaptures: { "0": { name: string.unquoted.path.nix } }
+        end: (?=([\])};,]|\b(else|then)\b))
+        patterns:
+          - include: "#expression-cont"
+      - begin: (\<[a-zA-Z0-9\.\_\-\+]+(\/[a-zA-Z0-9\.\_\-\+]+)*\>)
+        beginCaptures: { "0": { name: string.unquoted.spath.nix } }
+        end: (?=([\])};,]|\b(else|then)\b))
+        patterns:
+          - include: "#expression-cont"
+      - begin: ([a-zA-Z][a-zA-Z0-9\+\-\.]*\:[a-zA-Z0-9\%\/\?\:\@\&\=\+\$\,\-\_\.\!\~\*\']+)
+        beginCaptures: { "0": { name: string.unquoted.url.nix } }
+        end: (?=([\])};,]|\b(else|then)\b))
+        patterns:
+          - include: "#expression-cont"
 
   parameter-name:
     match: \b[a-zA-Z\_][a-zA-Z0-9\_\'\-]*
-    captures: {"0":{name: variable.parameter.name.nix}}
+    captures: { "0": { name: variable.parameter.name.nix } }
 
   parameter-name-and-cont:
     begin: \b[a-zA-Z\_][a-zA-Z0-9\_\'\-]*
     end: (?=([\])};,]|\b(else|then)\b))
-    beginCaptures: {"0":{name: variable.parameter.name.nix}}
+    beginCaptures: { "0": { name: variable.parameter.name.nix } }
     patterns:
-    - include: '#expression-cont'
+      - include: "#expression-cont"
 
   attribute-name-single:
     match: \b[a-zA-Z\_][a-zA-Z0-9\_\'\-]*
@@ -489,80 +491,82 @@ repository:
   attribute-name:
     # Unfortunately, no pattern ordering can be enforced. Ah well.
     patterns:
-    - match: \b[a-zA-Z\_][a-zA-Z0-9\_\'\-]*
-      name: entity.other.attribute-name.multipart.nix
-    - match: \.
-    - include: '#string-quoted'
-    - include: '#interpolation'
+      - match: \b[a-zA-Z\_][a-zA-Z0-9\_\'\-]*
+        name: entity.other.attribute-name.multipart.nix
+      - match: \.
+      - include: "#string-quoted"
+      - include: "#interpolation"
 
   function-parameter-default:
     begin: \?
     beginCaptures:
-      '0': {name: keyword.operator.nix}
+      "0": { name: keyword.operator.nix }
     end: (?=[,}])
     patterns:
-    - include: '#expression'
+      - include: "#expression"
   function-parameter:
     patterns:
-    - begin: (\.\.\.)
-      end: (,|(?=\}))
-      name: keyword.operator.nix
-      patterns:
-      - include: '#others'
-    - begin: \b[a-zA-Z\_][a-zA-Z0-9\_\'\-]*
-      beginCaptures:
-        '0': {name: variable.parameter.function.1.nix}
-      end: (,|(?=\}))
-      endCaptures:
-        '0': {name: keyword.operator.nix}
-      patterns:
-      - include: '#whitespace'
-      - include: '#comment'
-      - include: '#function-parameter-default'
-      - include: '#expression'
-    - include: '#others'
+      - begin: (\.\.\.)
+        end: (,|(?=\}))
+        name: keyword.operator.nix
+        patterns:
+          - include: "#others"
+      - begin: \b[a-zA-Z\_][a-zA-Z0-9\_\'\-]*
+        beginCaptures:
+          "0": { name: variable.parameter.function.1.nix }
+        end: (,|(?=\}))
+        endCaptures:
+          "0": { name: keyword.operator.nix }
+        patterns:
+          - include: "#whitespace"
+          - include: "#comment"
+          - include: "#function-parameter-default"
+          - include: "#expression"
+      - include: "#others"
 
   attribute-inherit:
     begin: \binherit\b
-    beginCaptures: {'0': {name: keyword.other.inherit.nix}}
+    beginCaptures: { "0": { name: keyword.other.inherit.nix } }
     end: \;
-    endCaptures: {'0': {name: punctuation.terminator.inherit.nix}}
+    endCaptures: { "0": { name: punctuation.terminator.inherit.nix } }
     patterns:
-    # This should only match once, in front. Ah well.
-    - begin: \(
-      end: (?=\;)
-      beginCaptures: {'0': {name: punctuation.section.function.arguments.nix}}
-      patterns:
-      - begin: \)
+      # This should only match once, in front. Ah well.
+      - begin: \(
         end: (?=\;)
-        beginCaptures: {'0': {name: punctuation.section.function.arguments.nix}}
+        beginCaptures:
+          { "0": { name: punctuation.section.function.arguments.nix } }
         patterns:
-        - include: '#bad-reserved'
-        - include: '#attribute-name-single'
-        - include: '#others'
-      - include: '#expression'
-    - begin: (?=[a-zA-Z\_])
-      end: (?=\;)
-      patterns:
-      - include: '#bad-reserved'
-      - include: '#attribute-name-single'
-      - include: '#others'
-    - include: '#others'
+          - begin: \)
+            end: (?=\;)
+            beginCaptures:
+              { "0": { name: punctuation.section.function.arguments.nix } }
+            patterns:
+              - include: "#bad-reserved"
+              - include: "#attribute-name-single"
+              - include: "#others"
+          - include: "#expression"
+      - begin: (?=[a-zA-Z\_])
+        end: (?=\;)
+        patterns:
+          - include: "#bad-reserved"
+          - include: "#attribute-name-single"
+          - include: "#others"
+      - include: "#others"
 
   attribute-bind-from-equals:
     begin: \=
     beginCaptures:
-      '0': {name: keyword.operator.bind.nix}
+      "0": { name: keyword.operator.bind.nix }
     end: \;
     endCaptures:
-      '0': {name: punctuation.terminator.bind.nix}
+      "0": { name: punctuation.terminator.bind.nix }
     patterns:
-    - include: '#expression'
+      - include: "#expression"
   attribute-bind:
     patterns:
-    - include: '#attribute-name'
-    # Wish this could match only after an attribute. Ah well.
-    - include: '#attribute-bind-from-equals'
+      - include: "#attribute-name"
+      # Wish this could match only after an attribute. Ah well.
+      - include: "#attribute-bind-from-equals"
 
   operator-unary:
     name: keyword.operator.unary.nix
@@ -570,22 +574,22 @@ repository:
 
   constants:
     patterns:
-    - begin: \b(builtins|true|false|null)\b
-      end: (?=([\])};,]|\b(else|then)\b))
-      beginCaptures:
-        '0': {name: constant.language.nix}
-      patterns:
-      - include: '#expression-cont'
-    - beginCaptures: {"0":{name: support.function.nix}}
-      begin: \b(scopedImport|import|isNull|abort|throw|baseNameOf|dirOf|removeAttrs|map|toString|derivationStrict|derivation)\b
-      end: (?=([\])};,]|\b(else|then)\b))
-      patterns:
-      - include: '#expression-cont'
-    - beginCaptures: {"0":{name: constant.numeric.nix}}
-      begin: \b[0-9]+\b
-      end: (?=([\])};,]|\b(else|then)\b))
-      patterns:
-      - include: '#expression-cont'
+      - begin: \b(builtins|true|false|null)\b
+        end: (?=([\])};,]|\b(else|then)\b))
+        beginCaptures:
+          "0": { name: constant.language.nix }
+        patterns:
+          - include: "#expression-cont"
+      - beginCaptures: { "0": { name: support.function.nix } }
+        begin: \b(scopedImport|import|isNull|abort|throw|baseNameOf|dirOf|removeAttrs|map|toString|derivationStrict|derivation)\b
+        end: (?=([\])};,]|\b(else|then)\b))
+        patterns:
+          - include: "#expression-cont"
+      - beginCaptures: { "0": { name: constant.numeric.nix } }
+        begin: \b[0-9]+\b
+        end: (?=([\])};,]|\b(else|then)\b))
+        patterns:
+          - include: "#expression-cont"
 
   whitespace:
     match: \s+
@@ -596,9 +600,9 @@ repository:
 
   others:
     patterns:
-    - include: '#whitespace'
-    - include: '#comment'
-    - include: '#illegal'
+      - include: "#whitespace"
+      - include: "#comment"
+      - include: "#illegal"
 
   bad-reserved:
     # we don't mark "or" because it's a special case
