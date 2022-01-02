@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.19](https://github.com/jnoortheen/vscode-nix-ide/compare/v0.1.18...v0.1.19) (2022-01-02)
+
+
+### Features
+
+* antiquotation brackets ([55e9258](https://github.com/jnoortheen/vscode-nix-ide/commit/55e92589b9b73eda3314a7b14e059c0ff77a1bfb))
+* path angle brackets ([f79b542](https://github.com/jnoortheen/vscode-nix-ide/commit/f79b54226f2ad5a6ddbe968c632c4c75b2141974))
+* word pattern ([d1389f6](https://github.com/jnoortheen/vscode-nix-ide/commit/d1389f6c479ceee7813635f793d7d3c02e27329c))
+
+
+### Bug Fixes
+
+* auto close at end of string ([ae0c981](https://github.com/jnoortheen/vscode-nix-ide/commit/ae0c981de0a60a5910dca472643bbbf43ef51c63))
+* auto close double quotes in comments ([aab9cef](https://github.com/jnoortheen/vscode-nix-ide/commit/aab9ceffa3e52a4938b5907697b7edadd51069fb))
+* don't auto close single quotes ([c912fc8](https://github.com/jnoortheen/vscode-nix-ide/commit/c912fc8c128c0bc1c4600ae2aa904237cb13e780))
+* folding marker comments ([bab9fdf](https://github.com/jnoortheen/vscode-nix-ide/commit/bab9fdfcbb2ae2fcceb8c11cec2c1e96d6f14c45))
+* quotes inside attributes ([b003401](https://github.com/jnoortheen/vscode-nix-ide/commit/b0034014a1b96ac862e4ff678e2f93917fdd7f91)), closes [#189](https://github.com/jnoortheen/vscode-nix-ide/issues/189)
+* update branch names in ci configs ([66e6991](https://github.com/jnoortheen/vscode-nix-ide/commit/66e69919cf84fd4465378368a8525a935ce9c81a))
+
 ### [0.1.18](https://github.com/jnoortheen/vscode-nix-ide/compare/v0.1.17...v0.1.18) (2021-10-12)
 
 ### [0.1.17](https://github.com/jnoortheen/vscode-nix-ide/compare/v0.1.16...v0.1.17) (2021-10-12)
