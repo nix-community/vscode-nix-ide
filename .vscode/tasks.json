@@ -5,10 +5,10 @@
 			"type": "npm",
 			"script": "watch",
 			"group": "build",
-			"problemMatcher": [],
-			"label": "npm: watch",
+			"label": "npmWatch",
 			"isBackground": true,
-			"detail": "yarn build --watch"
+			"detail": "yarn build --watch",
+			"problemMatcher": "$esbuild-watch"
 		}
 	]
 }

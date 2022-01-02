@@ -6,20 +6,17 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Extension",
+            "name": "Launch with Extension",
             "type": "extensionHost",
             "request": "launch",
             "runtimeExecutable": "${execPath}",
+            "preLaunchTask": "npmWatch",
             "args": [
                 "--extensionDevelopmentPath=${workspaceFolder}"
+            ],
+            "outFiles": [
+                "${workspaceRoot}/dist/**/*.js"
             ]
         }
-    ],
-    "outFiles": [
-        "${workspaceRoot}/dist/**/*.js"
-    ],
-    "preLaunchTask": {
-        "type": "npm",
-        "script": "watch"
-    }
+    ]
 }
