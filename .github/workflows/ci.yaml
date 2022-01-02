@@ -62,15 +62,6 @@ jobs:
       - run: yarn install --frozen-lockfile
       - run: yarn build
       - run: yarn package
-      # - name: Publish to Open VSX Registry
-      #   uses: HaaLeo/publish-vscode-extension@v0
-      #   with:
-      #     pat: ${{ secrets.OPEN_VSX_TOKEN }}
-      # - name: Publish to Visual Studio Marketplace
-      #   uses: HaaLeo/publish-vscode-extension@v0
-      #   with:
-      #     pat: ${{ secrets.VS_MARKETPLACE_TOKEN }}
-      #     registryUrl: https://marketplace.visualstudio.com
       - name: Release
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
@@ -78,3 +69,7 @@ jobs:
           files: nix-ide*.vsix
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Publish to Visual Studio Marketplace
+        run: yarn vsce publish -p ${{ secrets.VS_MARKETPLACE_TOKEN }}
+      - name: Publish to Open VSX Registry
+        run: ovsx publish *.vsix --pat ${{ secrets.OPEN_VSX_TOKEN }}
