@@ -415,7 +415,7 @@ repository:
           - include: "#comment-remark"
 
   interpolation:
-    name: markup.italic
+    name: meta.embedded
     begin: \$\{
     beginCaptures: { "0": { name: punctuation.section.embedded.begin.nix } }
     end: \}
