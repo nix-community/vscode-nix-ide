@@ -106,7 +106,7 @@
     "env-cmd": "^10.1.0",
     "esbuild": "^0.14.16",
     "eslint": "*",
-    "eslint-config-prettier": "^8.1.0",
+    "eslint-config-prettier": "^8.5.0",
     "husky": "^7.0.4",
     "js-yaml": "^4.0.0",
     "ovsx": "^0.3",
