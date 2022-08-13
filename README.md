@@ -18,7 +18,7 @@ Adds [nix](https://nixos.org/) language support for VSCode Editor.
 
 * When `Language Server` support is not enabled the following tools are used to
   + Formatting support. Set `nix.formatterPath` to any command which can accept file contents on stdin and return formatted text on stdout; e.g.,
-      ```json
+      ```jsonc
       {
         "nix.formatterPath": "nixpkgs-fmt" // default
         // "nix.formatterPath": "nixfmt" 
@@ -44,7 +44,7 @@ Adds [nix](https://nixos.org/) language support for VSCode Editor.
 
 ### Visual Studio Code
 
-Hit `F1` and enter the `ext install jnoortheen.nix-ide` command or search for `nix-ide` .
+Hit `F1` and enter the `ext install jnoortheen.nix-ide` command or search for `nix-ide`.
 
 ### *.vsix file
 
@@ -65,11 +65,15 @@ Just clone the [GitHub repository](https://github.com/bbenoist/vscode-nix) under
 
 ## Development
 
-* TypeScript is used to develop the extension
+There is [direnv](https://direnv.net/) and [nix-shell](https://nixos.wiki/wiki/Development_environment_with_nix-shell) support so a dev environment can be created with the `nix-shell` command or a one-time `direnv allow` at the root of the repo.
+
+Press `F5` in VSCode to run an Extension Development Host instance with the extension installed.
+
+TypeScript is used to develop the extension. 
 
 ```sh
-  yarn install
-  yarn build # this will build the extension
+yarn install # install dependencies
+yarn build   # build the extension
 ```
 
 ## Releasing a new version
@@ -77,7 +81,7 @@ Just clone the [GitHub repository](https://github.com/bbenoist/vscode-nix) under
 * fill `.env` from `.env.template`
 
 ```sh
-yarn env-cmd 
+yarn env-cmd
 yarn release
 ```
 
