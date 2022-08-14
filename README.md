@@ -17,8 +17,15 @@ Adds [nix](https://nixos.org/) language support for VSCode Editor.
 * Full editing support with [rnix-LSP](https://github.com/nix-community/rnix-lsp)
 
 * When `Language Server` support is not enabled the following tools are used to
-  + Formatting support
-    - with the help of [nixpkgs-format](https://github.com/nix-community/nixpkgs-fmt) or other tools as specified by the `nix.formatterPath` option
+  + Formatting support. Set `nix.formatterPath` to any command which can accept file contents on stdin and return formatted text on stdout; e.g.,
+      ```json
+      {
+        "nix.formatterPath": "nixpkgs-fmt" // default
+        // "nix.formatterPath": "nixfmt" 
+        // "nix.formatterPath": ["treefmt", "--stdin", "{file}"]
+        // "nix.formatterPath": ["nix", "fmt", "--", "-"] // using flakes with `formatter = pkgs.alejandra;`
+      }
+      ```
   + Error Report
     - Using `nix-instantiate` errors reported
 
