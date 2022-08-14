@@ -132,6 +132,6 @@
   },
   "dependencies": {
     "command-exists": "^1.2.9",
-    "vscode-languageclient": "^7.0.0"
+    "vscode-languageclient": "^8.0.2"
   }
 }
