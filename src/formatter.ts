@@ -9,7 +9,10 @@ import {
 import { IProcessResult, runInWorkspace } from "./process-runner";
 import { config } from "./configuration";
 
-const FORMATTER = config.formatterPath;
+const FORMATTER: Array<string> =
+  config.formatterPath instanceof Array
+    ? config.formatterPath
+    : [config.formatterPath];
 
 /**
  * Get text edits to format a range in a document.
@@ -29,13 +32,13 @@ const getFormatRangeEdits = async (
   try {
     result = await runInWorkspace(
       vscode.workspace.getWorkspaceFolder(document.uri),
-      [FORMATTER],
+      FORMATTER,
       document.getText(actualRange)
     );
   } catch (error) {
     if (error instanceof Error) {
       await vscode.window.showErrorMessage(
-        `Failed to run ${FORMATTER}: ${error.message}`
+        `Failed to run ${FORMATTER.join(" ")}: ${error.message}`
       );
     }
     // Re-throw the error to make the promise fail

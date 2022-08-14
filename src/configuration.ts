@@ -17,7 +17,7 @@ export class Config {
     return this.cfg.get<T>(path) ?? def_val;
   }
 
-  get formatterPath(): string {
+  get formatterPath(): string | Array<string> {
     return this.get<string>("formatterPath", "nixpkgs-fmt");
   }
 

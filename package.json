@@ -71,7 +71,7 @@
       "title": "NixIDE",
       "properties": {
         "nix.formatterPath": {
-          "type": "string",
+          "type": ["string", "array"],
           "default": "nixpkgs-fmt",
           "description": "Location of the nix formatter command."
         },
