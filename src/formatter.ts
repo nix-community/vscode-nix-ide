@@ -30,6 +30,9 @@ const getFormatRangeEdits = async (
   );
   let result: IProcessResult;
   try {
+    FORMATTER.forEach(
+      (elm, i) => (FORMATTER[i] = elm.replace("{file}", document.fileName))
+    );
     result = await runInWorkspace(
       vscode.workspace.getWorkspaceFolder(document.uri),
       FORMATTER,

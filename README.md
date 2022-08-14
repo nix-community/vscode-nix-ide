@@ -22,6 +22,7 @@ Adds [nix](https://nixos.org/) language support for VSCode Editor.
       {
         "nix.formatterPath": "nixpkgs-fmt" // default
         // "nix.formatterPath": "nixfmt" 
+        // "nix.formatterPath": ["treefmt", "--stdin", "{file}"]
         // "nix.formatterPath": ["nix", "fmt", "--", "-"] // using flakes with `formatter = pkgs.alejandra;`
       }
       ```
