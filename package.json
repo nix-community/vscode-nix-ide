@@ -105,7 +105,7 @@
     "@types/vscode": "*",
     "@typescript-eslint/eslint-plugin": "*",
     "@typescript-eslint/parser": "*",
-    "del-cli": "^4.0.1",
+    "del-cli": "^5.0.0",
     "env-cmd": "^10.1.0",
     "esbuild": "^0.15.3",
     "eslint": "*",
