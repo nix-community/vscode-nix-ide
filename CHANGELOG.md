@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.22](https://github.com/jnoortheen/vscode-nix-ide/compare/v0.1.20...v0.1.22) (2022-08-14)
+
+
+### Bug Fixes
+
+* mark interpolation as meta.embedded instead of markup.italic ([cd420d0](https://github.com/jnoortheen/vscode-nix-ide/commit/cd420d0bcea26cf1cf650f47c738bd1b6658a80c))
+
 ### [0.1.21](https://github.com/jnoortheen/vscode-nix-ide/compare/v0.1.20...v0.1.21) (2022-08-14)
 
 
