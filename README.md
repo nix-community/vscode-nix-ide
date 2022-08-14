@@ -77,7 +77,8 @@ Just clone the [GitHub repository](https://github.com/bbenoist/vscode-nix) under
 * fill `.env` from `.env.template`
 
 ```sh
-  yarn env-cmd yarn release
+yarn env-cmd 
+yarn release
 ```
 
 ---
