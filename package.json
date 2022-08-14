@@ -2,7 +2,7 @@
   "name": "nix-ide",
   "displayName": "Nix IDE",
   "description": "Nix language support with formatting and error report.",
-  "version": "0.1.20",
+  "version": "0.1.21",
   "publisher": "jnoortheen",
   "icon": "images/icon.png",
   "license": "MIT",
@@ -71,7 +71,10 @@
       "title": "NixIDE",
       "properties": {
         "nix.formatterPath": {
-          "type": ["string", "array"],
+          "type": [
+            "string",
+            "array"
+          ],
           "default": "nixpkgs-fmt",
           "description": "Location of the nix formatter command."
         },
