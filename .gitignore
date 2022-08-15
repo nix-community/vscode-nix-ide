@@ -136,3 +136,5 @@ paket-files/
 
 # some misc. proj. files
 .local/
+
+.direnv/
