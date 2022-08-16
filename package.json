@@ -126,11 +126,15 @@
     "watch": "yarn run build-base --sourcemap --watch",
     "postinstall": "husky install",
     "clean": "del dist",
-    "release": "yarn install && yarn lint && yarn clean && yarn build && standard-version && git push --follow-tags && yarn run publish",
+    "prerelease": "yarn install && yarn lint && yarn clean && yarn build",
+    "release": "standard-version",
+    "postrelease": "git push --follow-tags",
     "prepackage": "del *.vsix",
     "package": "vsce package",
     "publish:ovsx": "yarn run env-cmd --expand-envs ovsx publish *.vsix --pat '$OVS_PAT'",
-    "publish": "yarn package && vsce publish && yarn publish:ovsx",
+    "publish:vsce": "vsce publish",
+    "prepublish": "yarn package",
+    "publish": "yarn publish:vsce && yarn publish:ovsx",
     "lint": "eslint --ext ts src"
   },
   "dependencies": {

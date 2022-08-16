@@ -21,7 +21,7 @@ Adds [nix](https://nixos.org/) language support for VSCode Editor.
       ```jsonc
       {
         "nix.formatterPath": "nixpkgs-fmt" // default
-        // "nix.formatterPath": "nixfmt" 
+        // "nix.formatterPath": "nixfmt"
         // "nix.formatterPath": ["treefmt", "--stdin", "{file}"]
         // "nix.formatterPath": ["nix", "fmt", "--", "-"] // using flakes with `formatter = pkgs.alejandra;`
       }
@@ -69,7 +69,7 @@ There is [direnv](https://direnv.net/) and [nix-shell](https://nixos.wiki/wiki/D
 
 Press `F5` in VSCode to run an Extension Development Host instance with the extension installed.
 
-TypeScript is used to develop the extension. 
+TypeScript is used to develop the extension.
 
 ```sh
 yarn install # install dependencies
@@ -81,8 +81,14 @@ yarn build   # build the extension
 * fill `.env` from `.env.template`
 
 ```sh
+# this is needed to publish extensions to [openvsx](https://open-vsx.org/) from local machine.
 yarn env-cmd
+
+# this will generate changelog and will create a GitHub release. This will also trigger jobs to publish the extension.
 yarn release
+
+# to manually publish the extension
+yarn publish
 ```
 
 ---

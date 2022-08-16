@@ -37,6 +37,7 @@ jobs:
       - run: yarn install --frozen-lockfile
       - run: yarn lint
       - run: yarn build
+      - run: yarn vsce verify-pat
 
   # publish the extension to marketplaces
   publish:
@@ -69,7 +70,7 @@ jobs:
           files: nix-ide*.vsix
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Publish to Open VSX Registry
+        run: yarn ovsx publish *.vsix --pat ${{ secrets.OPEN_VSX_TOKEN }}
       - name: Publish to Visual Studio Marketplace
         run: yarn vsce publish -p ${{ secrets.VS_MARKETPLACE_TOKEN }}
-      - name: Publish to Open VSX Registry
-        run: ovsx publish *.vsix --pat ${{ secrets.OPEN_VSX_TOKEN }}
