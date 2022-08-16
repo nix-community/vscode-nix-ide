@@ -14,9 +14,7 @@ import commandExists = require("command-exists");
 let client: LanguageClient;
 
 export async function activate(context: ExtensionContext): Promise<void> {
-  const cmdExists = await commandExists(config.serverPath);
-
-  if (!cmdExists) {
+  if (!commandExists.sync(config.serverPath)) {
     const selection = await window.showErrorMessage<UriMessageItem>(
       `Command ${config.serverPath} not found in $PATH`,
       {
