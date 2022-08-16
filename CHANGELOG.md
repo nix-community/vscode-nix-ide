@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.23](https://github.com/jnoortheen/vscode-nix-ide/compare/v0.1.22...v0.1.23) (2022-08-16)
+
+
+### Features
+
+* add nix-shell and direnv support ([#251](https://github.com/jnoortheen/vscode-nix-ide/issues/251)) ([d78b62d](https://github.com/jnoortheen/vscode-nix-ide/commit/d78b62ded8e575c01922ff781884af026578c7a4))
+
+
+### Bug Fixes
+
+* catch error if serverPath doesn't exist ([#267](https://github.com/jnoortheen/vscode-nix-ide/issues/267)) ([95caf81](https://github.com/jnoortheen/vscode-nix-ide/commit/95caf810a2f0415103ebc5c3dfde7b78729be4c3))
+
 ### [0.1.22](https://github.com/jnoortheen/vscode-nix-ide/compare/v0.1.20...v0.1.22) (2022-08-14)
 
 
