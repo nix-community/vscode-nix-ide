@@ -37,7 +37,7 @@ jobs:
       - run: yarn install --frozen-lockfile
       - run: yarn lint
       - run: yarn build
-      - run: yarn vsce verify-pat --pat ${{ secrets.OPEN_VSX_TOKEN }}
+      - run: yarn vsce verify-pat --pat ${{ secrets.VS_MARKETPLACE_TOKEN }}
 
   # publish the extension to marketplaces
   publish:
