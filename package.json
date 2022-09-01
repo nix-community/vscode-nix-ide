@@ -101,7 +101,7 @@
     "@commitlint/cli": "*",
     "@commitlint/config-conventional": "^17.0.3",
     "@types/command-exists": "^1.2.0",
-    "@types/node": "^18.7.3",
+    "@types/node": "^18.7.14",
     "@types/vscode": "*",
     "@typescript-eslint/eslint-plugin": "*",
     "@typescript-eslint/parser": "*",
