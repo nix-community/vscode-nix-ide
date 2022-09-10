@@ -14,7 +14,8 @@ Adds [nix](https://nixos.org/) language support for VSCode Editor.
 
   ![](./images/docs/md-embed-nix.png)
 
-* Full editing support when using a language server. Generally, any nix [LSP](https://microsoft.github.io/language-server-protocol/) implementation should work but only the following have been tested:
+* Full editing support when using a language server. Generally, any nix [LSP](https://microsoft.github.io/language-server-protocol/) implementation should work.  
+The following are tested so far:
 
   - [rnix-lsp](https://github.com/nix-community/rnix-lsp)
   - [nil](https://github.com/oxalica/nil)
