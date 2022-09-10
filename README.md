@@ -44,6 +44,8 @@ The following are tested so far:
 
 * Snippets
 
+* Terminal links to store paths open (if file exists) in workspace.
+
 ## Todos
 
 **PRs welcome** for them
