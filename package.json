@@ -99,7 +99,7 @@
   },
   "devDependencies": {
     "@commitlint/cli": "*",
-    "@commitlint/config-conventional": "^17.0.3",
+    "@commitlint/config-conventional": "^17.1.0",
     "@types/command-exists": "^1.2.0",
     "@types/node": "^18.7.14",
     "@types/vscode": "*",
