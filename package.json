@@ -1,154 +1,148 @@
 {
-	"name": "nix-ide",
-	"displayName": "Nix IDE",
-	"description": "Nix language support with formatting and error report.",
-	"version": "0.1.23",
-	"publisher": "jnoortheen",
-	"icon": "images/icon.png",
-	"license": "MIT",
-	"engines": {
-		"vscode": "^1.47.0"
-	},
-	"categories": [
-		"Programming Languages",
-		"Formatters",
-		"Snippets"
-	],
-	"keywords": [
-		"nix",
-		"IDE"
-	],
-	"bugs": {
-		"url": "https://github.com/jnoortheen/vscode-nix-ide/issues"
-	},
-	"homepage": "https://github.com/jnoortheen/vscode-nix-ide",
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/jnoortheen/vscode-nix-ide"
-	},
-	"main": "dist/extension.js",
-	"activationEvents": [
-		"onLanguage:nix"
-	],
-	"contributes": {
-		"languages": [
-			{
-				"id": "nix",
-				"aliases": [
-					"Nix",
-					"nix"
-				],
-				"extensions": [
-					".nix"
-				],
-				"configuration": "./language-configuration.json"
-			}
-		],
-		"grammars": [
-			{
-				"language": "nix",
-				"scopeName": "source.nix",
-				"path": "./syntaxes/nix.tmLanguage.json"
-			},
-			{
-				"scopeName": "markdown.nix.codeblock",
-				"path": "./syntaxes/injection.json",
-				"injectTo": [
-					"text.html.markdown"
-				],
-				"embeddedLanguages": {
-					"meta.embedded.block.nix": "nix"
-				}
-			}
-		],
-		"snippets": [
-			{
-				"language": "nix",
-				"path": "./snippets.json"
-			}
-		],
-		"configuration": {
-			"title": "NixIDE",
-			"properties": {
-				"nix.formatterPath": {
-					"type": [
-						"string",
-						"array"
-					],
-					"default": "nixpkgs-fmt",
-					"description": "Location of the nix formatter command."
-				},
-				"nix.serverPath": {
-					"type": "string",
-					"default": "rnix-lsp",
-					"description": "Location of the nix language server command."
-				},
-				"nix.enableLanguageServer": {
-					"type": "boolean",
-					"default": false,
-					"description": "Use LSP instead of nix-instantiate and nixpkgs-fmt."
-				},
-				"nix.serverSettings": {
-					"type": "object",
-					"default": {},
-					"description": "Settings passed to the language server on configuration requests."
-				}
-			}
-		},
-		"configurationDefaults": {
-			"[nix]": {
-				"editor.insertSpaces": true,
-				"editor.tabSize": 2
-			}
-		}
-	},
-	"devDependencies": {
-		"@commitlint/cli": "*",
-		"@commitlint/config-conventional": "^17.1.0",
-		"@types/command-exists": "^1.2.0",
-		"@types/node": "^18.7.14",
-		"@types/vscode": "*",
-		"@typescript-eslint/eslint-plugin": "*",
-		"@typescript-eslint/parser": "*",
-		"del-cli": "^5.0.0",
-		"env-cmd": "^10.1.0",
-		"esbuild": "^0.15.6",
-		"eslint": "*",
-		"eslint-config-prettier": "^8.5.0",
-		"husky": "^8.0.1",
-		"js-yaml": "^4.0.0",
-		"ovsx": "^0.5",
-		"prettier": "^2.7.1",
-		"pretty-quick": "^3.1.3",
-		"standard-version": "^9.5",
-		"typescript": "^4.8.3",
-		"vsce": "^2.10.0"
-	},
-	"scripts": {
-		"prebuild": "js-yaml syntaxes/nix.YAML-tmLanguage > syntaxes/nix.tmLanguage.json && js-yaml syntaxes/injection.yml > syntaxes/injection.json",
-		"build-base": "esbuild ./src/extension.ts --bundle --outfile=dist/extension.js --external:vscode --format=cjs --platform=node",
-		"build": "yarn run build-base --sourcemap --minify",
-		"watch": "yarn run build-base --sourcemap --watch",
-		"postinstall": "husky install",
-		"clean": "del dist",
-		"prerelease": "yarn install && yarn lint && yarn clean && yarn build",
-		"release": "standard-version",
-		"postrelease": "git push --follow-tags",
-		"prepackage": "del *.vsix",
-		"package": "vsce package",
-		"publish:ovsx": "yarn run env-cmd --expand-envs ovsx publish *.vsix --pat '$OVS_PAT'",
-		"publish:vsce": "vsce publish",
-		"publish": "yarn package && yarn publish:vsce && yarn publish:ovsx",
-		"lint": "eslint --ext ts src"
-	},
-	"dependencies": {
-		"command-exists": "^1.2.9",
-		"vscode-languageclient": "^8.0.2"
-	},
-	"__metadata": {
-		"id": "0ffebccd-4265-4f2d-a855-db1adcf278c7",
-		"publisherDisplayName": "Noortheen",
-		"publisherId": "3a7c13d8-8768-454a-be53-290c25bd0f85",
-		"isPreReleaseVersion": false
-	}
+  "name": "nix-ide",
+  "displayName": "Nix IDE",
+  "description": "Nix language support with formatting and error report.",
+  "version": "0.1.23",
+  "publisher": "jnoortheen",
+  "icon": "images/icon.png",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.47.0"
+  },
+  "categories": [
+    "Programming Languages",
+    "Formatters",
+    "Snippets"
+  ],
+  "keywords": [
+    "nix",
+    "IDE"
+  ],
+  "bugs": {
+    "url": "https://github.com/jnoortheen/vscode-nix-ide/issues"
+  },
+  "homepage": "https://github.com/jnoortheen/vscode-nix-ide",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jnoortheen/vscode-nix-ide"
+  },
+  "main": "dist/extension.js",
+  "activationEvents": [
+    "onLanguage:nix"
+  ],
+  "contributes": {
+    "languages": [
+      {
+        "id": "nix",
+        "aliases": [
+          "Nix",
+          "nix"
+        ],
+        "extensions": [
+          ".nix"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "nix",
+        "scopeName": "source.nix",
+        "path": "./syntaxes/nix.tmLanguage.json"
+      },
+      {
+        "scopeName": "markdown.nix.codeblock",
+        "path": "./syntaxes/injection.json",
+        "injectTo": [
+          "text.html.markdown"
+        ],
+        "embeddedLanguages": {
+          "meta.embedded.block.nix": "nix"
+        }
+      }
+    ],
+    "snippets": [
+      {
+        "language": "nix",
+        "path": "./snippets.json"
+      }
+    ],
+    "configuration": {
+      "title": "NixIDE",
+      "properties": {
+        "nix.formatterPath": {
+          "type": [
+            "string",
+            "array"
+          ],
+          "default": "nixpkgs-fmt",
+          "description": "Location of the nix formatter command."
+        },
+        "nix.serverPath": {
+          "type": "string",
+          "default": "rnix-lsp",
+          "description": "Location of the nix language server command."
+        },
+        "nix.enableLanguageServer": {
+          "type": "boolean",
+          "default": false,
+          "description": "Use LSP instead of nix-instantiate and nixpkgs-fmt."
+        },
+        "nix.serverSettings": {
+          "type": "object",
+          "default": {},
+          "description": "Settings passed to the language server on configuration requests."
+        }
+      }
+    },
+    "configurationDefaults": {
+      "[nix]": {
+        "editor.insertSpaces": true,
+        "editor.tabSize": 2
+      }
+    }
+  },
+  "devDependencies": {
+    "@commitlint/cli": "*",
+    "@commitlint/config-conventional": "^17.1.0",
+    "@types/command-exists": "^1.2.0",
+    "@types/node": "^18.7.14",
+    "@types/vscode": "*",
+    "@typescript-eslint/eslint-plugin": "*",
+    "@typescript-eslint/parser": "*",
+    "del-cli": "^5.0.0",
+    "env-cmd": "^10.1.0",
+    "esbuild": "^0.15.6",
+    "eslint": "*",
+    "eslint-config-prettier": "^8.5.0",
+    "husky": "^8.0.1",
+    "js-yaml": "^4.0.0",
+    "ovsx": "^0.5",
+    "prettier": "^2.7.1",
+    "pretty-quick": "^3.1.3",
+    "standard-version": "^9.5",
+    "typescript": "^4.8.3",
+    "vsce": "^2.10.0"
+  },
+  "scripts": {
+    "prebuild": "js-yaml syntaxes/nix.YAML-tmLanguage > syntaxes/nix.tmLanguage.json && js-yaml syntaxes/injection.yml > syntaxes/injection.json",
+    "build-base": "esbuild ./src/extension.ts --bundle --outfile=dist/extension.js --external:vscode --format=cjs --platform=node",
+    "build": "yarn run build-base --sourcemap --minify",
+    "watch": "yarn run build-base --sourcemap --watch",
+    "postinstall": "husky install",
+    "clean": "del dist",
+    "prerelease": "yarn install && yarn lint && yarn clean && yarn build",
+    "release": "standard-version",
+    "postrelease": "git push --follow-tags",
+    "prepackage": "del *.vsix",
+    "package": "vsce package",
+    "publish:ovsx": "yarn run env-cmd --expand-envs ovsx publish *.vsix --pat '$OVS_PAT'",
+    "publish:vsce": "vsce publish",
+    "publish": "yarn package && yarn publish:vsce && yarn publish:ovsx",
+    "lint": "eslint --ext ts src"
+  },
+  "dependencies": {
+    "command-exists": "^1.2.9",
+    "vscode-languageclient": "^8.0.2"
+  }
 }
