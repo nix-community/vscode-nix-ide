@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.1](https://github.com/jnoortheen/vscode-nix-ide/compare/v0.1.23...v0.2.1) (2022-10-14)
+
+
+### Features
+
+* declare support for nil ([#276](https://github.com/jnoortheen/vscode-nix-ide/issues/276)) ([c19ceba](https://github.com/jnoortheen/vscode-nix-ide/commit/c19ceba897f4e23aba6bad543a16ee901f4195f6))
+* passing settings to lsp ([#294](https://github.com/jnoortheen/vscode-nix-ide/issues/294)) ([c898347](https://github.com/jnoortheen/vscode-nix-ide/commit/c89834791c8eb8230cd5d07d3754bdb30ed8b822))
+
 ### [0.1.24](https://github.com/jnoortheen/vscode-nix-ide/compare/v0.1.23...v0.1.24) (2022-10-14)
 
 ### [0.1.23](https://github.com/jnoortheen/vscode-nix-ide/compare/v0.1.22...v0.1.23) (2022-08-16)
