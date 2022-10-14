@@ -87,6 +87,11 @@
           "type": "boolean",
           "default": false,
           "description": "Use LSP instead of nix-instantiate and nixpkgs-fmt."
+        },
+        "nix.serverSettings": {
+          "type": "object",
+          "default": {},
+          "description": "Settings passed to the language server on configuration requests."
         }
       }
     },
