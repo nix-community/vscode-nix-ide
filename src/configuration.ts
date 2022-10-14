@@ -1,4 +1,5 @@
 import { WorkspaceConfiguration, workspace } from "vscode";
+import { LSPObject } from "vscode-languageclient";
 
 import { MessageItem, Uri } from "vscode";
 
@@ -27,6 +28,10 @@ export class Config {
 
   get LSPEnabled(): boolean {
     return this.get<boolean>("enableLanguageServer", false);
+  }
+
+  get serverSettings(): LSPObject {
+    return this.get<LSPObject>("serverSettings", {});
   }
 }
 export const config = new Config();

@@ -27,6 +27,23 @@ The following are tested so far:
     }
     ```
 
+  Pass settings to the language server via `serverSettings`.
+    ```jsonc
+    {
+      "nix.serverSettings": {
+        // settings for 'nil' LSP
+        "nil": {
+          "diagnostics": {
+            "ignored": ["unused_binding", "unused_with"]
+          },
+          "formatting": {
+            "command": ["nixpkgs-fmt"]
+          }
+        }
+      }
+    }
+    ```
+
 * When `Language Server` support is not enabled the following tools are used to
   + Formatting support. Set `nix.formatterPath` to any command which can accept file contents on stdin and return formatted text on stdout; e.g.,
       ```jsonc
