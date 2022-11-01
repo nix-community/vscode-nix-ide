@@ -2405,9 +2405,9 @@ optionator@^0.9.1:
     word-wrap "^1.2.3"
 
 ovsx@^0.5:
-  version "0.5.1"
-  resolved "https://registry.yarnpkg.com/ovsx/-/ovsx-0.5.1.tgz#3a8c2707ea120d542d1d226a47f24ac47b078710"
-  integrity sha512-3OWq0l7DuVHi2bd2aQe5+QVQlFIqvrcw3/2vGXL404L6Tr+R4QHtzfnYYghv8CCa85xJHjU0RhcaC7pyXkAUbg==
+  version "0.5.2"
+  resolved "https://registry.yarnpkg.com/ovsx/-/ovsx-0.5.2.tgz#174c887746811adae131c9c31363a4756cb5cd9e"
+  integrity sha512-UbLultRCk46WddeA0Cly4hoRhzBJUiLgbIEViXlgOvV54LbsppClDkMLoCevUUBHoiNdMX2NuiSgURAEXgCZdw==
   dependencies:
     commander "^6.1.0"
     follow-redirects "^1.14.6"
