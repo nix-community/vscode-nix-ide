@@ -19,12 +19,12 @@
     "IDE"
   ],
   "bugs": {
-    "url": "https://github.com/jnoortheen/vscode-nix-ide/issues"
+    "url": "https://github.com/nix-community/vscode-nix-ide/issues"
   },
-  "homepage": "https://github.com/jnoortheen/vscode-nix-ide",
+  "homepage": "https://github.com/nix-community/vscode-nix-ide",
   "repository": {
     "type": "git",
-    "url": "https://github.com/jnoortheen/vscode-nix-ide"
+    "url": "https://github.com/nix-community/vscode-nix-ide"
   },
   "main": "dist/extension.js",
   "activationEvents": [
