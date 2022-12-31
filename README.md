@@ -22,6 +22,7 @@ The following are tested so far:
 
     ```jsonc
     {
+      "nix.enableLanguageServer": true,
       "nix.serverPath": "rnix-lsp"
       // "nix.serverPath": "nil"
     }
