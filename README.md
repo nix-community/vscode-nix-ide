@@ -81,7 +81,7 @@ The extension can be downloaded from the release page.
 
 ### Installing the extension Locally
 
-Just clone the [GitHub repository](https://github.com/bbenoist/vscode-nix) under your local extensions folder:
+Just clone the [GitHub repository](https://github.com/nix-community/vscode-nix-ide) under your local extensions folder:
 
 * Windows: `%USERPROFILE%\.vscode\extensions`
 * Mac / Linux: `$HOME/.vscode/extensions`
