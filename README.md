@@ -49,7 +49,7 @@ The following are tested so far:
 
     ```jsonc
     {
-        // Settings for 'nixd' LSP
+        // settings for 'nixd' LSP
         "nix.serverSettings": {
             "nixd": {
                 "eval": {
