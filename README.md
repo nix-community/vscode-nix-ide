@@ -26,6 +26,7 @@ The following are tested so far:
       "nix.enableLanguageServer": true,
       "nix.serverPath": "rnix-lsp"
       // "nix.serverPath": "nil"
+      // "nix.serverPath": "nixd"
     }
     ```
 
@@ -49,7 +50,6 @@ The following are tested so far:
     ```jsonc
     {
         // Settings for 'nixd' LSP
-        "nix.serverPath": "nixd",
         "nix.serverSettings": {
             "nixd": {
                 "eval": {
