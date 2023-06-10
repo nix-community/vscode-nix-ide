@@ -49,8 +49,8 @@ The following are tested so far:
 
     ```jsonc
     {
-        // settings for 'nixd' LSP
         "nix.serverSettings": {
+            // settings for 'nixd' LSP
             "nixd": {
                 "eval": {
                     // stuff
