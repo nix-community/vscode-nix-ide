@@ -19,6 +19,7 @@ The following are tested so far:
 
   - [rnix-lsp](https://github.com/nix-community/rnix-lsp)
   - [nil](https://github.com/oxalica/nil)
+  - [nixd](https://github.com/nix-community/nixd)
 
     ```jsonc
     {
@@ -41,6 +42,38 @@ The following are tested so far:
             "command": ["nixpkgs-fmt"]
           }
         }
+      }
+    }
+    ```
+
+    ```jsonc
+    {
+        // Settings for 'nixd' LSP
+        "nix.serverPath": "nixd",
+        "nix.serverSettings": {
+            "nixd": {
+                "eval": {
+                    // stuff
+                },
+                "formatting": {
+                    "command": "nixpkgs-fmt"
+                },
+                "options": {
+                    "enable": true,
+                    "target": {
+                        // tweak arguments here
+                        "args": [],
+                        // NixOS options
+                        "installable": "<flakeref>#nixosConfigurations.<name>.options"
+
+                        // Flake-parts options
+                        // "installable": "<flakeref>#debug.options"
+
+                        // Home-manager options
+                        // "installable": "<flakeref>#homeConfigurations.<name>.options"
+                    }
+                }
+            }
       }
     }
     ```
