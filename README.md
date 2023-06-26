@@ -6,11 +6,11 @@ Adds [nix](https://nixos.org/) language support for VSCode Editor.
 
 * Syntax Highlight
 
-  + Thanks to https://github.com/wmertens/sublime-nix for the grammer file
+  + Thanks to https://github.com/wmertens/sublime-nix for the grammar file
 
   ![](./images/docs/nix-syntax-highlight.png)
 
-  + nix code snippets inside `markdown` files also work.
+  + Nix code snippets inside `markdown` files also work.
 
   ![](./images/docs/md-embed-nix.png)
 
@@ -122,7 +122,7 @@ Just clone the [GitHub repository](https://github.com/nix-community/vscode-nix-i
 ## Contributing
 
 * Document the purpose of functions and classes.
-* When adding a new feature, please mention it in the `README.md` Features section. Use screenshots when applicable.
+* Please mention a new feature in the `README.md` Features section when adding it. Use screenshots when applicable.
 * [Conventional Commit](https://www.conventionalcommits.org/en/v1.0.0/) style should be used for commit messages as it is used to generate changelog.
 
 ## Development
