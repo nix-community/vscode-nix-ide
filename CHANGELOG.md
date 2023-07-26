@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.2](https://github.com/nix-community/vscode-nix-ide/compare/v0.2.1...v0.2.2) (2023-07-26)
+
+
+### Features
+
+* set file icon ([f7c2244](https://github.com/nix-community/vscode-nix-ide/commit/f7c22449ca7de99a6421a9694c606486eee607a8))
+
 ### [0.2.1](https://github.com/nix-community/vscode-nix-ide/compare/v0.1.23...v0.2.1) (2022-10-14)
 
 
