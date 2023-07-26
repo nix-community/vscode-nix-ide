@@ -16,7 +16,7 @@
   },
   "with": {
     "prefix": ["with"],
-    "body": ["with $1; $0"],
+    "body": ["with $1;$0"],
     "description": "With expression"
   }
 }
