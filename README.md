@@ -160,4 +160,5 @@ Special thanks to
 
 ## Links
 
-* [Extension page](https://marketplace.visualstudio.com/items?itemName=jnoortheen.nix-ide)
+* [Extension page](https://marketplace.visualstudio.com/items?itemName=jnoortheen.nix-ide) at vscode marketplace
+* https://open-vsx.org/extension/jnoortheen/nix-ide
