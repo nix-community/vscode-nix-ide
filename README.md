@@ -1,4 +1,4 @@
-# nix README
+# nix-ide
 
 Adds [nix](https://nixos.org/) language support for VSCode Editor.
 
