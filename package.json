@@ -92,6 +92,11 @@
           "default": false,
           "description": "Use LSP instead of nix-instantiate and nixpkgs-fmt."
         },
+        "nix.suppressLanguageServerNotFoundWarnings": {
+          "type": "boolean",
+          "default": false,
+          "description": "Suppress warnings about the LSP not being found in the $PATH."
+        },
         "nix.serverSettings": {
           "type": "object",
           "default": {},

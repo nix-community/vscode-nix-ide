@@ -29,6 +29,8 @@ The following are tested so far:
       // "nix.serverPath": "nixd"
     }
     ```
+  
+  You can suppress the language server not found in `$PATH` warnings using `suppressLanguageServerNotFoundWarnings`.
 
   Pass settings to the language server via `serverSettings`.
     ```jsonc
