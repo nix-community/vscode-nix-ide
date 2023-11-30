@@ -30,6 +30,10 @@ export class Config {
     return this.get<boolean>("enableLanguageServer", false);
   }
 
+  get suppressLSPNotFoundWarnings(): boolean {
+    return this.get<boolean>("suppressLanguageServerNotFoundWarnings", false);
+  }
+
   get serverSettings(): LSPObject {
     return this.get<LSPObject>("serverSettings", {});
   }

@@ -19,6 +19,9 @@ let client: LanguageClient;
 
 export async function activate(context: ExtensionContext): Promise<void> {
   if (!commandExists.sync(config.serverPath)) {
+    if (config.suppressLSPNotFoundWarnings) {
+      return;
+    }
     const selection = await window.showErrorMessage<UriMessageItem>(
       `Command ${config.serverPath} not found in $PATH`,
       {
