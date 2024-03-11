@@ -84,7 +84,7 @@
         },
         "nix.serverPath": {
           "type": "string",
-          "default": "rnix-lsp",
+          "default": "nil",
           "description": "Location of the nix language server command."
         },
         "nix.enableLanguageServer": {

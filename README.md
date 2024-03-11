@@ -14,84 +14,89 @@ Adds [nix](https://nixos.org/) language support for VSCode Editor.
 
   ![](./images/docs/md-embed-nix.png)
 
-* Full editing support when using a language server. Generally, any nix [LSP](https://microsoft.github.io/language-server-protocol/) implementation should work.  
+## Language Servers
+
+Full editing support when using a language server. Generally, any nix [LSP](https://microsoft.github.io/language-server-protocol/) implementation should work.
 The following are tested so far:
 
-  - [rnix-lsp](https://github.com/nix-community/rnix-lsp)
-  - [nil](https://github.com/oxalica/nil)
-  - [nixd](https://github.com/nix-community/nixd)
+* [nil](https://github.com/oxalica/nil)
+* [nixd](https://github.com/nix-community/nixd)
 
-    ```jsonc
-    {
-      "nix.enableLanguageServer": true,
-      "nix.serverPath": "rnix-lsp"
-      // "nix.serverPath": "nil"
-      // "nix.serverPath": "nixd"
-    }
-    ```
+```jsonc
+{
+  "nix.enableLanguageServer": true,
+  "nix.serverPath": "nil"
+  // "nix.serverPath": "nixd"
+}
+```
 
-  Pass settings to the language server via `serverSettings`.
-    ```jsonc
-    {
-      "nix.serverSettings": {
-        // settings for 'nil' LSP
-        "nil": {
-          "diagnostics": {
-            "ignored": ["unused_binding", "unused_with"]
-          },
-          "formatting": {
-            "command": ["nixpkgs-fmt"]
-          }
-        }
+Pass settings to the language server via `serverSettings`.
+```jsonc
+{
+  "nix.serverSettings": {
+    // settings for 'nil' LSP
+    "nil": {
+      "diagnostics": {
+        "ignored": ["unused_binding", "unused_with"]
+      },
+      "formatting": {
+        "command": ["nixpkgs-fmt"]
       }
     }
-    ```
+  }
+}
+```
 
-    ```jsonc
-    {
-        "nix.serverSettings": {
-            // settings for 'nixd' LSP
-            "nixd": {
-                "eval": {
-                    // stuff
-                },
-                "formatting": {
-                    "command": "nixpkgs-fmt"
-                },
-                "options": {
-                    "enable": true,
-                    "target": {
-                        // tweak arguments here
-                        "args": [],
-                        // NixOS options
-                        "installable": "<flakeref>#nixosConfigurations.<name>.options"
+```jsonc
+{
+    "nix.serverSettings": {
+        // settings for 'nixd' LSP
+        "nixd": {
+            "eval": {
+                // stuff
+            },
+            "formatting": {
+                "command": "nixpkgs-fmt"
+            },
+            "options": {
+                "enable": true,
+                "target": {
+                    // tweak arguments here
+                    "args": [],
+                    // NixOS options
+                    "installable": "<flakeref>#nixosConfigurations.<name>.options"
 
-                        // Flake-parts options
-                        // "installable": "<flakeref>#debug.options"
+                    // Flake-parts options
+                    // "installable": "<flakeref>#debug.options"
 
-                        // Home-manager options
-                        // "installable": "<flakeref>#homeConfigurations.<name>.options"
-                    }
+                    // Home-manager options
+                    // "installable": "<flakeref>#homeConfigurations.<name>.options"
                 }
             }
-      }
-    }
-    ```
+        }
+  }
+}
+```
 
-* When `Language Server` support is not enabled the following tools are used to
-  + Formatting support. Set `nix.formatterPath` to any command which can accept file contents on stdin and return formatted text on stdout; e.g.,
-      ```jsonc
-      {
-        "nix.formatterPath": "nixpkgs-fmt" // default
-        // "nix.formatterPath": "nixfmt"
-        // "nix.formatterPath": ["treefmt", "--stdin", "{file}"]
-        // "nix.formatterPath": ["nix", "fmt", "--", "-"] // using flakes with `formatter = pkgs.alejandra;`
-      }
-      ```
-  + Error Report
-    - Using `nix-instantiate` errors reported
+## Standalone (No LSP)
 
-  ![](./images/docs/linting.png)
+When `Language Server` support is not enabled some tools can still be used.
+
+* Enable formatting support by setting `nix.formatterPath` to any command which can accept file contents on stdin and return formatted text on stdout; e.g.,
+
+```jsonc
+{
+  "nix.formatterPath": "nixpkgs-fmt" // default
+  // "nix.formatterPath": "nixfmt"
+  // "nix.formatterPath": ["treefmt", "--stdin", "{file}"]
+  // "nix.formatterPath": ["nix", "fmt", "--", "-"] // using flakes with `formatter = pkgs.alejandra;`
+}
+```
+
+* Error Report
+  * Using `nix-instantiate` errors reported
+
+  ![example of linting hover](./images/docs/linting.png)
 
 * Snippets
 

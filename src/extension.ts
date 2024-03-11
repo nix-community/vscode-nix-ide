@@ -9,7 +9,7 @@ import * as client from "./client";
  * Activate this extension.
  *
  * If LSP is enabled
- *    then support IDE features with {@link https://github.com/nix-community/rnix-lsp|rnix-lsp}
+ *    then support IDE features with {@link https://github.com/oxalica/nil|nil}
  * Else
  *    Format with nixpkgs-format
  *    validate with nix-instantiate
