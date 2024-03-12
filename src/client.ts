@@ -23,7 +23,9 @@ export async function activate(context: ExtensionContext): Promise<void> {
       `Command ${config.serverPath} not found in $PATH`,
       {
         title: "Install language server",
-        uri: Uri.parse("https://github.com/nix-community/rnix-lsp"),
+        uri: Uri.parse(
+          "https://github.com/nix-community/vscode-nix-ide?tab=readme-ov-file#language-servers"
+        ),
       }
     );
     if (selection?.uri !== undefined) {

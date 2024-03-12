@@ -23,7 +23,7 @@ export class Config {
   }
 
   get serverPath(): string {
-    return this.get<string>("serverPath", "rnix-lsp");
+    return this.get<string>("serverPath", "nil");
   }
 
   get LSPEnabled(): boolean {
