@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.3.0](https://github.com/nix-community/vscode-nix-ide/compare/v0.2.2...v0.3.0) (2024-03-12)
+
+
+### ⚠ BREAKING CHANGES
+
+* upgrade dependencies
+
+* upgrade dependencies ([3778ed6](https://github.com/nix-community/vscode-nix-ide/commit/3778ed648f1a0f73b8826860f591ab7b9e9bb355))
+
 ### [0.2.2](https://github.com/nix-community/vscode-nix-ide/compare/v0.2.1...v0.2.2) (2023-07-26)
 
 
