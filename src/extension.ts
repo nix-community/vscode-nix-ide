@@ -19,6 +19,11 @@ import * as client from "./client";
  */
 export async function activate(context: ExtensionContext): Promise<void> {
   if (config.LSPEnabled) {
+    context.subscriptions.push(
+      vscode.commands.registerCommand("nix-ide.restartLanguageServer", () =>
+        client.restart(context),
+      ),
+    );
     await client.activate(context);
   } else {
     await startLinting(context);

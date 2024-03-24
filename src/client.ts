@@ -79,3 +79,16 @@ export async function activate(context: ExtensionContext): Promise<void> {
 export function deactivate(): Thenable<void> | undefined {
   return client ? client.stop() : undefined;
 }
+
+export async function restart(context: ExtensionContext): Promise<void> {
+  const disposable = window.setStatusBarMessage(
+    "$(loading~spin) Restarting Nix language server",
+  );
+  try {
+    client ? await client.restart() : await activate(context);
+  } catch (error) {
+    client?.error("Failed to restart Nix language server", error, "force");
+  } finally {
+    disposable.dispose();
+  }
+}
