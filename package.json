@@ -104,7 +104,14 @@
         "editor.insertSpaces": true,
         "editor.tabSize": 2
       }
-    }
+    },
+    "commands": [
+      {
+        "title": "Restart Language Server",
+        "category": "Nix IDE",
+        "command": "nix-ide.restartLanguageServer"
+      }
+    ]
   },
   "devDependencies": {
     "@commitlint/cli": "*",
