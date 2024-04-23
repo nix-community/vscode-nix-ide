@@ -52,25 +52,18 @@ Pass settings to the language server via `serverSettings`.
     "nix.serverSettings": {
         // settings for 'nixd' LSP
         "nixd": {
-            "eval": {
-                // stuff
-            },
             "formatting": {
-                "command": "nixpkgs-fmt"
+                "command": [ "nixpkgs-fmt" ]
             },
             "options": {
-                "enable": true,
-                "target": {
-                    // tweak arguments here
-                    "args": [],
-                    // NixOS options
-                    "installable": "<flakeref>#nixosConfigurations.<name>.options"
-
-                    // Flake-parts options
-                    // "installable": "<flakeref>#debug.options"
-
-                    // Home-manager options
-                    // "installable": "<flakeref>#homeConfigurations.<name>.options"
+                // By default, this entriy will be read from `import <nixpkgs> { }`
+                // You can write arbitary nix expression here, to produce valid "options" declaration result.
+                // Tip: for flake-based configuration, utilize `builtins.getFlake`
+                "nixos": {
+                    "expr": "(builtins.getFlake \"/absolute/path/to/flake\").nixosConfigurations.<name>.options"
+                },
+                "home-manager": {
+                    "expr": "(builtins.getFlake \"/absolute/path/to/flake\").homeConfigurations.<name>.options"
                 }
             }
         }
