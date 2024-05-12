@@ -1,23 +1,31 @@
-# nix-ide
+# Nix IDE
 
-Adds [nix](https://nixos.org/) language support for VSCode Editor.
+Adds [Nix](https://nixos.org/) language support for [Visual Studio Code](https://code.visualstudio.com/).
+
+## Installation
+
+Available on both the [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=jnoortheen.nix-ide) and the [Open VSX Registry](https://open-vsx.org/extension/jnoortheen/nix-ide).
+
+You can also open the Command Palette (<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd> on Windows/Linux or <kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd> on macOS) and enter `ext install jnoortheen.nix-ide` to install the extension, or download it from the [latest release](https://github.com/nix-community/vscode-nix-ide/releases/latest).
 
 ## Features
 
-* Syntax Highlight
+### Syntax Highlighting
 
-  + Thanks to https://github.com/wmertens/sublime-nix for the grammar file
+> [!NOTE]
+> Thanks to https://github.com/wmertens/sublime-nix for the original grammar!
 
-  ![](./images/docs/nix-syntax-highlight.png)
+![](./images/docs/nix-syntax-highlight.png)
 
-  + Nix code snippets inside `markdown` files also work.
+Nix code snippets inside `markdown` files also work.
 
-  ![](./images/docs/md-embed-nix.png)
+![](./images/docs/md-embed-nix.png)
 
-## Language Servers
+### Language Servers
 
-Full editing support when using a language server. Generally, any nix [LSP](https://microsoft.github.io/language-server-protocol/) implementation should work.
-The following are tested so far:
+Full editing support when using a language server. Generally, any Nix [LSP](https://microsoft.github.io/language-server-protocol/) implementation should work.
+
+The following have been tested so far:
 
 * [nil](https://github.com/oxalica/nil)
 * [nixd](https://github.com/nix-community/nixd)
@@ -25,16 +33,18 @@ The following are tested so far:
 ```jsonc
 {
   "nix.enableLanguageServer": true,
-  "nix.serverPath": "nil"
-  // "nix.serverPath": "nixd"
+
+  "nix.serverPath": "nil",
+  // or
+  "nix.serverPath": "nixd"
 }
 ```
 
-Pass settings to the language server via `serverSettings`.
+Pass settings to the language server via the `serverSettings` option.
+
 ```jsonc
 {
   "nix.serverSettings": {
-    // settings for 'nil' LSP
     "nil": {
       "diagnostics": {
         "ignored": ["unused_binding", "unused_with"]
@@ -50,14 +60,13 @@ Pass settings to the language server via `serverSettings`.
 ```jsonc
 {
     "nix.serverSettings": {
-        // settings for 'nixd' LSP
         "nixd": {
             "formatting": {
                 "command": [ "nixpkgs-fmt" ]
             },
             "options": {
-                // By default, this entriy will be read from `import <nixpkgs> { }`
-                // You can write arbitary nix expression here, to produce valid "options" declaration result.
+                // By default, this entriy will be read from `import <nixpkgs> { }`.
+                // You can write arbitary Nix expressions here, to produce valid "options" declaration result.
                 // Tip: for flake-based configuration, utilize `builtins.getFlake`
                 "nixos": {
                     "expr": "(builtins.getFlake \"/absolute/path/to/flake\").nixosConfigurations.<name>.options"
@@ -67,61 +76,58 @@ Pass settings to the language server via `serverSettings`.
                 }
             }
         }
-  }
+    }
 }
 ```
 
-## Standalone (No LSP)
+### Formatting
 
-When `Language Server` support is not enabled some tools can still be used.
-
-* Enable formatting support by setting `nix.formatterPath` to any command which can accept file contents on stdin and return formatted text on stdout; e.g.,
+Enable formatting support by setting `nix.formatterPath` to any command which can accept file contents on stdin and return formatted text on stdout.
 
 ```jsonc
 {
-  "nix.formatterPath": "nixpkgs-fmt" // default
-  // "nix.formatterPath": "nixfmt"
-  // "nix.formatterPath": ["treefmt", "--stdin", "{file}"]
-  // "nix.formatterPath": ["nix", "fmt", "--", "-"] // using flakes with `formatter = pkgs.alejandra;`
+  "nix.formatterPath": "nixpkgs-fmt"
 }
 ```
 
-* Error Report
-  * Using `nix-instantiate` errors reported
+```jsonc
+{
+  "nix.formatterPath": "nixfmt"
+}
+```
 
-  ![example of linting hover](./images/docs/linting.png)
+```jsonc
+{
+  "nix.formatterPath": ["treefmt", "--stdin", "{file}"]
+}
+```
 
-* Snippets
+```jsonc
+{
+  "nix.formatterPath": ["nix", "fmt", "--", "-"] // using flakes with `formatter = pkgs.alejandra;`
+}
+```
+
+### Error Reporting
+
+Errors reported using `nix-instantiate`.
+
+![Screenshot of an error message tooltip](./images/docs/linting.png)
+
+### Snippets
+
+Snippets are provided for conditional expressions, `let` expressions, `with` expressions, and `rec`ursive sets.
 
 ## Todos
 
-**PRs welcome** for them
-
-* [embedded language](https://code.visualstudio.com/api/language-extensions/syntax-highlight-guide#embedded-languages) syntax support for bash
-* path completion - https://github.com/ChristianKohler/PathIntellisense
-
-## Installation
-
-### Visual Studio Code
-
-Hit `F1` and enter the `ext install jnoortheen.nix-ide` command or search for `nix-ide`.
-
-### *.vsix file
-
-The extension can be downloaded from the release page.
-
-### Installing the extension Locally
-
-Just clone the [GitHub repository](https://github.com/nix-community/vscode-nix-ide) under your local extensions folder:
-
-* Windows: `%USERPROFILE%\.vscode\extensions`
-* Mac / Linux: `$HOME/.vscode/extensions`
+- [Embedded language](https://code.visualstudio.com/api/language-extensions/syntax-highlight-guide#embedded-languages) support for Bash.
+- Path completion.
 
 ## Contributing
 
-* Document the purpose of functions and classes.
-* Please mention a new feature in the `README.md` Features section when adding it. Use screenshots when applicable.
-* [Conventional Commit](https://www.conventionalcommits.org/en/v1.0.0/) style should be used for commit messages as it is used to generate changelog.
+- Document the purpose of functions and classes.
+- Please mention new features in the `README.md` features section. Use screenshots when applicable.
+- The [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) style should be used for commit messages as it is used to generate the changelog.
 
 ## Development
 
@@ -138,7 +144,7 @@ yarn build   # build the extension
 
 ## Releasing a new version
 
-* fill `.env` from `.env.template`
+Complete `.env` with environment variables based on `.env.template`,
 
 ```sh
 # this is needed to publish extensions to [openvsx](https://open-vsx.org/) from local machine.
@@ -151,12 +157,9 @@ yarn release
 yarn publish
 ```
 
----
-Special thanks to
- * [wmertens](https://github.com/wmertens/sublime-nix/blob/master/nix.tmLanguage) for writing the syntax definitions.
- * The extension [vscode-fish](https://github.com/bmalehorn/vscode-fish/) is modified to work for `nix` .
+## Credits
 
-## Links
+Special thanks to:
 
-* [Extension page](https://marketplace.visualstudio.com/items?itemName=jnoortheen.nix-ide) at vscode marketplace
-* https://open-vsx.org/extension/jnoortheen/nix-ide
+- [@wmertens](https://github.com/wmertens) for [writing the grammar](https://github.com/wmertens/sublime-nix/blob/master/nix.tmLanguage).
+- The [vscode-fish](https://github.com/bmalehorn/vscode-fish/) extension, which was modified to work for Nix in this extension.
