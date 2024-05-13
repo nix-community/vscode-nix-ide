@@ -1,7 +1,7 @@
 {
   "name": "nix-ide",
   "displayName": "Nix IDE",
-  "description": "Nix language support with formatting and error report.",
+  "description": "Nix language support - syntax highlighting, formatting, and error reporting.",
   "version": "0.3.1",
   "publisher": "jnoortheen",
   "icon": "images/icon.png",
@@ -15,8 +15,7 @@
     "Snippets"
   ],
   "keywords": [
-    "nix",
-    "IDE"
+    "nix"
   ],
   "bugs": {
     "url": "https://github.com/nix-community/vscode-nix-ide/issues"
@@ -27,9 +26,6 @@
     "url": "https://github.com/nix-community/vscode-nix-ide"
   },
   "main": "dist/extension.js",
-  "activationEvents": [
-    "onLanguage:nix"
-  ],
   "contributes": {
     "languages": [
       {
