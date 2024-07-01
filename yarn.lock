@@ -400,9 +400,9 @@
   integrity sha512-hov8bUuiLiyFPGyFPE1lwWhmzYbirOXQNNo40+y3zow8aFVTeyn3VWL0VFFfdNddA8S4Vf0Tc062rzyNr7Paag==
 
 "@types/node@*":
-  version "20.11.26"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-20.11.26.tgz#3fbda536e51d5c79281e1d9657dcb0131baabd2d"
-  integrity sha512-YwOMmyhNnAWijOBQweOJnQPl068Oqd4K3OFbTc6AHJwzweUwwWG3GIFY74OKks2PJUDkQPeddOQES9mLn1CTEQ==
+  version "20.14.9"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-20.14.9.tgz#12e8e765ab27f8c421a1820c99f5f313a933b420"
+  integrity sha512-06OCtnTXtWOZBJlRApleWndH4JsRVs1pDCc8dLSQp+7PpUpX3ePdHyeNSFTeSe7FtKyQkrlPvHwJOW3SLd8Oyg==
   dependencies:
     undici-types "~5.26.4"
 
