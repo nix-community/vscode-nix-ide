@@ -124,7 +124,7 @@
     "eslint-config-prettier": "*",
     "husky": "^9.0.0",
     "js-yaml": "^4.0.0",
-    "ovsx": "^0.8",
+    "ovsx": "^0.9",
     "prettier": "^3.0",
     "pretty-quick": "*",
     "standard-version": "^9.5",
