@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.3](https://github.com/nix-community/vscode-nix-ide/compare/v0.3.2...v0.3.3) (2024-08-02)
+
+
+### Bug Fixes
+
+* vsce latest ([cecea30](https://github.com/nix-community/vscode-nix-ide/commit/cecea3041cfdb0aebc6c7e6c02dfeca193c360d6))
+
 ### [0.3.2](https://github.com/nix-community/vscode-nix-ide/compare/v0.3.1...v0.3.2) (2024-08-02)
 
 

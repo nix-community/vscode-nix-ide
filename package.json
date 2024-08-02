@@ -2,7 +2,7 @@
   "name": "nix-ide",
   "displayName": "Nix IDE",
   "description": "Nix language support - syntax highlighting, formatting, and error reporting.",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "publisher": "jnoortheen",
   "icon": "images/icon.png",
   "license": "MIT",
@@ -26,7 +26,7 @@
     "url": "https://github.com/nix-community/vscode-nix-ide"
   },
   "main": "dist/extension.js",
-    "activationEvents": [
+  "activationEvents": [
     "onStartupFinished"
   ],
   "contributes": {
