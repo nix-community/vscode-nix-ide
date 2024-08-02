@@ -69,7 +69,7 @@ export interface IProcessResult {
 export const runInWorkspace = (
   folder: WorkspaceFolder | undefined,
   command: ReadonlyArray<string>,
-  stdin?: string
+  stdin?: string,
 ): Promise<IProcessResult> =>
   new Promise((resolve, reject) => {
     const cwd = folder ? folder.uri.fsPath : process.cwd();
@@ -82,12 +82,12 @@ export const runInWorkspace = (
           // Throw system errors, but do not fail if the command
           // fails with a non-zero exit code.
           console.error("Command error", command, error);
-          reject(error);
+          reject(error); // eslint-disable-line @typescript-eslint/prefer-promise-reject-errors
         } else {
           const exitCode = error ? error.code : 0;
           resolve({ stdout, stderr, exitCode });
         }
-      }
+      },
     );
     if (stdin && child.stdin) {
       child.stdin.end(stdin);

@@ -12,21 +12,20 @@ import {
   ServerOptions,
 } from "vscode-languageclient/node";
 import { config, UriMessageItem } from "./configuration";
-
-import commandExists = require("command-exists");
+import { sync as commandExistsSync } from "command-exists";
 
 let client: LanguageClient;
 
 export async function activate(context: ExtensionContext): Promise<void> {
-  if (!commandExists.sync(config.serverPath)) {
+  if (!commandExistsSync(config.serverPath)) {
     const selection = await window.showErrorMessage<UriMessageItem>(
       `Command ${config.serverPath} not found in $PATH`,
       {
         title: "Install language server",
         uri: Uri.parse(
-          "https://github.com/nix-community/vscode-nix-ide?tab=readme-ov-file#language-servers"
+          "https://github.com/nix-community/vscode-nix-ide?tab=readme-ov-file#language-servers",
         ),
-      }
+      },
     );
     if (selection?.uri !== undefined) {
       await env.openExternal(selection?.uri);
@@ -85,7 +84,11 @@ export async function restart(context: ExtensionContext): Promise<void> {
     "$(loading~spin) Restarting Nix language server",
   );
   try {
-    client ? await client.restart() : await activate(context);
+    if (client) {
+      await client.restart();
+    } else {
+      await activate(context);
+    }
   } catch (error) {
     client?.error("Failed to restart Nix language server", error, "force");
   } finally {
