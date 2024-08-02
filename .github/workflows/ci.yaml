@@ -44,7 +44,7 @@ jobs:
       - run: yarn build
       - run: yarn package
       - name: Release
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v2
         with:
           files: nix-ide*.vsix
         env:
