@@ -7,7 +7,7 @@
   "icon": "images/icon.png",
   "license": "MIT",
   "engines": {
-    "vscode": ">=1.82.0"
+    "vscode": ">=1.91.0"
   },
   "categories": [
     "Programming Languages",
@@ -26,6 +26,9 @@
     "url": "https://github.com/nix-community/vscode-nix-ide"
   },
   "main": "dist/extension.js",
+    "activationEvents": [
+    "onStartupFinished"
+  ],
   "contributes": {
     "languages": [
       {
