@@ -7,3 +7,13 @@ updates:
     # Check the npm registry for updates every week (weekdays)
     schedule:
       interval: "monthly"
+  groups:
+    production-dependencies:
+      dependency-type: 'production'
+    development-dependencies:
+      dependency-type: 'development'
+
+  - package-ecosystem: 'github-actions'
+    directory: '/'
+    schedule:
+      interval: 'monthly'
