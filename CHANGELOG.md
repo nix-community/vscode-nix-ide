@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.2](https://github.com/nix-community/vscode-nix-ide/compare/v0.3.1...v0.3.2) (2024-08-02)
+
+
+### Features
+
+* add restarting language server command ([#381](https://github.com/nix-community/vscode-nix-ide/issues/381)) ([c52dc29](https://github.com/nix-community/vscode-nix-ide/commit/c52dc292a7d3b356bc1a18d31f9df8395770d679))
+* migrate eslint config ([5fd26eb](https://github.com/nix-community/vscode-nix-ide/commit/5fd26eb00f6c3c9fabbf9fce4c43b6259fa6d1ed))
+* support use vscode variables in settings ([#399](https://github.com/nix-community/vscode-nix-ide/issues/399)) ([a602050](https://github.com/nix-community/vscode-nix-ide/commit/a6020509005221a0bb885b2d5914fd8f4563f97d))
+
+
+### Bug Fixes
+
+* dependabot config ([df48657](https://github.com/nix-community/vscode-nix-ide/commit/df4865707169754900a2f609eacd38f82586b8ed))
+* eslint errors ([de74fc2](https://github.com/nix-community/vscode-nix-ide/commit/de74fc218d73fbb22fe97708a666798dee35335f))
+
 ### [0.3.1](https://github.com/nix-community/vscode-nix-ide/compare/v0.3.0...v0.3.1) (2024-03-12)
 
 ## [0.3.0](https://github.com/nix-community/vscode-nix-ide/compare/v0.2.2...v0.3.0) (2024-03-12)
