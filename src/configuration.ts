@@ -2,6 +2,7 @@ import { WorkspaceConfiguration, workspace } from "vscode";
 import { LSPObject } from "vscode-languageclient";
 
 import { MessageItem, Uri } from "vscode";
+import { transformConfigValueByVscodeVariables } from "./utils";
 
 export interface UriMessageItem extends MessageItem {
   uri: Uri;
@@ -14,8 +15,13 @@ export class Config {
     return workspace.getConfiguration(this.rootSection);
   }
 
-  private get<T>(path: string, def_val: T): T {
-    return this.cfg.get<T>(path) ?? def_val;
+  private get<T extends string | boolean | LSPObject>(
+    path: string,
+    def_val: T,
+  ): T {
+    return transformConfigValueByVscodeVariables(
+      this.cfg.get<T>(path) ?? def_val,
+    );
   }
 
   get formatterPath(): string | Array<string> {

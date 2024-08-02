@@ -73,6 +73,10 @@ Pass settings to the language server via the `serverSettings` option.
                 },
                 "home-manager": {
                     "expr": "(builtins.getFlake \"/absolute/path/to/flake\").homeConfigurations.<name>.options"
+                },
+                // Tip: use ${workspaceFolder} variable to define path
+                "nix-darwin": {
+                  "expr": "(builtins.getFlake \"${workspaceFolder}/path/to/flake\").darwinConfigurations.<name>.options"
                 }
             }
         }
