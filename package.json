@@ -146,7 +146,7 @@
     "publish:ovsx": "yarn run env-cmd --expand-envs ovsx publish *.vsix --pat '$OVS_PAT'",
     "publish:vsce": "vsce publish",
     "publish": "yarn package && yarn publish:vsce && yarn publish:ovsx",
-    "lint": "eslint --ext ts src"
+    "lint": "ESLINT_USE_FLAT_CONFIG=false eslint --ext ts src"
   },
   "dependencies": {
     "command-exists": "^1.2.9",
