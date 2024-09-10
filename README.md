@@ -13,7 +13,7 @@ You can also open the Command Palette (<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>P</
 The basic language integration is supported out of the box using `nixpkgs-fmt` and `nix instantiate`.
 
 <details>
-  <summary>Syntax Highlighting</summary>
+  <summary>Syntax Highlighting support</summary>
   <img src="./images/docs/nix-syntax-highlight.png" alt="syntax highlighting"/>
 </details>    
 
@@ -46,6 +46,7 @@ It can be changed by setting `nix.formatterPath` to any command which can accept
 </details> 
   
  - Snippets are provided for conditional expressions, `let` expressions, `with` expressions, and `rec`ursive sets.
+ - Path completion support using https://github.com/ChristianKohler/PathIntellisense extension
   
 
 ## LSP Plugin Support
@@ -115,11 +116,6 @@ The following have been tested so far:
 }
 ```
 </details>
-
-## Todos
-
-- [Embedded language](https://code.visualstudio.com/api/language-extensions/syntax-highlight-guide#embedded-languages) support for Bash.
-- Path completion.
 
 ## Contributing
 
