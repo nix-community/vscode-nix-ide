@@ -151,14 +151,11 @@ yarn build   # build the extension
 Complete `.env` with environment variables based on `.env.template`,
 
 ```sh
-# this is needed to publish extensions to [openvsx](https://open-vsx.org/) from local machine.
-yarn env-cmd
-
 # this will generate changelog and will create a GitHub release. This will also trigger jobs to publish the extension.
 yarn release
 
 # to manually publish the extension
-yarn publish
+yarn env-cmd && yarn publish
 ```
 
 ## Credits
