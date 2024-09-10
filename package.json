@@ -2,7 +2,7 @@
   "name": "nix-ide",
   "displayName": "Nix IDE",
   "description": "Nix language support - syntax highlighting, formatting, and error reporting.",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "publisher": "jnoortheen",
   "icon": "images/icon.png",
   "license": "MIT",
@@ -98,11 +98,16 @@
         },
         "nix.hiddenLanguageServerErrors": {
           "type": "array",
-          "items": { "type": "string" },
+          "items": {
+            "type": "string"
+          },
           "default": [],
           "description": "Error notifications from the language server for these request types will be suppressed.",
           "examples": [
-            [ "textDocument/definition", "textDocument/documentSymbol" ]
+            [
+              "textDocument/definition",
+              "textDocument/documentSymbol"
+            ]
           ]
         }
       }

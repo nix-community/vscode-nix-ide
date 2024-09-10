@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.4](https://github.com/nix-community/vscode-nix-ide/compare/v0.3.3...v0.3.4) (2024-09-10)
+
+
+### Features
+
+* add setting to suppress error notifications ([4913819](https://github.com/nix-community/vscode-nix-ide/commit/4913819384f2fe70e15ea7c814a739926a5d1280))
+
 ### [0.3.3](https://github.com/nix-community/vscode-nix-ide/compare/v0.3.2...v0.3.3) (2024-08-02)
 
 
