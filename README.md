@@ -12,9 +12,6 @@ You can also open the Command Palette (<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>P</
 
 ### Syntax Highlighting
 
-> [!NOTE]
-> Thanks to https://github.com/wmertens/sublime-nix for the original grammar!
-
 ![](./images/docs/nix-syntax-highlight.png)
 
 Nix code snippets inside `markdown` files also work.
