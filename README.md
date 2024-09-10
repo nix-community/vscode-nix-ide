@@ -10,17 +10,47 @@ You can also open the Command Palette (<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>P</
 
 ## Features
 
-### Syntax Highlighting
+The basic language integration is supported out of the box using `nixpkgs-fmt` and `nix instantiate`.
 
-![](./images/docs/nix-syntax-highlight.png)
+<details>
+  <summary>Syntax Highlighting</summary>
+  <img src="./images/docs/nix-syntax-highlight.png" alt="syntax highlighting"/>
+</details>    
 
-Nix code snippets inside `markdown` files also work.
+  
+<details>
+  <summary>Syntax highlighting of Nix code blocks inside `markdown` files also work.</summary>
+  <img src="./images/docs/md-embed-nix.png" alt="embedded syntax highlighting"/>
+</details>
+  
+<details>
+  <summary>Syntax Errors are reported using `nix-instantiate`</summary>
+  <img src="./images/docs/linting.png" alt="Screenshot of an error message tooltip"/>
+</details>
+  
+<details>
+  <summary>
+    Auto-Formatting is handled by `nixpkgs-fmt` by default.
+  </summary>
+  
+It can be changed by setting `nix.formatterPath` to any command which can accept file contents on stdin and return formatted text on stdout.
+```jsonc      
+{
+"nix.formatterPath": "nixpkgs-fmt" 
+    // "nix.formatterPath": "nixfmt"
+    // "nix.formatterPath": ["treefmt", "--stdin", "{file}"]
+    // "nix.formatterPath": ["nix", "fmt", "--", "-"] // using flakes with `formatter = pkgs.alejandra;`
+}
+```
 
-![](./images/docs/md-embed-nix.png)
+</details> 
+  
+ - Snippets are provided for conditional expressions, `let` expressions, `with` expressions, and `rec`ursive sets.
+  
 
-### Language Servers
+## LSP Plugin Support
 
-Full editing support when using a language server. Generally, any Nix [LSP](https://microsoft.github.io/language-server-protocol/) implementation should work.
+Full language support can be enabled by using a language server. Generally, any Nix [LSP](https://microsoft.github.io/language-server-protocol/) implementation should work.
 
 The following have been tested so far:
 
@@ -37,7 +67,11 @@ The following have been tested so far:
 }
 ```
 
-Pass settings to the language server via the `serverSettings` option.
+<details>
+      <summary>Advanced settings </summary>
+
+  
+  Pass settings to the language server via the `serverSettings` option.
 
 ```jsonc
 {
@@ -80,44 +114,7 @@ Pass settings to the language server via the `serverSettings` option.
     }
 }
 ```
-
-### Formatting
-
-Enable formatting support by setting `nix.formatterPath` to any command which can accept file contents on stdin and return formatted text on stdout.
-
-```jsonc
-{
-  "nix.formatterPath": "nixpkgs-fmt"
-}
-```
-
-```jsonc
-{
-  "nix.formatterPath": "nixfmt"
-}
-```
-
-```jsonc
-{
-  "nix.formatterPath": ["treefmt", "--stdin", "{file}"]
-}
-```
-
-```jsonc
-{
-  "nix.formatterPath": ["nix", "fmt", "--", "-"] // using flakes with `formatter = pkgs.alejandra;`
-}
-```
-
-### Error Reporting
-
-Errors reported using `nix-instantiate`.
-
-![Screenshot of an error message tooltip](./images/docs/linting.png)
-
-### Snippets
-
-Snippets are provided for conditional expressions, `let` expressions, `with` expressions, and `rec`ursive sets.
+</details>
 
 ## Todos
 
