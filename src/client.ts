@@ -5,6 +5,8 @@ import {
   LanguageClientOptions,
   LSPArray,
   ConfigurationParams,
+  MessageSignature,
+  CancellationToken,
 } from "vscode-languageclient";
 import {
   Executable,
@@ -13,8 +15,33 @@ import {
 } from "vscode-languageclient/node";
 import { config, UriMessageItem } from "./configuration";
 import { sync as commandExistsSync } from "command-exists";
+import { inspect } from "util";
 
-let client: LanguageClient;
+class Client extends LanguageClient {
+  override handleFailedRequest<T>(
+    type: MessageSignature,
+    token: CancellationToken | undefined,
+    error: unknown,
+    defaultValue: T,
+    showNotification?: boolean,
+  ): T {
+    if (config.hiddenErrorKinds.includes(type.method)) {
+      this.outputChannel.appendLine(
+        `Suppressing failed ${inspect(type.method)} notification`,
+      );
+      return super.handleFailedRequest(type, token, error, defaultValue, false);
+    }
+    return super.handleFailedRequest(
+      type,
+      token,
+      error,
+      defaultValue,
+      showNotification,
+    );
+  }
+}
+
+let client: Client;
 
 export async function activate(context: ExtensionContext): Promise<void> {
   if (!commandExistsSync(config.serverPath)) {
@@ -68,7 +95,7 @@ export async function activate(context: ExtensionContext): Promise<void> {
     },
   };
 
-  client = new LanguageClient("nix", "Nix", serverOptions, clientOptions);
+  client = new Client("nix", "Nix", serverOptions, clientOptions);
   client.registerProposedFeatures();
   await client.start();
 

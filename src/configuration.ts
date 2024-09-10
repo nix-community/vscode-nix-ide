@@ -36,6 +36,10 @@ export class Config {
     return this.get<boolean>("enableLanguageServer", false);
   }
 
+  get hiddenErrorKinds(): string[] {
+    return this.get("hiddenLanguageServerErrors", []);
+  }
+
   get serverSettings(): LSPObject {
     return this.get<LSPObject>("serverSettings", {});
   }
