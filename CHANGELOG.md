@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.5](https://github.com/nix-community/vscode-nix-ide/compare/v0.3.4...v0.3.5) (2024-09-13)
+
+
+### Bug Fixes
+
+* reload language server client on restart ([#420](https://github.com/nix-community/vscode-nix-ide/issues/420)) ([4c48cb0](https://github.com/nix-community/vscode-nix-ide/commit/4c48cb06cddf439f65d6ec066f41c6a6432ffa5a)), closes [#419](https://github.com/nix-community/vscode-nix-ide/issues/419)
+
 ### [0.3.4](https://github.com/nix-community/vscode-nix-ide/compare/v0.3.3...v0.3.4) (2024-09-10)
 
 
