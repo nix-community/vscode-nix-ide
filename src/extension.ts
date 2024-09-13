@@ -19,12 +19,11 @@ import * as client from "./client";
  */
 export async function activate(context: ExtensionContext): Promise<void> {
   if (config.LSPEnabled) {
-    context.subscriptions.push(
-      vscode.commands.registerCommand("nix-ide.restartLanguageServer", () =>
-        client.restart(context),
-      ),
-    );
-    await client.activate(context);
+    try {
+      await client.activate(context);
+    } catch (err) {
+      console.error(err);
+    }
   } else {
     await startLinting(context);
     const subs = [
@@ -33,10 +32,31 @@ export async function activate(context: ExtensionContext): Promise<void> {
     ].map((func) => func("nix", formattingProviders));
     context.subscriptions.concat(subs);
   }
+
+  context.subscriptions.push(
+    vscode.commands.registerCommand(
+      "nix-ide.restartLanguageServer",
+      async () => {
+        if (config.LSPEnabled) {
+          await client.restart(context);
+        }
+      },
+    ),
+  );
+
+  vscode.workspace.onDidChangeConfiguration(async (event) => {
+    if (config.requiresServerRestart(event)) {
+      const choice = await vscode.window.showWarningMessage(
+        "Configuration change requires restarting the language server",
+        "Restart",
+      );
+      if (choice === "Restart") {
+        await client.restart(context);
+      }
+    }
+  });
 }
 
 export async function deactivate(): Promise<void> {
-  if (config.LSPEnabled) {
-    await client.deactivate();
-  }
+  await client.deactivate();
 }
