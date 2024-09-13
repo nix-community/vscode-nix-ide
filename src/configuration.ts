@@ -1,4 +1,8 @@
-import { WorkspaceConfiguration, workspace } from "vscode";
+import {
+  ConfigurationChangeEvent,
+  WorkspaceConfiguration,
+  workspace,
+} from "vscode";
 import { LSPObject } from "vscode-languageclient";
 
 import { MessageItem, Uri } from "vscode";
@@ -42,6 +46,15 @@ export class Config {
 
   get serverSettings(): LSPObject {
     return this.get<LSPObject>("serverSettings", {});
+  }
+
+  requiresServerRestart(change: ConfigurationChangeEvent): boolean {
+    // NOTE: this might be easier if all the settings were nested under
+    // e.g. `"nix.languageServer" or something like that, to deduplicate keys
+    return (
+      change.affectsConfiguration("nix.serverPath") ||
+      change.affectsConfiguration("nix.enableLanguageServer")
+    );
   }
 }
 export const config = new Config();

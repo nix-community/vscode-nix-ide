@@ -1,6 +1,13 @@
 // from PR of https://github.com/nix-community/vscode-nix-ide/pull/16/
 
-import { env, ExtensionContext, Uri, window, workspace } from "vscode";
+import {
+  env,
+  ExtensionContext,
+  Uri,
+  window,
+  workspace,
+  Disposable,
+} from "vscode";
 import {
   LanguageClientOptions,
   LSPArray,
@@ -18,6 +25,8 @@ import { sync as commandExistsSync } from "command-exists";
 import { inspect } from "util";
 
 class Client extends LanguageClient {
+  disposables: Disposable[] = [];
+
   override handleFailedRequest<T>(
     type: MessageSignature,
     token: CancellationToken | undefined,
@@ -38,6 +47,22 @@ class Client extends LanguageClient {
       defaultValue,
       showNotification,
     );
+  }
+
+  override dispose(timeout?: number): Promise<void> {
+    let timedOut = false;
+    if (timeout) {
+      setTimeout(() => (timedOut = true), timeout);
+    }
+
+    for (const disposable of this.disposables) {
+      if (timedOut) {
+        break;
+      }
+      disposable.dispose();
+    }
+
+    return Promise.resolve();
   }
 }
 
@@ -69,13 +94,16 @@ export async function activate(context: ExtensionContext): Promise<void> {
     { scheme: "untitled", language: "nix" },
   ];
 
+  const outputChannel = window.createOutputChannel("Nix");
+  const fileEvents = workspace.createFileSystemWatcher("**/*.nix");
+
   const clientOptions: LanguageClientOptions = {
     documentSelector: nixDocumentSelector,
     synchronize: {
-      fileEvents: workspace.createFileSystemWatcher("**/*.nix"),
+      fileEvents,
       configurationSection: [config.rootSection],
     },
-    outputChannel: window.createOutputChannel("Nix"),
+    outputChannel,
     middleware: {
       workspace: {
         configuration: (params: ConfigurationParams): LSPArray[] => {
@@ -96,29 +124,31 @@ export async function activate(context: ExtensionContext): Promise<void> {
   };
 
   client = new Client("nix", "Nix", serverOptions, clientOptions);
+  client.disposables.push(outputChannel, fileEvents);
   client.registerProposedFeatures();
   await client.start();
 
   context.subscriptions.push(client);
 }
 
-export function deactivate(): Thenable<void> | undefined {
-  return client ? client.stop() : undefined;
+export async function deactivate(): Promise<void | undefined> {
+  if (client && client.needsStop()) {
+    await client.stop();
+  }
+  await client.dispose();
 }
 
 export async function restart(context: ExtensionContext): Promise<void> {
-  const disposable = window.setStatusBarMessage(
+  const restartingMsg = window.setStatusBarMessage(
     "$(loading~spin) Restarting Nix language server",
   );
+
   try {
-    if (client) {
-      await client.restart();
-    } else {
-      await activate(context);
-    }
+    await deactivate();
+    await activate(context);
   } catch (error) {
     client?.error("Failed to restart Nix language server", error, "force");
   } finally {
-    disposable.dispose();
+    restartingMsg.dispose();
   }
 }
