@@ -39,7 +39,7 @@ It can be changed by setting `nix.formatterPath` to any command which can accept
 "nix.formatterPath": "nixpkgs-fmt" 
     // "nix.formatterPath": "nixfmt"
     // "nix.formatterPath": ["treefmt", "--stdin", "{file}"]
-    // "nix.formatterPath": ["nix", "fmt", "--", "-"] // using flakes with `formatter = pkgs.alejandra;`
+    // "nix.formatterPath": ["nix", "fmt", "--", "--"] // using flakes with `formatter = pkgs.alejandra;`
 }
 ```
 
