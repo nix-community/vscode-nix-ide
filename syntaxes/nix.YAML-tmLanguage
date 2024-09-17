@@ -73,7 +73,7 @@ repository:
       - include: "#attrset-for-sure"
       - include: "#attrset-or-function"
       - name: keyword.operator.nix
-        match: (\bor\b|\.|==|!=|!|\<\=|\<|\>\=|\>|&&|\|\||-\>|//|\?|\+\+|-|\*|/(?=([^*]|$))|\+)
+        match: (\bor\b|\.|\|\>|\<\||==|!=|!|\<\=|\<|\>\=|\>|&&|\|\||-\>|//|\?|\+\+|-|\*|/(?=([^*]|$))|\+)
       - include: "#constants"
       - include: "#bad-reserved"
       - include: "#parameter-name"
