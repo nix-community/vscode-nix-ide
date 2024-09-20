@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.6](https://github.com/nix-community/vscode-nix-ide/compare/v0.3.5...v0.3.6) (2024-09-20)
+
+
+### Features
+
+* delay activation ([#424](https://github.com/nix-community/vscode-nix-ide/issues/424)) ([7038804](https://github.com/nix-community/vscode-nix-ide/commit/7038804b9e06d04df254fc4b516363a53a7f063e))
+
 ### [0.3.5](https://github.com/nix-community/vscode-nix-ide/compare/v0.3.4...v0.3.5) (2024-09-13)
 
 
