@@ -15,39 +15,39 @@ The basic language integration is supported out of the box using `nixpkgs-fmt` a
 <details>
   <summary>Syntax Highlighting support</summary>
   <img src="./images/docs/nix-syntax-highlight.png" alt="syntax highlighting"/>
-</details>    
+</details>
 
-  
+
 <details>
   <summary>Syntax highlighting of Nix code blocks inside `markdown` files also work.</summary>
   <img src="./images/docs/md-embed-nix.png" alt="embedded syntax highlighting"/>
 </details>
-  
+
 <details>
   <summary>Syntax Errors are reported using `nix-instantiate`</summary>
   <img src="./images/docs/linting.png" alt="Screenshot of an error message tooltip"/>
 </details>
-  
+
 <details>
   <summary>
     Auto-Formatting is handled by `nixpkgs-fmt` by default.
   </summary>
-  
+
 It can be changed by setting `nix.formatterPath` to any command which can accept file contents on stdin and return formatted text on stdout.
-```jsonc      
+```jsonc
 {
-"nix.formatterPath": "nixpkgs-fmt" 
+"nix.formatterPath": "nixpkgs-fmt"
     // "nix.formatterPath": "nixfmt"
     // "nix.formatterPath": ["treefmt", "--stdin", "{file}"]
     // "nix.formatterPath": ["nix", "fmt", "--", "-"] // using flakes with `formatter = pkgs.alejandra;`
 }
 ```
 
-</details> 
-  
+</details>
+
  - Snippets are provided for conditional expressions, `let` expressions, `with` expressions, and `rec`ursive sets.
  - Path completion support using https://github.com/ChristianKohler/PathIntellisense extension
-  
+
 
 ## LSP Plugin Support
 
@@ -71,7 +71,7 @@ The following have been tested so far:
 <details>
       <summary>Advanced settings </summary>
 
-  
+
   Pass settings to the language server via the `serverSettings` option.
 
 ```jsonc
@@ -97,8 +97,8 @@ The following have been tested so far:
                 "command": [ "nixpkgs-fmt" ]
             },
             "options": {
-                // By default, this entriy will be read from `import <nixpkgs> { }`.
-                // You can write arbitary Nix expressions here, to produce valid "options" declaration result.
+                // By default, this entry will be read from `import <nixpkgs> { }`.
+                // You can write arbitrary Nix expressions here, to produce valid "options" declaration result.
                 // Tip: for flake-based configuration, utilize `builtins.getFlake`
                 "nixos": {
                     "expr": "(builtins.getFlake \"/absolute/path/to/flake\").nixosConfigurations.<name>.options"
