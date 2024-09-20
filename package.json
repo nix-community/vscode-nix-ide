@@ -26,9 +26,6 @@
     "url": "https://github.com/nix-community/vscode-nix-ide"
   },
   "main": "dist/extension.js",
-  "activationEvents": [
-    "onStartupFinished"
-  ],
   "contributes": {
     "languages": [
       {
