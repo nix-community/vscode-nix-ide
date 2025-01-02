@@ -130,14 +130,14 @@
     "@types/command-exists": "^1.2.3",
     "@types/node": "^22.10.3",
     "@types/vscode": "^1.96.0",
-    "esbuild": "^0.23.1",
+    "esbuild": "^0.24.2",
     "globals": "^15.14.0",
     "husky": "^9.1.7",
     "js-yaml": "^4.1.0",
     "ovsx": "^0.10.1",
     "standard-version": "^9.5.0",
     "typescript": "^5.7.2",
-    "@vscode/vsce": "^2.32.0"
+    "@vscode/vsce": "^3.2.1"
   },
   "scripts": {
     "prebuild": "js-yaml syntaxes/nix.YAML-tmLanguage > syntaxes/nix.tmLanguage.json && js-yaml syntaxes/injection.yml > syntaxes/injection.json",
