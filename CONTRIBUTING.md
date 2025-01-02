@@ -13,8 +13,8 @@ Press `F5` in VSCode to run an Extension Development Host instance with the exte
 TypeScript is used to develop the extension.
 
 ```sh
-yarn install # install dependencies
-yarn build   # build the extension
+bun install # install dependencies
+bun run build   # build the extension
 ```
 
 ## Releasing a new version
@@ -23,10 +23,10 @@ Complete `.env` with environment variables based on `.env.template`,
 
 ```sh
 # this will generate changelog and will create a GitHub release. This will also trigger jobs to publish the extension.
-yarn release
+bun run release
 
 # to manually publish the extension
-yarn env-cmd && yarn publish
+bun run publish
 ```
 
 # VS Code Extension Quickstart

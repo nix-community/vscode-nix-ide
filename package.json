@@ -7,7 +7,7 @@
   "icon": "images/icon.png",
   "license": "MIT",
   "engines": {
-    "vscode": ">=1.91.0"
+    "vscode": ">=1.96.0"
   },
   "categories": [
     "Programming Languages",
@@ -124,41 +124,42 @@
     ]
   },
   "devDependencies": {
-    "@commitlint/cli": "*",
-    "@commitlint/config-conventional": "*",
-    "@types/command-exists": "^1.2.0",
-    "@types/node": "*",
-    "@types/vscode": "*",
+    "@commitlint/cli": "^19.6.1",
+    "@commitlint/config-conventional": "^19.6.0",
+    "@types/bun": "latest",
+    "@types/command-exists": "^1.2.3",
+    "@types/node": "^22.10.3",
+    "@types/vscode": "^1.96.0",
     "esbuild": "^0.23.1",
-    "globals": "^15.9.0",
-    "husky": "^9.1.5",
-    "js-yaml": "^4.0.0",
-    "ovsx": "^0.9",
-    "standard-version": "^9.5",
-    "typescript": "^5.5",
-    "vsce": "^2.15.0",
-    "@types/bun": "latest"
+    "globals": "^15.14.0",
+    "husky": "^9.1.7",
+    "js-yaml": "^4.1.0",
+    "ovsx": "^0.10.1",
+    "standard-version": "^9.5.0",
+    "typescript": "^5.7.2",
+    "@vscode/vsce": "^2.32.0"
   },
   "scripts": {
     "prebuild": "js-yaml syntaxes/nix.YAML-tmLanguage > syntaxes/nix.tmLanguage.json && js-yaml syntaxes/injection.yml > syntaxes/injection.json",
     "build-base": "esbuild ./src/extension.ts --bundle --outfile=dist/extension.js --external:vscode --format=cjs --platform=node",
-    "build": "build-base --sourcemap --minify",
-    "watch": "build-base --sourcemap --watch",
+    "build": "bun run build-base --sourcemap --minify",
+    "watch": "bun run build-base --sourcemap --watch",
     "postinstall": "husky",
     "clean": "rm -rd dist",
     "prerelease": "bun install && bun run lint && bun run clean && bun run build",
     "release": "standard-version",
     "postrelease": "git push --follow-tags",
     "prepackage": "rm -f *.vsix",
-    "package": "vsce package",
-    "publish:ovsx": "ovsx publish *.vsix --pat '$OVS_PAT'",
-    "publish:vsce": "vsce publish",
+    "package": "bun run build && bunx vsce package",
+    "publish:ovsx": "bunx ovsx publish *.vsix --pat '$OVS_PAT'",
+    "publish:vsce": "bunx vsce publish",
     "publish": "bun run package && bun run publish:vsce && bun run publish:ovsx",
     "lint": "bun x biome check --write src"
   },
   "dependencies": {
     "command-exists": "^1.2.9",
-    "vscode-languageclient": "^9.0.0",
+    "vscode-languageclient": "^9.0.1",
     "vscode-variables": "^1.0.1"
-  }
+  },
+  "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
 }
