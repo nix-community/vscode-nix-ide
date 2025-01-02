@@ -1,14 +1,14 @@
-# Nix IDE
+# Nix IDE ✨💡🌟
 
 Adds [Nix](https://nixos.org/) language support for [Visual Studio Code](https://code.visualstudio.com/).
 
-## Installation
+## Installation 🔨
 
 Available on both the [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=jnoortheen.nix-ide) and the [Open VSX Registry](https://open-vsx.org/extension/jnoortheen/nix-ide).
 
 You can also open the Command Palette (<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd> on Windows/Linux or <kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd> on macOS) and enter `ext install jnoortheen.nix-ide` to install the extension, or download it from the [latest release](https://github.com/nix-community/vscode-nix-ide/releases/latest).
 
-## Quickstart
+## Quickstart 🚀
 
 1. Install the extension
 2. Open a Nix file
@@ -16,7 +16,7 @@ You can also open the Command Palette (<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>P</
 4. Formatting the code should work if `nixpkgs-fmt` is installed and available on the PATH.
 5. Full language support is available if you have a language server installed and enabled. See [LSP Plugin Support](#lsp-plugin-support) for more information.
 
-## Features
+## Features 🎯
 
 The basic language integration is supported out of the box using `nixpkgs-fmt` and `nix instantiate`.
 
@@ -26,7 +26,7 @@ The basic language integration is supported out of the box using `nixpkgs-fmt` a
 - Snippets are provided for conditional expressions, `let` expressions, `with` expressions, and `rec`ursive sets.
 - Path completion support using https://github.com/ChristianKohler/PathIntellisense extension
 
-## Settings
+## Settings ⚙️
 
 ### Custom Formatter
 
@@ -57,13 +57,13 @@ Some examples of advanced settings are provided below for [nil](https://github.c
 * [Nil Advanced Settings](./docs/snippets/advanced-nil-settings.jsonc)
 * [Nixd Advanced Settings](./docs/snippets/advanced-nixd-settings.jsonc)
 
-## Contributing
+## Contributing 💪
 
 We welcome contributions to this extension. Kindly start with any of open issues or feature requests.
 
 See [CONTRIBUTING.md](./CONTRIBUTING.md) for more information.
 
-## Credits
+## Credits 
 
 Special thanks to:
 
