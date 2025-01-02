@@ -1,28 +1,29 @@
 // from PR of https://github.com/nix-community/vscode-nix-ide/pull/16/
 
+// biome-ignore lint/style/useNodejsImportProtocol: <explanation>
+import { inspect } from "util";
+import { sync as commandExistsSync } from "command-exists";
 import {
-  env,
-  ExtensionContext,
+  type Disposable,
+  type ExtensionContext,
   Uri,
+  env,
   window,
   workspace,
-  Disposable,
 } from "vscode";
-import {
-  LanguageClientOptions,
-  LSPArray,
-  ConfigurationParams,
-  MessageSignature,
+import type {
   CancellationToken,
+  ConfigurationParams,
+  LSPArray,
+  LanguageClientOptions,
+  MessageSignature,
 } from "vscode-languageclient";
 import {
-  Executable,
+  type Executable,
   LanguageClient,
-  ServerOptions,
+  type ServerOptions,
 } from "vscode-languageclient/node";
-import { config, UriMessageItem } from "./configuration";
-import { sync as commandExistsSync } from "command-exists";
-import { inspect } from "util";
+import { type UriMessageItem, config } from "./configuration";
 
 class Client extends LanguageClient {
   disposables: Disposable[] = [];
@@ -52,7 +53,9 @@ class Client extends LanguageClient {
   override dispose(timeout?: number): Promise<void> {
     let timedOut = false;
     if (timeout) {
-      setTimeout(() => (timedOut = true), timeout);
+      setTimeout(() => {
+        timedOut = true;
+      }, timeout);
     }
 
     for (const disposable of this.disposables) {
@@ -131,8 +134,8 @@ export async function activate(context: ExtensionContext): Promise<void> {
   context.subscriptions.push(client);
 }
 
-export async function deactivate(): Promise<void | undefined> {
-  if (client && client.needsStop()) {
+export async function deactivate(): Promise<void> {
+  if (client?.needsStop()) {
     await client.stop();
   }
   await client.dispose();

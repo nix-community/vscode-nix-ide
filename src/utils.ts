@@ -1,4 +1,4 @@
-import { LSPObject } from "vscode-languageclient";
+import type { LSPObject } from "vscode-languageclient";
 import variables from "vscode-variables";
 
 /**
@@ -15,12 +15,9 @@ export const transformConfigValueByVscodeVariables = <
     if (typeof cfg === "string") {
       cfg = variables(cfg) as T;
     } else if (!!cfg && typeof cfg === "object") {
-      Object.keys(cfg).forEach((key) => {
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+      for (const key of Object.keys(cfg)) {
         cfg[key] = transformConfigValueByVscodeVariables(cfg[key]);
-      });
+      }
     } else if (Array.isArray(cfg) && cfg.length > 0) {
       cfg = cfg.map(
         (item) => transformConfigValueByVscodeVariables(item) as unknown,

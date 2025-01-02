@@ -1,11 +1,11 @@
 import {
-  ConfigurationChangeEvent,
-  WorkspaceConfiguration,
+  type ConfigurationChangeEvent,
+  type WorkspaceConfiguration,
   workspace,
 } from "vscode";
-import { LSPObject } from "vscode-languageclient";
+import type { LSPObject } from "vscode-languageclient";
 
-import { MessageItem, Uri } from "vscode";
+import type { MessageItem, Uri } from "vscode";
 import { transformConfigValueByVscodeVariables } from "./utils";
 
 export interface UriMessageItem extends MessageItem {

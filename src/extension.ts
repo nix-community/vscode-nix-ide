@@ -1,9 +1,9 @@
 import * as vscode from "vscode";
-import { ExtensionContext } from "vscode";
+import type { ExtensionContext } from "vscode";
+import * as client from "./client";
+import { config } from "./configuration";
 import { formattingProviders } from "./formatter";
 import { startLinting } from "./linter";
-import { config } from "./configuration";
-import * as client from "./client";
 
 /**
  * Activate this extension.

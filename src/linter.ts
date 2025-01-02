@@ -1,7 +1,5 @@
-"use strict";
-
 import * as vscode from "vscode";
-import { Diagnostic, ExtensionContext, TextDocument } from "vscode";
+import { Diagnostic, type ExtensionContext, type TextDocument } from "vscode";
 import { runInWorkspace } from "./process-runner";
 
 /**
@@ -18,7 +16,7 @@ const isSavedDocument = (document: TextDocument): boolean =>
         language: "nix",
         scheme: "file",
       },
-      document
+      document,
     );
 
 interface LintErrorType {
@@ -45,8 +43,8 @@ const getErrors = (text: string): ReadonlyArray<LintErrorType> => {
   while (match !== null) {
     results.push({
       msg: match[1],
-      row: parseInt(match[2]),
-      col: parseInt(match[3]),
+      row: Number.parseInt(match[2]),
+      col: Number.parseInt(match[3]),
     });
     match = pattern.exec(text);
   }
@@ -62,12 +60,12 @@ const getErrors = (text: string): ReadonlyArray<LintErrorType> => {
  */
 const shellOutputToDiagnostics = (
   document: TextDocument,
-  output: string
+  output: string,
 ): ReadonlyArray<Diagnostic> => {
   const diagnostics: Array<Diagnostic> = [];
   for (const err of getErrors(output)) {
     const range = document.validateRange(
-      new vscode.Range(err.row - 1, err.col - 2, err.row - 1, err.col + 2)
+      new vscode.Range(err.row - 1, err.col - 2, err.row - 1, err.col + 2),
     );
     const diagnostic = new Diagnostic(range, err.msg);
     diagnostic.source = "nix";
@@ -88,7 +86,7 @@ export async function startLinting(context: ExtensionContext): Promise<void> {
   const lint = async (document: TextDocument) => {
     if (isSavedDocument(document)) {
       const workspaceFolder = vscode.workspace.getWorkspaceFolder(document.uri);
-      let d: ReadonlyArray<Diagnostic>
+      let d: ReadonlyArray<Diagnostic>;
       try {
         const result = await runInWorkspace(workspaceFolder, [
           "nix-instantiate",
@@ -116,6 +114,6 @@ export async function startLinting(context: ExtensionContext): Promise<void> {
   vscode.workspace.onDidCloseTextDocument(
     (d) => diagnostics.delete(d.uri),
     null,
-    context.subscriptions
+    context.subscriptions,
   );
-};
+}

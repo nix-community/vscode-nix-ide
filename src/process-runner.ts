@@ -1,5 +1,5 @@
-import { execFile } from "child_process";
-import { WorkspaceFolder } from "vscode";
+import { execFile } from "node:child_process";
+import type { WorkspaceFolder } from "vscode";
 
 /**
  * A system error, i.e. an error that results from a syscall.

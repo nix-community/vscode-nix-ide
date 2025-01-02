@@ -1,18 +1,17 @@
 import * as vscode from "vscode";
 import {
-  DocumentFormattingEditProvider,
-  DocumentRangeFormattingEditProvider,
+  type DocumentFormattingEditProvider,
+  type DocumentRangeFormattingEditProvider,
   Range,
-  TextDocument,
+  type TextDocument,
   TextEdit,
 } from "vscode";
-import { IProcessResult, runInWorkspace } from "./process-runner";
 import { config } from "./configuration";
+import { type IProcessResult, runInWorkspace } from "./process-runner";
 
-const FORMATTER: Array<string> =
-  config.formatterPath instanceof Array
-    ? config.formatterPath
-    : [config.formatterPath];
+const FORMATTER: Array<string> = Array.isArray(config.formatterPath)
+  ? config.formatterPath
+  : [config.formatterPath];
 
 /**
  * Get text edits to format a range in a document.
@@ -23,25 +22,25 @@ const FORMATTER: Array<string> =
  */
 const getFormatRangeEdits = async (
   document: TextDocument,
-  range?: Range
+  range?: Range,
 ): Promise<ReadonlyArray<TextEdit>> => {
   const actualRange = document.validateRange(
-    range || new Range(0, 0, Number.MAX_VALUE, Number.MAX_VALUE)
+    range || new Range(0, 0, Number.MAX_VALUE, Number.MAX_VALUE),
   );
   let result: IProcessResult;
   try {
-    FORMATTER.forEach(
-      (elm, i) => (FORMATTER[i] = elm.replace("{file}", document.fileName))
-    );
+    FORMATTER.forEach((elm, i) => {
+      FORMATTER[i] = elm.replace("{file}", document.fileName);
+    });
     result = await runInWorkspace(
       vscode.workspace.getWorkspaceFolder(document.uri),
       FORMATTER,
-      document.getText(actualRange)
+      document.getText(actualRange),
     );
   } catch (error) {
     if (error instanceof Error) {
       await vscode.window.showErrorMessage(
-        `Failed to run ${FORMATTER.join(" ")}: ${error.message}`
+        `Failed to run ${FORMATTER.join(" ")}: ${error.message}`,
       );
     }
     // Re-throw the error to make the promise fail
@@ -67,13 +66,13 @@ export const formattingProviders: FormattingProviders = {
       token.isCancellationRequested
         ? []
         : // tslint:disable-next-line:readonly-array
-          (edits as TextEdit[])
+          (edits as TextEdit[]),
     ),
   provideDocumentRangeFormattingEdits: (document, range, _, token) =>
     getFormatRangeEdits(document, range).then((edits) =>
       token.isCancellationRequested
         ? []
         : // tslint:disable-next-line:readonly-array
-          (edits as TextEdit[])
+          (edits as TextEdit[]),
     ),
 };
