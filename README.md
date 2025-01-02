@@ -33,10 +33,9 @@ The basic language integration is supported out of the box using `nixpkgs-fmt` a
 It can be changed by setting `nix.formatterPath` to any command which can accept file contents on stdin and return formatted text on stdout.
 
 ```json5
-{
-"nix.formatterPath": "nixpkgs-fmt" // or "nixfmt"
-    // "nix.formatterPath": ["treefmt", "--stdin", "{file}"]
-    // using flakes with `formatter = pkgs.alejandra;`
+{ 
+    "nix.formatterPath": "nixpkgs-fmt" // or "nixfmt" or ["treefmt", "--stdin", "{file}"]
+    // or using flakes with `formatter = pkgs.alejandra;`
     // "nix.formatterPath": ["nix", "fmt", "--", "--"]
 }
 ```
