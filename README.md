@@ -32,7 +32,7 @@ The basic language integration is supported out of the box using `nixpkgs-fmt` a
 
 It can be changed by setting `nix.formatterPath` to any command which can accept file contents on stdin and return formatted text on stdout.
 
-```json
+```json5
 {
 "nix.formatterPath": "nixpkgs-fmt" // or "nixfmt"
     // "nix.formatterPath": ["treefmt", "--stdin", "{file}"]
@@ -45,7 +45,7 @@ It can be changed by setting `nix.formatterPath` to any command which can accept
 
 Full language support can be enabled by using a language server. Generally, any Nix [LSP](https://microsoft.github.io/language-server-protocol/) implementation should work.
 
-```json
+```json5
 {
   "nix.enableLanguageServer": true,
   "nix.serverPath": "nil", // or "nixd"
