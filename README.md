@@ -8,114 +8,55 @@ Available on both the [Visual Studio Marketplace](https://marketplace.visualstud
 
 You can also open the Command Palette (<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd> on Windows/Linux or <kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd> on macOS) and enter `ext install jnoortheen.nix-ide` to install the extension, or download it from the [latest release](https://github.com/nix-community/vscode-nix-ide/releases/latest).
 
+## Quickstart
+
+1. Install the extension
+2. Open a Nix file
+3. Syntax highlighting should work out of the box.
+4. Formatting the code should work if `nixpkgs-fmt` is installed and available on the PATH.
+5. Full language support is available if you have a language server installed and enabled. See [LSP Plugin Support](#lsp-plugin-support) for more information.
+
 ## Features
 
 The basic language integration is supported out of the box using `nixpkgs-fmt` and `nix instantiate`.
 
-<details>
-  <summary>Syntax Highlighting support</summary>
-  <img src="./images/docs/nix-syntax-highlight.png" alt="syntax highlighting"/>
-</details>
+- [Syntax Highlighting](./images/docs/nix-syntax-highlight.png) support. Also Nix code blocks inside `markdown` files also [highlighted](./images/docs/md-embed-nix.png). Syntax Errors are [linted](./images/docs/linting.png) using `nix-instantiate`.
+- Auto-Formatting is handled by `nixpkgs-fmt` by default. It can be changed by [setting `nix.formatterPath`](#custom-formatter).
+- Support for [LSP Plugin Support](#lsp-plugin-support).
+- Snippets are provided for conditional expressions, `let` expressions, `with` expressions, and `rec`ursive sets.
+- Path completion support using https://github.com/ChristianKohler/PathIntellisense extension
 
+## Settings
 
-<details>
-  <summary>Syntax highlighting of Nix code blocks inside `markdown` files also work.</summary>
-  <img src="./images/docs/md-embed-nix.png" alt="embedded syntax highlighting"/>
-</details>
-
-<details>
-  <summary>Syntax Errors are reported using `nix-instantiate`</summary>
-  <img src="./images/docs/linting.png" alt="Screenshot of an error message tooltip"/>
-</details>
-
-<details>
-  <summary>
-    Auto-Formatting is handled by `nixpkgs-fmt` by default.
-  </summary>
+### Custom Formatter
 
 It can be changed by setting `nix.formatterPath` to any command which can accept file contents on stdin and return formatted text on stdout.
-```jsonc
+
+```json
 {
-"nix.formatterPath": "nixpkgs-fmt"
-    // "nix.formatterPath": "nixfmt"
+"nix.formatterPath": "nixpkgs-fmt" // or "nixfmt"
     // "nix.formatterPath": ["treefmt", "--stdin", "{file}"]
-    // "nix.formatterPath": ["nix", "fmt", "--", "--"] // using flakes with `formatter = pkgs.alejandra;`
+    // using flakes with `formatter = pkgs.alejandra;`
+    // "nix.formatterPath": ["nix", "fmt", "--", "--"]
 }
 ```
 
-</details>
-
- - Snippets are provided for conditional expressions, `let` expressions, `with` expressions, and `rec`ursive sets.
- - Path completion support using https://github.com/ChristianKohler/PathIntellisense extension
-
-
-## LSP Plugin Support
+### LSP Plugin Support
 
 Full language support can be enabled by using a language server. Generally, any Nix [LSP](https://microsoft.github.io/language-server-protocol/) implementation should work.
 
-The following have been tested so far:
-
-* [nil](https://github.com/oxalica/nil)
-* [nixd](https://github.com/nix-community/nixd)
-
-```jsonc
+```json
 {
   "nix.enableLanguageServer": true,
-
-  "nix.serverPath": "nil",
-  // or
-  "nix.serverPath": "nixd"
+  "nix.serverPath": "nil", // or "nixd"
+  // Pass settings to the language server via the `serverSettings` option.
+  "nix.serverSettings": { ... }
 }
 ```
+Some examples of advanced settings are provided below for [nil](https://github.com/oxalica/nil) and [nixd](https://github.com/nix-community/nixd).
 
-<details>
-      <summary>Advanced settings </summary>
-
-
-  Pass settings to the language server via the `serverSettings` option.
-
-```jsonc
-{
-  "nix.serverSettings": {
-    "nil": {
-      "diagnostics": {
-        "ignored": ["unused_binding", "unused_with"]
-      },
-      "formatting": {
-        "command": ["nixpkgs-fmt"]
-      }
-    }
-  }
-}
-```
-
-```jsonc
-{
-    "nix.serverSettings": {
-        "nixd": {
-            "formatting": {
-                "command": [ "nixpkgs-fmt" ]
-            },
-            "options": {
-                // By default, this entry will be read from `import <nixpkgs> { }`.
-                // You can write arbitrary Nix expressions here, to produce valid "options" declaration result.
-                // Tip: for flake-based configuration, utilize `builtins.getFlake`
-                "nixos": {
-                    "expr": "(builtins.getFlake \"/absolute/path/to/flake\").nixosConfigurations.<name>.options"
-                },
-                "home-manager": {
-                    "expr": "(builtins.getFlake \"/absolute/path/to/flake\").homeConfigurations.<name>.options"
-                },
-                // Tip: use ${workspaceFolder} variable to define path
-                "nix-darwin": {
-                  "expr": "(builtins.getFlake \"${workspaceFolder}/path/to/flake\").darwinConfigurations.<name>.options"
-                }
-            }
-        }
-    }
-}
-```
-</details>
+* [Nil Advanced Settings](./docs/snippets/advanced-nil-settings.jsonc)
+* [Nixd Advanced Settings](./docs/snippets/advanced-nixd-settings.jsonc)
 
 ## Contributing
 
