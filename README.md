@@ -18,11 +18,9 @@ You can also open the Command Palette (<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>P</
 
 ## Features 🎯
 
-The basic language integration is supported out of the box using `nixpkgs-fmt` and `nix instantiate`.
-
-- [Syntax Highlighting](./images/docs/nix-syntax-highlight.png) support. Also Nix code blocks inside `markdown` files also [highlighted](./images/docs/md-embed-nix.png). Syntax Errors are [linted](./images/docs/linting.png) using `nix-instantiate`.
-- Auto-Formatting is handled by `nixpkgs-fmt` by default. It can be changed by [setting `nix.formatterPath`](#custom-formatter).
-- Support for [LSP Plugin Support](#lsp-plugin-support).
+- [Syntax Highlighting](./images/docs/nix-syntax-highlight.png) support. Also Nix code blocks inside `markdown` files also [highlighted](./images/docs/md-embed-nix.png).
+- The basic language integration is supported out of the box using `nixpkgs-fmt` and `nix instantiate`. Syntax Errors are [linted](./images/docs/linting.png) using `nix-instantiate` while Auto-Formatting is handled by `nixpkgs-fmt` by default. Custom formatter can be set by [setting `nix.formatterPath`](#custom-formatter).
+- The full language support is enabled by [configuring an LSP server](#lsp-plugin-support).
 - Snippets are provided for conditional expressions, `let` expressions, `with` expressions, and `rec`ursive sets.
 - Path completion support using https://github.com/ChristianKohler/PathIntellisense extension
 
