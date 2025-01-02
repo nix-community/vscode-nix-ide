@@ -31,12 +31,9 @@ jobs:
     if: startsWith(github.ref, 'refs/tags/v')
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
-      - run: yarn install --frozen-lockfile
-      - run: yarn build
-      - run: yarn package
+      - uses: oven-sh/setup-bun@v2
+      - run: bun install --frozen-lockfile
+      - run: bun run package
       - name: Release
         uses: softprops/action-gh-release@v2
         with:
