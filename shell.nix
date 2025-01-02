@@ -2,8 +2,8 @@
 pkgs.mkShell {
   buildInputs = with pkgs; [
     nodejs
-    yarn
     esbuild
+    bun
   ];
   shellHook = ''
     yarn install
