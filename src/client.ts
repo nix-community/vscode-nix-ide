@@ -7,27 +7,40 @@ import {
   type Disposable,
   type ExtensionContext,
   Uri,
-  env,
   window,
   workspace,
+  //# #if HAVE_VSCODE
+  env,
 } from "vscode";
+//# #elif HAVE_COC_NVIM
+//# } from "coc.nvim";
+//# #endif
 import type {
   CancellationToken,
   ConfigurationParams,
   LSPArray,
   LanguageClientOptions,
   MessageSignature,
+  //# #if HAVE_VSCODE
 } from "vscode-languageclient";
+//# #elif HAVE_COC_NVIM
+//# } from "coc.nvim";
+//# #endif
 import {
   type Executable,
   LanguageClient,
   type ServerOptions,
+  //# #if HAVE_VSCODE
 } from "vscode-languageclient/node";
+//# #elif HAVE_COC_NVIM
+//# } from "coc.nvim";
+//# #endif
 import { type UriMessageItem, config } from "./configuration";
 
 class Client extends LanguageClient {
   disposables: Disposable[] = [];
 
+  //# #if HAVE_VSCODE
   override handleFailedRequest<T>(
     type: MessageSignature,
     token: CancellationToken | undefined,
@@ -67,11 +80,13 @@ class Client extends LanguageClient {
 
     return Promise.resolve();
   }
+  //# #endif
 }
 
 let client: Client;
 
 export async function activate(context: ExtensionContext): Promise<void> {
+  //# #if HAVE_VSCODE
   if (!commandExistsSync(config.serverPath)) {
     const selection = await window.showErrorMessage<UriMessageItem>(
       `Command ${config.serverPath} not found in $PATH`,
@@ -87,8 +102,9 @@ export async function activate(context: ExtensionContext): Promise<void> {
       return;
     }
   }
+  //# #endif
   const serverExecutable: Executable = {
-    command: config.serverPath,
+    command: await config.serverPath,
   };
   const serverOptions: ServerOptions = serverExecutable;
 
@@ -128,7 +144,9 @@ export async function activate(context: ExtensionContext): Promise<void> {
 
   client = new Client("nix", "Nix", serverOptions, clientOptions);
   client.disposables.push(outputChannel, fileEvents);
+  //# #if HAVE_VSCODE
   client.registerProposedFeatures();
+  //# #endif
   await client.start();
 
   context.subscriptions.push(client);
@@ -138,20 +156,30 @@ export async function deactivate(): Promise<void> {
   if (client?.needsStop()) {
     await client.stop();
   }
+  //# #if HAVE_VSCODE
   await client.dispose();
+  //# #endif
 }
 
 export async function restart(context: ExtensionContext): Promise<void> {
+  //# #if HAVE_VSCODE
   const restartingMsg = window.setStatusBarMessage(
     "$(loading~spin) Restarting Nix language server",
   );
+  //# #endif
 
   try {
     await deactivate();
     await activate(context);
   } catch (error) {
-    client?.error("Failed to restart Nix language server", error, "force");
+    client?.error("Failed to restart Nix language server", error
+      //# #if HAVE_VSCODE
+      , "force"
+      //# #endif
+    );
   } finally {
+  //# #if HAVE_VSCODE
     restartingMsg.dispose();
+  //# #endif
   }
 }

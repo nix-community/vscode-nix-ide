@@ -2,10 +2,16 @@ import {
   type ConfigurationChangeEvent,
   type WorkspaceConfiguration,
   workspace,
+//# #if HAVE_VSCODE
 } from "vscode";
 import type { LSPObject } from "vscode-languageclient";
-
 import type { MessageItem, Uri } from "vscode";
+//# #elif HAVE_COC_NVIM
+//# } from "coc.nvim";
+//# import type { LSPObject } from "coc.nvim";
+//# import type { MessageItem, Uri } from "coc.nvim";
+//# #endif
+
 import { transformConfigValueByVscodeVariables } from "./utils";
 
 export interface UriMessageItem extends MessageItem {

@@ -1,5 +1,12 @@
+import { Diagnostic, type ExtensionContext, type TextDocument,
+//# #if HAVE_VSCODE
+} from "vscode";
 import * as vscode from "vscode";
-import { Diagnostic, type ExtensionContext, type TextDocument } from "vscode";
+//# #elif HAVE_COC_NVIM
+//#   Uri
+//# } from "coc.nvim";
+//# import * as vscode from "coc.nvim";
+//# #endif
 import { runInWorkspace } from "./process-runner";
 
 /**
@@ -9,6 +16,7 @@ import { runInWorkspace } from "./process-runner";
  * @return Whether the document is a Nix document saved to disk
  */
 const isSavedDocument = (document: TextDocument): boolean =>
+  //# #if HAVE_VSCODE
   !document.isDirty &&
   0 <
     vscode.languages.match(
@@ -18,6 +26,9 @@ const isSavedDocument = (document: TextDocument): boolean =>
       },
       document,
     );
+  //# #elif HAVE_COC_NVIM
+  //# false;
+  //# #endif
 
 interface LintErrorType {
   msg: string;
@@ -64,10 +75,20 @@ const shellOutputToDiagnostics = (
 ): ReadonlyArray<Diagnostic> => {
   const diagnostics: Array<Diagnostic> = [];
   for (const err of getErrors(output)) {
+    //# #if HAVE_VSCODE
     const range = document.validateRange(
       new vscode.Range(err.row - 1, err.col - 2, err.row - 1, err.col + 2),
     );
     const diagnostic = new Diagnostic(range, err.msg);
+    //# #elif HAVE_COC_NVIM
+    //# const range = vscode.Range.create(
+    //#   err.row - 1,
+    //#   err.col - 2,
+    //#   err.row - 1,
+    //#   err.col + 2
+    //# );
+    //# const diagnostic = Diagnostic.create(range, err.msg);
+    //# #endif
     diagnostic.source = "nix";
     diagnostics.push(diagnostic);
   }
@@ -91,7 +112,11 @@ export async function startLinting(context: ExtensionContext): Promise<void> {
         const result = await runInWorkspace(workspaceFolder, [
           "nix-instantiate",
           "--parse",
+          //# #if HAVE_VSCODE
           document.fileName,
+          //# #elif HAVE_COC_NVIM
+          //# Uri.parse(document.uri).fsPath /* fileName */,
+          //# #endif
         ]);
         d = shellOutputToDiagnostics(document, result.stderr);
       } catch (error) {

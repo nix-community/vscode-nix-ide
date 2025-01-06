@@ -1,5 +1,10 @@
+//# #if HAVE_VSCODE
 import * as vscode from "vscode";
 import type { ExtensionContext } from "vscode";
+//# #elif HAVE_COC_NVIM
+//# import * as vscode from "coc.nvim";
+//# import type { ExtensionContext } from "coc.nvim";
+//# #endif
 import * as client from "./client";
 import { config } from "./configuration";
 import { formattingProviders } from "./formatter";
@@ -27,8 +32,13 @@ export async function activate(context: ExtensionContext): Promise<void> {
   } else {
     await startLinting(context);
     const subs = [
+      //# #if HAVE_VSCODE
       vscode.languages.registerDocumentFormattingEditProvider,
       vscode.languages.registerDocumentRangeFormattingEditProvider,
+      //# #elif HAVE_COC_NVIM
+      //# vscode.languages.registerDocumentFormatProvider,
+      //# vscode.languages.registerDocumentRangeFormatProvider,
+      //# #endif
     ].map((func) => func("nix", formattingProviders));
     context.subscriptions.concat(subs);
   }

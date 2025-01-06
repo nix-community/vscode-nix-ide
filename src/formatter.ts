@@ -1,11 +1,16 @@
-import * as vscode from "vscode";
 import {
   type DocumentFormattingEditProvider,
   type DocumentRangeFormattingEditProvider,
   Range,
   type TextDocument,
   TextEdit,
+//# #if HAVE_VSCODE
 } from "vscode";
+import * as vscode from "vscode";
+//# #elif HAVE_COC_NVIM
+//# Uri
+//# } from "coc.nvim";
+//# #endif
 import { config } from "./configuration";
 import { type IProcessResult, runInWorkspace } from "./process-runner";
 
@@ -24,14 +29,29 @@ const getFormatRangeEdits = async (
   document: TextDocument,
   range?: Range,
 ): Promise<ReadonlyArray<TextEdit>> => {
+  //# #if HAVE_VSCODE
   const actualRange = document.validateRange(
     range || new Range(0, 0, Number.MAX_VALUE, Number.MAX_VALUE),
   );
+  //# #elif HAVE_COC_NVIM
+  //# const actualRange = range || Range.create(0, 0, Number.MAX_VALUE, Number.MAX_VALUE);
+  //# #endif
   let result: IProcessResult;
   try {
+    //# #if HAVE_VSCODE
     FORMATTER.forEach((elm, i) => {
       FORMATTER[i] = elm.replace("{file}", document.fileName);
     });
+    //# #elif HAVE_COC_NVIM
+    //# FORMATTER.forEach(
+    //#   (elm, i) => {
+    //#     FORMATTER[i] = elm.replace(
+    //#       "{file}",
+    //#       Uri.parse(document.uri).fsPath /* document.fileName */,
+    //#     )
+    //#   },
+    //# );
+    //# #endif
     result = await runInWorkspace(
       vscode.workspace.getWorkspaceFolder(document.uri),
       FORMATTER,
