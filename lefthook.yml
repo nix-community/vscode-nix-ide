@@ -1,0 +1,14 @@
+# EXAMPLE USAGE:
+#
+#   Refer for explanation to following link:
+#   https://evilmartians.github.io/lefthook/configuration/
+
+pre-commit:
+  parallel: true
+  jobs:
+    - run: bun run lint
+      glob: "*.{js,ts,jsx,tsx}"
+
+commit-msg:
+  jobs:
+    - run: bun run commitlint --edit

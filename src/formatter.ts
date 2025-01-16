@@ -58,7 +58,7 @@ type FormattingProviders = DocumentFormattingEditProvider &
   DocumentRangeFormattingEditProvider;
 
 /**
- * Formatting providers for fish documents.
+ * Formatting providers
  */
 export const formattingProviders: FormattingProviders = {
   provideDocumentFormattingEdits: (document, _, token) =>
