@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.4.0](https://github.com/nix-community/vscode-nix-ide/compare/v0.3.7...v0.4.0) (2025-01-17)
+
+
+### Features
+
+* add grammar test ([018be88](https://github.com/nix-community/vscode-nix-ide/commit/018be88ba0d6d0104e9d57b9250bb36c84ea52ed))
+* add initial integration test ([e25320f](https://github.com/nix-community/vscode-nix-ide/commit/e25320f9e6c2979d94b05c7ef09fd5380d74de71))
+* add release-please action ([50b5921](https://github.com/nix-community/vscode-nix-ide/commit/50b59213beb401641d8ae17bcd4d6e4ef1e28815))
+
+
+### Bug Fixes
+
+* default to nixfmt formatter ([#441](https://github.com/nix-community/vscode-nix-ide/issues/441)) ([582c364](https://github.com/nix-community/vscode-nix-ide/commit/582c3642df2188c3096ac646c575e386ae04923e))
+
 ### [0.3.7](https://github.com/nix-community/vscode-nix-ide/compare/v0.3.6...v0.3.7) (2025-01-16)
 
 
