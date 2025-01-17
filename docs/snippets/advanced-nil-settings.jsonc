@@ -1,4 +1,6 @@
 {
+  // nil configuration documentation :
+  // https://github.com/oxalica/nil/blob/main/docs/configuration.md
   "nix.enableLanguageServer": true,
   "nix.serverPath": "nil",
   "nix.serverSettings": {
@@ -7,7 +9,7 @@
         "ignored": ["unused_binding", "unused_with"],
       },
       "formatting": {
-        "command": ["nixpkgs-fmt"],
+        "command": ["nixfmt"],
       },
     },
   },

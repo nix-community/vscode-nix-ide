@@ -29,7 +29,7 @@ export class Config {
   }
 
   get formatterPath(): string | Array<string> {
-    return this.get<string>("formatterPath", "nixpkgs-fmt");
+    return this.get<string>("formatterPath", "nixfmt");
   }
 
   get serverPath(): string {
