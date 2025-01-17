@@ -131,7 +131,6 @@
     "@types/vscode": "^1.96.0",
     "@vscode/vsce": "^3.2.1",
     "esbuild": "^0.24.2",
-    "globals": "^15.14.0",
     "js-yaml": "^4.1.0",
     "lefthook": "^1.10.8",
     "ovsx": "^0.10.1",
