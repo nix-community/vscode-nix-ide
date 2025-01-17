@@ -1,10 +1,12 @@
 {
+  // nixd configuration documentation :
+  // https://github.com/nix-community/nixd/blob/main/nixd/docs/configuration.md#configuration-overview 
   "nix.enableLanguageServer": true,
   "nix.serverPath": "nixd",
   "nix.serverSettings": {
     "nixd": {
       "formatting": {
-        "command": ["nixpkgs-fmt"],
+        "command": ["nixfmt"],
       },
       "options": {
         // By default, this entry will be read from `import <nixpkgs> { }`.

@@ -75,7 +75,7 @@
             "string",
             "array"
           ],
-          "default": "nixpkgs-fmt",
+          "default": "nixfmt",
           "description": "Location of the nix formatter command."
         },
         "nix.serverPath": {
@@ -86,7 +86,7 @@
         "nix.enableLanguageServer": {
           "type": "boolean",
           "default": false,
-          "description": "Use LSP instead of nix-instantiate and nixpkgs-fmt."
+          "description": "Use LSP instead of nix-instantiate and nixfmt."
         },
         "nix.serverSettings": {
           "type": "object",

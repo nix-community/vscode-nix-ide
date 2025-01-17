@@ -13,16 +13,16 @@ You can also open the Command Palette (<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>P</
 1. Install the extension
 2. Open a Nix file
 3. Syntax highlighting should work out of the box.
-4. Formatting the code should work if `nixpkgs-fmt` is installed and available on the PATH.
+4. Formatting the code should work if [`nixfmt`](https://github.com/NixOS/nixfmt) (or the archived [`nixpkgs-fmt`](https://github.com/nix-community/nixpkgs-fmt)) is installed and available on the `$PATH`.
 5. Full language support is available if you have a language server installed and enabled. See [LSP Plugin Support](#lsp-plugin-support) for more information.
 
 ## Features 🎯
 
 - [Syntax Highlighting](./images/docs/nix-syntax-highlight.png) support. Also Nix code blocks inside `markdown` files also [highlighted](./images/docs/md-embed-nix.png).
-- The basic language integration is supported out of the box using `nixpkgs-fmt` and `nix instantiate`. Syntax Errors are [linted](./images/docs/linting.png) using `nix-instantiate` while Auto-Formatting is handled by `nixpkgs-fmt` by default. Custom formatter can be set by [setting `nix.formatterPath`](#custom-formatter).
+- The basic language integration is supported out of the box using `nixfmt` and `nix-instantiate`. Syntax Errors are [linted](./images/docs/linting.png) using `nix-instantiate` while Auto-Formatting is handled by `nixfmt` by default. Custom formatter can be set by [setting `nix.formatterPath`](#custom-formatter).
 - The full language support is enabled by [configuring an LSP server](#lsp-plugin-support).
 - Snippets are provided for conditional expressions, `let` expressions, `with` expressions, and `rec`ursive sets.
-- Path completion support using https://github.com/ChristianKohler/PathIntellisense extension
+- Path completion support using [PathIntellisense](https://github.com/ChristianKohler/PathIntellisense) extension
 
 ## Settings ⚙️
 
@@ -32,7 +32,7 @@ It can be changed by setting `nix.formatterPath` to any command which can accept
 
 ```json5
 { 
-    "nix.formatterPath": "nixpkgs-fmt" // or "nixfmt" or ["treefmt", "--stdin", "{file}"]
+    "nix.formatterPath": "nixfmt" // or "nixpkgs-fmt" or ["treefmt", "--stdin", "{file}"]
     // or using flakes with `formatter = pkgs.alejandra;`
     // "nix.formatterPath": ["nix", "fmt", "--", "--"]
 }
@@ -50,10 +50,12 @@ Full language support can be enabled by using a language server. Generally, any 
   "nix.serverSettings": { ... }
 }
 ```
-Some examples of advanced settings are provided below for [nil](https://github.com/oxalica/nil) and [nixd](https://github.com/nix-community/nixd).
+Some examples of advanced settings are provided below for [`nil`](https://github.com/oxalica/nil) and [`nixd`](https://github.com/nix-community/nixd).
 
-* [Nil Advanced Settings](./docs/snippets/advanced-nil-settings.jsonc)
-* [Nixd Advanced Settings](./docs/snippets/advanced-nixd-settings.jsonc)
+* [`nil` Advanced Settings](./docs/snippets/advanced-nil-settings.jsonc)
+  * See the [settings documentation](https://github.com/oxalica/nil/blob/main/docs/configuration.md)
+* [`nixd` Advanced Settings](./docs/snippets/advanced-nixd-settings.jsonc)
+  * See the [settings documentation](https://github.com/nix-community/nixd/blob/main/nixd/docs/configuration.md)
 
 ## Contributing 💪
 
