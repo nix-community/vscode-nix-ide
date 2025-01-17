@@ -1,3 +1,5 @@
+# SYNTAX TEST "source.nix" "sample testcase"
+
 let
   a = abort "will never happen";
   b = "hello";

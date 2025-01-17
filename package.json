@@ -137,6 +137,9 @@
     "lefthook": "^1.10.7",
     "ovsx": "^0.10.1",
     "standard-version": "^9.5.0",
+    "@vscode/test-cli": "*",
+    "@vscode/test-electron": "*",
+    "vscode-tmgrammar-test": "*",
     "typescript": "^5.7.2"
   },
   "scripts": {
@@ -154,6 +157,8 @@
     "publish:ovsx": "bunx ovsx publish *.vsix --pat '$OVS_PAT'",
     "publish:vsce": "bunx vsce publish",
     "publish": "bun run package && bun run publish:vsce && bun run publish:ovsx",
+    "test:grammar": "bun run build && vscode-tmgrammar-snap 'syntaxes/tests/*.nix'",
+    "test": "vscode-test",
     "lint": "bun x biome check --write src"
   },
   "dependencies": {

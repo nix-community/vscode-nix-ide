@@ -1,0 +1,64 @@
+># SYNTAX TEST "source.nix" "sample testcase"
+#^ source.nix comment.line.number-sign.nix
+# ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.nix comment.line.number-sign.nix
+>
+>let
+#^^^ source.nix keyword.other.nix
+>  a = abort "will never happen";
+#^^ source.nix
+#  ^ source.nix entity.other.attribute-name.multipart.nix
+#   ^ source.nix
+#    ^ source.nix keyword.operator.bind.nix
+#     ^ source.nix
+#      ^^^^^ source.nix support.function.nix
+#           ^ source.nix
+#            ^ source.nix string.quoted.double.nix punctuation.definition.string.double.start.nix
+#             ^^^^^^^^^^^^^^^^^ source.nix string.quoted.double.nix
+#                              ^ source.nix string.quoted.double.nix punctuation.definition.string.double.end.nix
+#                               ^ source.nix punctuation.terminator.bind.nix
+>  b = "hello";
+#^^ source.nix
+#  ^ source.nix entity.other.attribute-name.multipart.nix
+#   ^ source.nix
+#    ^ source.nix keyword.operator.bind.nix
+#     ^ source.nix
+#      ^ source.nix string.quoted.double.nix punctuation.definition.string.double.start.nix
+#       ^^^^^ source.nix string.quoted.double.nix
+#            ^ source.nix string.quoted.double.nix punctuation.definition.string.double.end.nix
+#             ^ source.nix punctuation.terminator.bind.nix
+>  c = "world";
+#^^ source.nix
+#  ^ source.nix entity.other.attribute-name.multipart.nix
+#   ^ source.nix
+#    ^ source.nix keyword.operator.bind.nix
+#     ^ source.nix
+#      ^ source.nix string.quoted.double.nix punctuation.definition.string.double.start.nix
+#       ^^^^^ source.nix string.quoted.double.nix
+#            ^ source.nix string.quoted.double.nix punctuation.definition.string.double.end.nix
+#             ^ source.nix punctuation.terminator.bind.nix
+>  path = ./relative/path
+#^^ source.nix
+#  ^^^^ source.nix entity.other.attribute-name.multipart.nix
+#      ^ source.nix
+#       ^ source.nix keyword.operator.bind.nix
+#        ^ source.nix
+#         ^^^^^^^^^^^^^^^ source.nix string.unquoted.path.nix
+>  sp_path = ./relative/${path}
+#^^ source.nix
+#  ^^^^^^^ source.nix variable.parameter.name.nix
+#         ^ source.nix
+#          ^ source.nix invalid.illegal
+#           ^ source.nix
+#            ^^^^^^^^^^ source.nix string.unquoted.path.nix
+#                      ^ source.nix keyword.operator.nix
+#                       ^^ source.nix meta.embedded punctuation.section.embedded.begin.nix
+#                         ^^^^ source.nix meta.embedded variable.parameter.name.nix
+#                             ^ source.nix meta.embedded punctuation.section.embedded.end.nix
+>in b + c
+#^^ source.nix invalid.illegal.reserved.nix
+#  ^ source.nix
+#   ^ source.nix variable.parameter.name.nix
+#    ^ source.nix
+#     ^ source.nix keyword.operator.nix
+#      ^ source.nix
+#       ^ source.nix variable.parameter.name.nix
