@@ -16,14 +16,14 @@ All notable changes to this project will be documented in this file. See [standa
 
 * default to nixfmt formatter ([#441](https://github.com/nix-community/vscode-nix-ide/issues/441)) ([582c364](https://github.com/nix-community/vscode-nix-ide/commit/582c3642df2188c3096ac646c575e386ae04923e))
 
-### [0.3.7](https://github.com/nix-community/vscode-nix-ide/compare/v0.3.6...v0.3.7) (2025-01-16)
+## [0.3.7](https://github.com/nix-community/vscode-nix-ide/compare/v0.3.6...v0.3.7) (2025-01-16)
 
 
 ### Bug Fixes
 
 * biome linter fixes ([e5c15ed](https://github.com/nix-community/vscode-nix-ide/commit/e5c15edad557f08f69178d466a42201c753d4e6d))
 
-### [0.3.6](https://github.com/nix-community/vscode-nix-ide/compare/v0.3.5...v0.3.6) (2024-09-20)
+## [0.3.6](https://github.com/nix-community/vscode-nix-ide/compare/v0.3.5...v0.3.6) (2024-09-20)
 
 
 ### Features
