@@ -158,7 +158,7 @@
     "publish:vsce": "bunx vsce publish",
     "publish": "bun run package && bun run publish:vsce && bun run publish:ovsx",
     "test:grammar": "bun run build && vscode-tmgrammar-snap 'syntaxes/tests/*.nix'",
-    "test": "vscode-test",
+    "test": "bun run test:grammar && vscode-test",
     "lint": "bun x biome check --write src"
   },
   "dependencies": {
