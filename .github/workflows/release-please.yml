@@ -19,3 +19,4 @@ jobs:
           # for more options
           release-type: node
           include-v-in-tag: true
+          bump-patch-for-minor-pre-major: true,
