@@ -126,7 +126,6 @@
   "devDependencies": {
     "@commitlint/cli": "^19.6.1",
     "@commitlint/config-conventional": "^19.6.0",
-    "@types/bun": "latest",
     "@types/command-exists": "^1.2.3",
     "@types/node": "^22.10.7",
     "@types/vscode": "^1.96.0",
