@@ -24,8 +24,10 @@ jobs:
       id: check_commit
       run: |
         commit_message=$(git log -1 --pretty=%B)
-        if [[ "$commit_message" == "chore(release):"* ]]; then
+        if [[ "$commit_message" =~ ^chore\(release\):\ ([0-9]+\.[0-9]+\.[0-9]+)$ ]]; then
+          version="${BASH_REMATCH[1]}"
           echo "is_release=true" >> $GITHUB_OUTPUT
+          echo "version=$version" >> $GITHUB_OUTPUT
         else
           echo "is_release=false" >> $GITHUB_OUTPUT
         fi
@@ -37,8 +39,7 @@ jobs:
       if: steps.check_commit.outputs.is_release == 'false'
       uses: peter-evans/create-pull-request@v6
       with:
-        commit-message: "chore(release): bump version"
-        title: "Bump Version"
+        title: "Pending Release"
         body: "Automated version bump using standard-version"
         branch: version-bump
         delete-branch: true
@@ -46,5 +47,5 @@ jobs:
     - name: tag current package version and push
       if: steps.check_commit.outputs.is_release == 'true'
       run: |
-        git tag v$(npm pkg get version | tr -d '"')
+        git tag v${{ steps.check_commit.outputs.version }}
         git push --tags
