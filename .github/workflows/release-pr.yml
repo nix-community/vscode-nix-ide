@@ -47,5 +47,16 @@ jobs:
     - name: tag current package version and push
       if: steps.check_commit.outputs.is_release == 'true'
       run: |
-        git tag v${{ steps.check_commit.outputs.version }}
+        git tag -a v${{ steps.check_commit.outputs.version }} -m "v${{ steps.check_commit.outputs.version }}"
         git push --tags
+        bun install --frozen-lockfile
+        bun run package
+        bun run ovsx publish *.vsix --pat ${{ secrets.OPEN_VSX_TOKEN }}
+        bun run vsce publish -p ${{ secrets.VS_MARKETPLACE_TOKEN }}
+    - name: Release
+      if: steps.check_commit.outputs.is_release == 'true'
+      uses: softprops/action-gh-release@v2
+      with:
+        files: nix-ide*.vsix
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
