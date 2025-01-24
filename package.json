@@ -130,7 +130,6 @@
     "@types/node": "^22.10.7",
     "@types/vscode": "^1.96.0",
     "@vscode/vsce": "^3.2.1",
-    "esbuild": "^0.24.2",
     "js-yaml": "^4.1.0",
     "lefthook": "^1.10.8",
     "ovsx": "^0.10.1",
@@ -141,7 +140,7 @@
   },
   "scripts": {
     "prebuild": "js-yaml syntaxes/nix.YAML-tmLanguage > syntaxes/nix.tmLanguage.json && js-yaml syntaxes/injection.yml > syntaxes/injection.json",
-    "build-base": "esbuild ./src/extension.ts --bundle --outfile=dist/extension.js --external:vscode --format=cjs --platform=node",
+    "build-base": "bun build src/extension.ts --outdir=dist --external=vscode --target=node",
     "build": "bun run build-base --sourcemap --minify",
     "watch": "bun run build-base --sourcemap --watch",
     "postinstall": "lefthook install",
