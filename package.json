@@ -48,11 +48,11 @@
       {
         "language": "nix",
         "scopeName": "source.nix",
-        "path": "./syntaxes/nix.tmLanguage.json"
+        "path": "./dist/nix.tmLanguage.json"
       },
       {
         "scopeName": "markdown.nix.codeblock",
-        "path": "./syntaxes/injection.json",
+        "path": "./dist/injection.json",
         "injectTo": [
           "text.html.markdown"
         ],
@@ -139,14 +139,14 @@
     "typescript": "^5.7.3"
   },
   "scripts": {
-    "prebuild": "js-yaml syntaxes/nix.YAML-tmLanguage > syntaxes/nix.tmLanguage.json && js-yaml syntaxes/injection.yml > syntaxes/injection.json",
+    "prebuild": "js-yaml syntaxes/nix.YAML-tmLanguage > dist/nix.tmLanguage.json && js-yaml syntaxes/injection.yml > dist/injection.json",
     "build-base": "bun build src/extension.ts --outdir=dist --external=vscode --target=node",
     "build": "bun run build-base --sourcemap --minify",
     "watch": "bun run build-base --sourcemap --watch",
     "postinstall": "lefthook install",
     "clean": "rm -rd dist",
     "prepackage": "rm -f *.vsix",
-    "package": "bun run build && bunx vsce package",
+    "package": "bun run build && bun run vsce package --no-dependencies",
     "publish:ovsx": "bunx ovsx publish *.vsix --pat '$OVS_PAT'",
     "publish:vsce": "bunx vsce publish",
     "publish": "bun run package && bun run publish:vsce && bun run publish:ovsx",

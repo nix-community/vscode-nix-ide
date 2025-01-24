@@ -6,7 +6,6 @@
 !.vscodeignore
 !dist/*
 !images/*
-!syntaxes/*
 !language-configuration.json
 !LICENSE
 !snippets.json
