@@ -1,22 +1,33 @@
-name: VSCode CI
+name: Release PR
 
 on:
   push:
-    branches: [main]
+    branches:
+      - main
 
 jobs:
-   create_release_pr:
+  version-bump:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+
     steps:
-      - uses: actions/checkout@v4
-      - uses: oven-sh/setup-bun@v2
-      - run: bun install
-      - run: bunx standard-version
-      - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v4
-        with:
-          commit-message: "chore(release): update version and changelog"
-          branch: release-branch
-          title: "Release PR"
-          body: "This PR contains the changes from running bunx standard-version."
-          labels: release
+    - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+    - name: Configure Git
+      run: |
+        git config --global user.name 'GitHub Actions'
+        git config --global user.email 'actions@github.com'
+    - uses: oven-sh/setup-bun@v2
+    - run: bunx standard-version
+    - name: Create Pull Request
+      uses: peter-evans/create-pull-request@v6
+      with:
+        commit-message: "chore(release): bump version"
+        title: "Bump Version"
+        body: "Automated version bump using standard-version"
+        branch: version-bump
+        delete-branch: true
+        base: main
