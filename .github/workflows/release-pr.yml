@@ -47,7 +47,7 @@ jobs:
     - name: tag current package version and push
       if: steps.check_commit.outputs.is_release == 'true'
       run: |
-        git tag -a v${{ steps.check_commit.outputs.version }} -m "v${{ steps.check_commit.outputs.version }}"
+        git tag v${{ steps.check_commit.outputs.version }}
         git push --tags
         bun install --frozen-lockfile
         bun run package
