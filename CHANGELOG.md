@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.4.7](https://github.com/nix-community/vscode-nix-ide/compare/v0.4.6...v0.4.7) (2025-01-24)
+
+
+### Bug Fixes
+
+* automated release by PR ([d9d9070](https://github.com/nix-community/vscode-nix-ide/commit/d9d90704701145f350d6f6ed747d95f8dc33d301))
+
 ### [0.4.6](https://github.com/nix-community/vscode-nix-ide/compare/v0.4.5...v0.4.6) (2025-01-24)
 
 ### [0.4.5](https://github.com/nix-community/vscode-nix-ide/compare/v0.4.3...v0.4.5) (2025-01-24)
