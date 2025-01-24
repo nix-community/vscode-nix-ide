@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.4.4](https://github.com/nix-community/vscode-nix-ide/compare/v0.4.2...v0.4.4) (2025-01-24)
+
+
+### Features
+
+* do not package syntax *yml files ([ce091fb](https://github.com/nix-community/vscode-nix-ide/commit/ce091fbab288407dfa678dbba8f1b84ce2bfda38))
+* replace esbuild with `bun build` ([20c7eb3](https://github.com/nix-community/vscode-nix-ide/commit/20c7eb3174a0d151abee22d9252dbd8ea4d65a54))
+* use bun v1.2 text lockfiles ([da6fd4d](https://github.com/nix-community/vscode-nix-ide/commit/da6fd4dfb64b766bca9aaff70bf3cd9a2fb6a5b2))
+
 ### [0.4.3](https://github.com/nix-community/vscode-nix-ide/compare/v0.4.2...v0.4.3) (2025-01-24)
 
 
