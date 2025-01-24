@@ -1,0 +1,25 @@
+name: VSCode CI
+
+on:
+  push:
+    branches: [master, main]
+    tags:
+      - "v*"
+  pull_request:
+    branches: [master, main]
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+      - run: bun install
+      - run: bun run lint
+      - run: bun run build
+      - run: bun run pretest

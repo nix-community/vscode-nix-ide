@@ -1,0 +1,22 @@
+name: VSCode CI
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+   create_release_pr:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+      - run: bun install
+      - run: bunx standard-version
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v4
+        with:
+          commit-message: "chore(release): update version and changelog"
+          branch: release-branch
+          title: "Release PR"
+          body: "This PR contains the changes from running bunx standard-version."
+          labels: release
