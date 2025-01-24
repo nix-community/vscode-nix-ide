@@ -46,5 +46,5 @@ jobs:
     - name: tag current package version and push
       if: steps.check_commit.outputs.is_release == 'true'
       run: |
-        git tag v$(npm pkg get version)
+        git tag v$(npm pkg get version | tr -d '"')
         git push --tags
