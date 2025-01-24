@@ -20,9 +20,21 @@ jobs:
       run: |
         git config --global user.name 'GitHub Actions'
         git config --global user.email 'actions@github.com'
+    - name: Check Commit Message
+      id: check_commit
+      run: |
+        commit_message=$(git log -1 --pretty=%B)
+        if [[ "$commit_message" == "chore(release):"* ]]; then
+          echo "is_release=true" >> $GITHUB_OUTPUT
+        else
+          echo "is_release=false" >> $GITHUB_OUTPUT
+        fi
     - uses: oven-sh/setup-bun@v2
-    - run: bunx standard-version
+    - name: generate changelog and bump version
+      if: steps.check_commit.outputs.is_release == 'false'
+      run: bunx standard-version
     - name: Create Pull Request
+      if: steps.check_commit.outputs.is_release == 'false'
       uses: peter-evans/create-pull-request@v6
       with:
         commit-message: "chore(release): bump version"
@@ -31,3 +43,8 @@ jobs:
         branch: version-bump
         delete-branch: true
         base: main
+    - name: tag current package version and push
+      if: steps.check_commit.outputs.is_release == 'true'
+      run: |
+        git tag v$(npm pkg get version)
+        git push --tags
