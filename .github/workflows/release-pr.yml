@@ -54,3 +54,5 @@ jobs:
         bun run ovsx publish *.vsix --pat ${{ secrets.OPEN_VSX_TOKEN }}
         bun run vsce publish -p ${{ secrets.VS_MARKETPLACE_TOKEN }}
         gh release create v${{ steps.check_commit.outputs.version }} nix-ide*.vsix --title "v${{ steps.check_commit.outputs.version }}" --notes "Release v${{ steps.check_commit.outputs.version }}"
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
