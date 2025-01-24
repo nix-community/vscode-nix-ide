@@ -139,7 +139,7 @@
     "typescript": "^5.7.3"
   },
   "scripts": {
-    "prebuild": "js-yaml syntaxes/nix.YAML-tmLanguage > dist/nix.tmLanguage.json && js-yaml syntaxes/injection.yml > dist/injection.json",
+    "prebuild": "mkdir -p dist && js-yaml syntaxes/nix.YAML-tmLanguage > dist/nix.tmLanguage.json && js-yaml syntaxes/injection.yml > dist/injection.json",
     "build-base": "bun build src/extension.ts --outdir=dist --external=vscode --target=node",
     "build": "bun run build-base --sourcemap --minify",
     "watch": "bun run build-base --sourcemap --watch",
