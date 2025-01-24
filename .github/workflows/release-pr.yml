@@ -53,10 +53,4 @@ jobs:
         bun run package
         bun run ovsx publish *.vsix --pat ${{ secrets.OPEN_VSX_TOKEN }}
         bun run vsce publish -p ${{ secrets.VS_MARKETPLACE_TOKEN }}
-    - name: Release
-      if: steps.check_commit.outputs.is_release == 'true'
-      uses: softprops/action-gh-release@v2
-      with:
-        files: nix-ide*.vsix
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        gh release create v${{ steps.check_commit.outputs.version }} nix-ide*.vsix --title "v${{ steps.check_commit.outputs.version }}" --notes "Release v${{ steps.check_commit.outputs.version }}"
