@@ -140,7 +140,7 @@
   },
   "scripts": {
     "prebuild": "mkdir -p dist && js-yaml syntaxes/nix.YAML-tmLanguage > dist/nix.tmLanguage.json && js-yaml syntaxes/injection.yml > dist/injection.json",
-    "build-base": "bun build src/extension.ts --outdir=dist --external=vscode --target=node",
+    "build-base": "bun build src/extension.ts --outdir=dist --external=vscode --target=node --format=cjs",
     "build": "bun run build-base --sourcemap --minify",
     "watch": "bun run build-base --sourcemap --watch",
     "postinstall": "lefthook install",
@@ -158,6 +158,5 @@
     "command-exists": "^1.2.9",
     "vscode-languageclient": "^9.0.1",
     "vscode-variables": "^1.0.1"
-  },
-  "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
+  }
 }
