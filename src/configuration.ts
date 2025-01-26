@@ -28,8 +28,19 @@ export class Config {
     );
   }
 
-  get formatterPath(): string | Array<string> {
-    return this.get<string>("formatterPath", "nixfmt");
+  get formatterPath(): Array<string> {
+    const path: Array<string> | string = this.get("formatterPath", "nixfmt");
+    if (typeof path === "string") {
+      switch (path) {
+        case "nix3-fmt":
+          return ["nix", "fmt", "--", "--"];
+        case "treefmt":
+          return ["treefmt", "--stdin", "{file}"];
+        default:
+          return [path];
+      }
+    }
+    return path;
   }
 
   get serverPath(): string {

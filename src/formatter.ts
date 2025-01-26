@@ -9,9 +9,7 @@ import {
 import { config } from "./configuration";
 import { type IProcessResult, runInWorkspace } from "./process-runner";
 
-const FORMATTER: Array<string> = Array.isArray(config.formatterPath)
-  ? config.formatterPath
-  : [config.formatterPath];
+const FORMATTER: Array<string> = config.formatterPath;
 
 /**
  * Get text edits to format a range in a document.

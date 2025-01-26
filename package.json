@@ -71,12 +71,32 @@
       "title": "NixIDE",
       "properties": {
         "nix.formatterPath": {
-          "type": [
-            "string",
-            "array"
-          ],
           "default": "nixfmt",
-          "description": "Location of the nix formatter command."
+          "markdownDescription": "Full path to the nix formatter executable.",
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "nixfmt",
+                "nix3-fmt",
+                "alejandra",
+                "treefmt",
+                "nixpkgs-fmt"
+              ],
+              "markdownEnumDescriptions": [
+                "[nixfmt](https://github.com/NixOS/nixfmt) - A formatter for the Nix language.",
+                "[nix3-fmt](https://nix.dev/manual/nix/2.17/command-ref/new-cli/nix3-fmt) - Use the flake configured formatter",
+                "[alejandra](https://github.com/kamadorueda/alejandra) - The Uncompromising Nix Code Formatter",
+                "[treefmt](https://github.com/numtide/treefmt-nix) - All in one formatter",
+                "[nixpkgs-fmt](https://github.com/nix-community/nixpkgs-fmt) - Deprecated as it is no longer maintained"
+              ]
+            },
+            {
+              "type": "array",
+              "items": "string",
+              "minItems": 1
+            }
+          ]
         },
         "nix.serverPath": {
           "type": "string",
