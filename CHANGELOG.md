@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.4.11](https://github.com/nix-community/vscode-nix-ide/compare/v0.4.10...v0.4.11) (2025-01-26)
+
+
+### Features
+
+* add predefined formatters ([0352918](https://github.com/nix-community/vscode-nix-ide/commit/0352918d9a3dc14af18fd656e11e970c8efd0bf0))
+
+
+### Bug Fixes
+
+* build as cjs module ([1952078](https://github.com/nix-community/vscode-nix-ide/commit/1952078345ab0e2fedbde694a81c6e194d377545)), closes [#453](https://github.com/nix-community/vscode-nix-ide/issues/453)
+
 ### [0.4.10](https://github.com/nix-community/vscode-nix-ide/compare/v0.4.9...v0.4.10) (2025-01-24)
 
 ### [0.4.9](https://github.com/nix-community/vscode-nix-ide/compare/v0.4.8...v0.4.9) (2025-01-24)
