@@ -7,7 +7,7 @@
 			"group": "build",
 			"label": "npmWatch",
 			"isBackground": true,
-			"detail": "yarn build --watch",
+			"detail": "bun run watch",
 			"problemMatcher": "$esbuild-watch"
 		}
 	]
