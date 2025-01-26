@@ -10,11 +10,10 @@ You can also open the Command Palette (<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>P</
 
 ## Quickstart 🚀
 
-1. Install the extension
-2. Open a Nix file
-3. Syntax highlighting should work out of the box.
-4. Formatting the code should work if [`nixfmt`](https://github.com/NixOS/nixfmt) (or the archived [`nixpkgs-fmt`](https://github.com/nix-community/nixpkgs-fmt)) is installed and available on the `$PATH`.
-5. Full language support is available if you have a language server installed and enabled. See [LSP Plugin Support](#lsp-plugin-support) for more information.
+1. Install the extension, and Open a Nix file
+1. Syntax highlighting should work out of the box.
+1. Formatting the code should work if [`nixfmt`](https://github.com/NixOS/nixfmt) (or the archived [`nixpkgs-fmt`](https://github.com/nix-community/nixpkgs-fmt)) is installed and available on the `$PATH`.
+1. Full language support is available if you have a language server installed and enabled. See [LSP Plugin Support](#lsp-plugin-support) for more information.
 
 ## Features 🎯
 
@@ -31,10 +30,8 @@ You can also open the Command Palette (<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>P</
 It can be changed by setting `nix.formatterPath` to any command which can accept file contents on stdin and return formatted text on stdout.
 
 ```json5
-{ 
-    "nix.formatterPath": "nixfmt" // or "nixpkgs-fmt" or ["treefmt", "--stdin", "{file}"]
-    // or using flakes with `formatter = pkgs.alejandra;`
-    // "nix.formatterPath": ["nix", "fmt", "--", "--"]
+{
+    "nix.formatterPath": "nixfmt" // or "nixpkgs-fmt" or "alejandra" or "nix3-fmt" or pass full list of args such as  or `["treefmt", "--stdin", "{file}"]`
 }
 ```
 
@@ -63,7 +60,7 @@ We welcome contributions to this extension. Kindly start with any of open issues
 
 See [CONTRIBUTING.md](./CONTRIBUTING.md) for more information.
 
-## Credits 
+## Credits
 
 Special thanks to:
 
