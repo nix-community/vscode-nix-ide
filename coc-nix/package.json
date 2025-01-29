@@ -1,0 +1,168 @@
+{
+  "name": "coc-nix",
+  "displayName": "Nix IDE",
+  "description": "Nix language support - syntax highlighting, formatting, and error reporting.",
+  "version": "0.3.1",
+  "publisher": "jnoortheen",
+  "icon": "images/icon.png",
+  "license": "MIT",
+  "engines": {
+    "coc": "^0.0.82"
+  },
+  "categories": [
+    "Programming Languages",
+    "Formatters",
+    "Snippets"
+  ],
+  "keywords": [
+    "coc.nvim",
+    "nix",
+    "IDE"
+  ],
+  "bugs": {
+    "url": "https://github.com/nix-community/vscode-nix-ide/issues"
+  },
+  "homepage": "https://github.com/nix-community/vscode-nix-ide",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nix-community/vscode-nix-ide"
+  },
+  "main": "dist/extension.js",
+  "activationEvents": [
+    "onLanguage:nix"
+  ],
+  "contributes": {
+    "languages": [
+      {
+        "id": "nix",
+        "aliases": [
+          "Nix",
+          "nix"
+        ],
+        "extensions": [
+          ".nix"
+        ],
+        "icon": {
+          "dark": "images/icon.png",
+          "light": "images/icon.png"
+        },
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "nix",
+        "scopeName": "source.nix",
+        "path": "./syntaxes/nix.tmLanguage.json"
+      },
+      {
+        "scopeName": "markdown.nix.codeblock",
+        "path": "./syntaxes/injection.json",
+        "injectTo": [
+          "text.html.markdown"
+        ],
+        "embeddedLanguages": {
+          "meta.embedded.block.nix": "nix"
+        }
+      }
+    ],
+    "snippets": [
+      {
+        "language": "nix",
+        "path": "./snippets.json"
+      }
+    ],
+    "configuration": {
+      "title": "NixIDE",
+      "properties": {
+        "nix.formatterPath": {
+          "type": [
+            "string",
+            "array"
+          ],
+          "default": "nixpkgs-fmt",
+          "description": "Location of the nix formatter command."
+        },
+        "nix.serverPath": {
+          "type": "string",
+          "default": "nil",
+          "description": "Location of the nix language server command."
+        },
+        "nix.enableLanguageServer": {
+          "type": "boolean",
+          "default": false,
+          "description": "Use LSP instead of nix-instantiate and nixpkgs-fmt."
+        },
+        "nix.serverSettings": {
+          "type": "object",
+          "default": {},
+          "description": "Settings passed to the language server on configuration requests."
+        },
+        "nix.hiddenLanguageServerErrors": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": [],
+          "description": "Error notifications from the language server for these request types will be suppressed.",
+          "examples": [
+            [
+              "textDocument/definition",
+              "textDocument/documentSymbol"
+            ]
+          ]
+        }
+      }
+    },
+    "configurationDefaults": {
+      "[nix]": {
+        "editor.insertSpaces": true,
+        "editor.tabSize": 2
+      }
+    },
+    "commands": [
+      {
+        "title": "Restart Language Server",
+        "category": "Nix IDE",
+        "command": "nix-ide.restartLanguageServer"
+      }
+    ]
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^19.6.1",
+    "@commitlint/config-conventional": "^19.6.0",
+    "@types/bun": "latest",
+    "@types/command-exists": "^1.2.3",
+    "@types/node": "^22.10.3",
+    "coc.nvim": "^0.0.83-next.18",
+    "esbuild": "^0.24.2",
+    "globals": "^15.14.0",
+    "husky": "^9.1.7",
+    "js-yaml": "^4.1.0",
+    "ovsx": "^0.10.1",
+    "standard-version": "^9.5.0",
+    "typescript": "^5.7.2"
+  },
+  "scripts": {
+    "patch": "scripts/patch.sh ../src/*.ts",
+    "prebuild": "bun run patch",
+    "build-base": "esbuild ./src/extension.ts --bundle --outfile=dist/extension.js --external:coc.nvim --format=cjs --platform=node",
+    "build": "bun run build-base --sourcemap --minify",
+    "watch": "bun run build-base --sourcemap --watch",
+    "postinstall": "husky",
+    "clean": "rm -rd dist",
+    "prerelease": "bun install && bun run lint && bun run clean && bun run build",
+    "release": "standard-version",
+    "postrelease": "git push --follow-tags",
+    "package": "bun run build && bunx vsce package",
+    "publish:ovsx": "bunx ovsx publish *.vsix --pat '$OVS_PAT'",
+    "publish:vsce": "bunx vsce publish",
+    "publish": "bun run package && bun run publish:vsce && bun run publish:ovsx",
+    "lint": "bun x biome check --write src"
+  },
+  "dependencies": {
+    "command-exists": "^1.2.9",
+    "coc-variables": "^0.0.1"
+  },
+  "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
+}

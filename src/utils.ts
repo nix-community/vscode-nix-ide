@@ -1,5 +1,10 @@
+//# #if HAVE_VSCODE
 import type { LSPObject } from "vscode-languageclient";
 import variables from "vscode-variables";
+//# #elif HAVE_COC_NVIM
+//# import type { LSPObject } from "coc.nvim";
+//# import variables from "coc-variables";
+//# #endif
 
 /**
  * transform config value by vscode variables

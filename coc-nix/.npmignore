@@ -1,0 +1,8 @@
+# Ignore everything
+/*
+
+# Whitelist what you need
+!dist/
+!images/*
+!snippets.json
+*.map
