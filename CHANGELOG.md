@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.4.12](https://github.com/nix-community/vscode-nix-ide/compare/v0.4.11...v0.4.12) (2025-02-02)
+
+
+### Features
+
+* add pipe operators ([#458](https://github.com/nix-community/vscode-nix-ide/issues/458)) ([ac1ed65](https://github.com/nix-community/vscode-nix-ide/commit/ac1ed65aa92655748200cd62bd54e5ca051781bc))
+
 ### [0.4.11](https://github.com/nix-community/vscode-nix-ide/compare/v0.4.10...v0.4.11) (2025-01-26)
 
 
