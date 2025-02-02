@@ -37,7 +37,7 @@ jobs:
       run: bunx standard-version
     - name: Create Pull Request
       if: steps.check_commit.outputs.is_release == 'false'
-      uses: peter-evans/create-pull-request@v6
+      uses: peter-evans/create-pull-request@v7
       with:
         title: "Pending Release"
         body: "Automated version bump using standard-version"
