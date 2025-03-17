@@ -117,7 +117,11 @@ export async function activate(context: ExtensionContext): Promise<void> {
             if (!item?.section) {
               continue;
             }
-            res.push(settings[item.section as keyof typeof settings] ?? null);
+            const sectionSettings = settings[item.section as keyof typeof settings]
+            if (!sectionSettings) {
+              client.warn(`failed to find "${item.section}" in "nix.serverSettings"`)
+            }
+            res.push(sectionSettings ?? null);
           }
           // eslint-disable-next-line @typescript-eslint/no-unsafe-return
           return res;
