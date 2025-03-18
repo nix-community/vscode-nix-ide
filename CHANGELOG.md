@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.4.13](https://github.com/nix-community/vscode-nix-ide/compare/v0.4.12...v0.4.13) (2025-03-18)
+
+
+### Bug Fixes
+
+* issue warning on missing `nil`/`nixd` ([#465](https://github.com/nix-community/vscode-nix-ide/issues/465)) ([2cb1d94](https://github.com/nix-community/vscode-nix-ide/commit/2cb1d94f6738efced607e772e0ea5c77b9fc7701))
+
 ### [0.4.12](https://github.com/nix-community/vscode-nix-ide/compare/v0.4.11...v0.4.12) (2025-02-02)
 
 
