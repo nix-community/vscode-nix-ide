@@ -25,37 +25,59 @@ You can also open the Command Palette (<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>P</
 
 ## Settings ⚙️
 
+### LSP Plugin Support
+
+Full language support can be enabled by using a language server. Generally, any Nix [LSP](https://microsoft.github.io/language-server-protocol/) implementation should work. Some examples are given below for [`nil`](https://github.com/oxalica/nil) and [`nixd`](https://github.com/nix-community/nixd).
+
+```json5
+{
+  "nix.enableLanguageServer": true,
+  "nix.serverPath": "nil", // or "nixd"
+  // Pass settings to the respective language server via the ``nix.serverSettings.{lsp}`` option.
+  "nix.serverSettings": {
+    // check https://github.com/oxalica/nil/blob/main/docs/configuration.md for all options available
+    "nil": {
+      // "diagnostics": {
+      //  "ignored": ["unused_binding", "unused_with"],
+      // },
+      "formatting": {
+        "command": ["nixfmt"],
+      },
+    },
+    // check all nixd options at https://github.com/nix-community/nixd/blob/main/nixd/docs/configuration.md
+    "nixd": {
+      "formatting": {
+        "command": ["nixfmt"],
+      },
+      "options": {
+        // By default, this entry will be read from `import <nixpkgs> { }`.
+        // You can write arbitrary Nix expressions here, to produce valid "options" declaration result.
+        // Tip: for flake-based configuration, utilize `builtins.getFlake`
+        "nixos": {
+          "expr": "(builtins.getFlake \"/absolute/path/to/flake\").nixosConfigurations.<name>.options",
+        },
+        "home-manager": {
+          "expr": "(builtins.getFlake \"/absolute/path/to/flake\").homeConfigurations.<name>.options",
+        },
+        // Tip: use ${workspaceFolder} variable to define path
+        "nix-darwin": {
+          "expr": "(builtins.getFlake \"${workspaceFolder}/path/to/flake\").darwinConfigurations.<name>.options",
+        },
+      },
+    }
+  }
+}
+```
+
 ### Custom Formatter
 
-It can be changed by setting `nix.formatterPath` to any command which can accept file contents on stdin and return formatted text on stdout.
+It can be changed by setting `nix.formatterPath` to any command which can accept file contents on stdin and return formatted text on stdout. If you are using an LSP server, then this configuration is not used.
 
 ```json5
 {
     "nix.formatterPath": "nixfmt" // or "nixpkgs-fmt" or "alejandra" or "nix3-fmt" or pass full list of args such as  or `["treefmt", "--stdin", "{file}"]`
 }
 ```
-
-### LSP Plugin Support
-
-Full language support can be enabled by using a language server. Generally, any Nix [LSP](https://microsoft.github.io/language-server-protocol/) implementation should work.
-
-```json5
-{
-  "nix.enableLanguageServer": true,
-  "nix.serverPath": "nil", // or "nixd"
-  // Pass settings to the language server via the ``serverSettings.{lsp}`` option.
-  "nix.serverSettings": {
-    "nil": {...},
-    "nixd": {...},
- }
-}
-```
-Some examples of advanced settings are provided below for [`nil`](https://github.com/oxalica/nil) and [`nixd`](https://github.com/nix-community/nixd).
-
-* [`nil` Advanced Settings](./docs/snippets/advanced-nil-settings.jsonc)
-  * See the [settings documentation](https://github.com/oxalica/nil/blob/main/docs/configuration.md)
-* [`nixd` Advanced Settings](./docs/snippets/advanced-nixd-settings.jsonc)
-  * See the [settings documentation](https://github.com/nix-community/nixd/blob/main/nixd/docs/configuration.md)
 
 ## Contributing 💪
 
