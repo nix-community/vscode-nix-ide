@@ -2,15 +2,9 @@
 
 Adds [Nix](https://nixos.org/) language support for [Visual Studio Code](https://code.visualstudio.com/).
 
-## Installation 🔨
-
-Available on both the [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=jnoortheen.nix-ide) and the [Open VSX Registry](https://open-vsx.org/extension/jnoortheen/nix-ide).
-
-You can also open the Command Palette (<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd> on Windows/Linux or <kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd> on macOS) and enter `ext install jnoortheen.nix-ide` to install the extension, or download it from the [latest release](https://github.com/nix-community/vscode-nix-ide/releases/latest).
-
 ## Quickstart 🚀
 
-1. Install the extension, and Open a Nix file
+1. [Install](./install.md) the extension, and Open a Nix file
 1. Syntax highlighting should work out of the box.
 1. Formatting the code should work if [`nixfmt`](https://github.com/NixOS/nixfmt) (or [`nixpkgs-fmt`](https://github.com/nix-community/nixpkgs-fmt)) is installed and available on the `$PATH`.
 1. Full language support is available if you have a language server installed and enabled. See [LSP Plugin Support](#lsp-plugin-support) for more information.
