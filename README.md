@@ -43,8 +43,11 @@ Full language support can be enabled by using a language server. Generally, any 
 {
   "nix.enableLanguageServer": true,
   "nix.serverPath": "nil", // or "nixd"
-  // Pass settings to the language server via the `serverSettings` option.
-  "nix.serverSettings": { ... }
+  // Pass settings to the language server via the ``serverSettings.{lsp}`` option.
+  "nix.serverSettings": {
+    "nil": {...},
+    "nixd": {...},
+ }
 }
 ```
 Some examples of advanced settings are provided below for [`nil`](https://github.com/oxalica/nil) and [`nixd`](https://github.com/nix-community/nixd).
