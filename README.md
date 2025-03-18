@@ -12,7 +12,7 @@ You can also open the Command Palette (<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>P</
 
 1. Install the extension, and Open a Nix file
 1. Syntax highlighting should work out of the box.
-1. Formatting the code should work if [`nixfmt`](https://github.com/NixOS/nixfmt) (or the archived [`nixpkgs-fmt`](https://github.com/nix-community/nixpkgs-fmt)) is installed and available on the `$PATH`.
+1. Formatting the code should work if [`nixfmt`](https://github.com/NixOS/nixfmt) (or [`nixpkgs-fmt`](https://github.com/nix-community/nixpkgs-fmt)) is installed and available on the `$PATH`.
 1. Full language support is available if you have a language server installed and enabled. See [LSP Plugin Support](#lsp-plugin-support) for more information.
 
 ## Features 🎯
