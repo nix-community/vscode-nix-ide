@@ -27,13 +27,13 @@ You can also open the Command Palette (<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>P</
 
 ### LSP Plugin Support
 
-Full language support can be enabled by using a language server. Generally, any Nix [LSP](https://microsoft.github.io/language-server-protocol/) implementation should work. Some examples are given below for [`nil`](https://github.com/oxalica/nil) and [`nixd`](https://github.com/nix-community/nixd).
+Full language support can be enabled by using a language server. Generally, any Nix [LSP](https://microsoft.github.io/language-server-protocol/) implementation should work. Some examples are given below for [`nil`](https://github.com/oxalica/nil?tab=readme-ov-file#vscodevscodium-with-nix-ide) and [`nixd`](https://github.com/nix-community/nixd).
 
 ```json5
 {
   "nix.enableLanguageServer": true,
   "nix.serverPath": "nil", // or "nixd"
-  // Pass settings to the respective language server via the ``nix.serverSettings.{lsp}`` option.
+  // LSP config can be passed via the ``nix.serverSettings.{lsp}`` as shown below.
   "nix.serverSettings": {
     // check https://github.com/oxalica/nil/blob/main/docs/configuration.md for all options available
     "nil": {
@@ -44,7 +44,7 @@ Full language support can be enabled by using a language server. Generally, any 
         "command": ["nixfmt"],
       },
     },
-    // check all nixd options at https://github.com/nix-community/nixd/blob/main/nixd/docs/configuration.md
+    // check https://github.com/nix-community/nixd/blob/main/nixd/docs/configuration.md for all nixd config
     "nixd": {
       "formatting": {
         "command": ["nixfmt"],
