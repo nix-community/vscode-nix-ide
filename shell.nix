@@ -6,6 +6,6 @@ pkgs.mkShell {
     bun
   ];
   shellHook = ''
-    yarn install
+    bun install
   '';
 }
