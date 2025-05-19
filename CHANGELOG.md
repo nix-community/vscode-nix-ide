@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.4.17](https://github.com/nix-community/vscode-nix-ide/compare/v0.4.16...v0.4.17) (2025-05-19)
+
+
+### Features
+
+* auto-indent on pressed enter ([#477](https://github.com/nix-community/vscode-nix-ide/issues/477)) ([0c49e90](https://github.com/nix-community/vscode-nix-ide/commit/0c49e907c5537d04adde8e25e94f514adeca20d8))
+
+
+### Bug Fixes
+
+* clarify descriptions of formatter settings ([#478](https://github.com/nix-community/vscode-nix-ide/issues/478)) ([4afa347](https://github.com/nix-community/vscode-nix-ide/commit/4afa3478570787c1e30cc7bea90543173be7fa21))
+* shell.nix with bun instead of yarn (fixes [#473](https://github.com/nix-community/vscode-nix-ide/issues/473)) ([#474](https://github.com/nix-community/vscode-nix-ide/issues/474)) ([62b6e93](https://github.com/nix-community/vscode-nix-ide/commit/62b6e939ddac903a65273d2fc926619a724c86c8))
+
 ### [0.4.16](https://github.com/nix-community/vscode-nix-ide/compare/v0.4.15...v0.4.16) (2025-03-18)
 
 ### [0.4.15](https://github.com/nix-community/vscode-nix-ide/compare/v0.4.14...v0.4.15) (2025-03-18)
