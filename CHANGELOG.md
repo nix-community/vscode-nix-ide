@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.4.18](https://github.com/nix-community/vscode-nix-ide/compare/v0.4.17...v0.4.18) (2025-05-19)
+
+
+### Bug Fixes
+
+* add auto-indent for multi-line strings ([#480](https://github.com/nix-community/vscode-nix-ide/issues/480)) ([1ff3ff0](https://github.com/nix-community/vscode-nix-ide/commit/1ff3ff0a6c769bffba1308731fb81dbe81a39378))
+
 ### [0.4.17](https://github.com/nix-community/vscode-nix-ide/compare/v0.4.16...v0.4.17) (2025-05-19)
 
 
