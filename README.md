@@ -18,7 +18,7 @@ Adds [Nix](https://nixos.org/) language support for [Visual Studio Code](https:/
 
 Full language support can be enabled by using a language server. Generally, any Nix [LSP](https://microsoft.github.io/language-server-protocol/) implementation should work. Some examples are given below for [`nil`](https://github.com/oxalica/nil?tab=readme-ov-file#vscodevscodium-with-nix-ide) and [`nixd`](https://github.com/nix-community/nixd).
 
-```json5
+```json
 {
   "nix.enableLanguageServer": true,
   "nix.serverPath": "nil", // or "nixd"
@@ -64,7 +64,9 @@ It can be changed by setting `nix.formatterPath` to any command which can accept
 
 ```json5
 {
-    "nix.formatterPath": "nixfmt" // or "nixpkgs-fmt" or "alejandra" or "nix3-fmt" or pass full list of args such as  or `["treefmt", "--stdin", "{file}"]`
+    "nix.formatterPath": "nixfmt" // or "nixpkgs-fmt" or "alejandra" or "nix3-fmt"
+    // or pass full list of args like below
+    // "nix.formatterPath": ["treefmt", "--stdin", "{file}"]
 }
 ```
 
