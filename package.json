@@ -72,7 +72,7 @@
       "properties": {
         "nix.formatterPath": {
           "default": "nixfmt",
-          "markdownDescription": "Full path to the nix formatter executable.",
+          "markdownDescription": "Full path to the nix formatter executable. This setting won't take effect if `nix.enableLanguageServer` is enabled; if that's the case, you can instead set formatter via `nix.serverSettings` (see [README](https://github.com/nix-community/vscode-nix-ide#lsp-plugin-support) for examples)",
           "oneOf": [
             {
               "type": "string",
@@ -84,7 +84,7 @@
                 "nixpkgs-fmt"
               ],
               "markdownEnumDescriptions": [
-                "[nixfmt](https://github.com/NixOS/nixfmt) - A formatter for the Nix language.",
+                "[nixfmt](https://github.com/NixOS/nixfmt) - The official formatter for the Nix language",
                 "[nix3-fmt](https://nix.dev/manual/nix/2.17/command-ref/new-cli/nix3-fmt) - Use the flake configured formatter",
                 "[alejandra](https://github.com/kamadorueda/alejandra) - The Uncompromising Nix Code Formatter",
                 "[treefmt](https://github.com/numtide/treefmt-nix) - All in one formatter",
@@ -106,7 +106,7 @@
         "nix.enableLanguageServer": {
           "type": "boolean",
           "default": false,
-          "description": "Use LSP instead of nix-instantiate and nixfmt."
+          "description": "Use LSP instead of nix-instantiate and the formatter configured via `nix.formatterPath`."
         },
         "nix.serverSettings": {
           "type": "object",
