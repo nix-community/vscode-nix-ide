@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.4.19](https://github.com/nix-community/vscode-nix-ide/compare/v0.4.18...v0.4.19) (2025-06-20)
+
+
+### Features
+
+* add semantic token default scopes for nil ([#487](https://github.com/nix-community/vscode-nix-ide/issues/487)) ([48d4934](https://github.com/nix-community/vscode-nix-ide/commit/48d493465c67890a035090ea861548a49f6108dd))
+
 ### [0.4.18](https://github.com/nix-community/vscode-nix-ide/compare/v0.4.17...v0.4.18) (2025-05-19)
 
 
