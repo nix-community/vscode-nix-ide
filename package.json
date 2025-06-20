@@ -141,6 +141,101 @@
         "category": "Nix IDE",
         "command": "nix-ide.restartLanguageServer"
       }
+    ],
+    "semanticTokenTypes": [
+      {
+        "id": "boolean",
+        "description": "Style for boolean literals",
+        "superType": "keywords"
+      },
+      {
+        "id": "constant",
+        "description": "Style for `builtins` constants"
+      },
+      {
+        "id": "path",
+        "description": "Style for paths"
+      },
+      {
+        "id": "punctuations",
+        "description": "Style for punctuations"
+      }
+    ],
+    "semanticTokenModifiers": [
+      {
+        "id": "builtin",
+        "description": "Style for `builtins` variables and functions"
+      },
+      {
+        "id": "conditional",
+        "description": "Style for conditional operators and keywords"
+      },
+      {
+        "id": "delimiter",
+        "description": "Style for delimiter punctuations"
+      },
+      {
+        "id": "escape",
+        "description": "Style for escape sequences in strings"
+      },
+      {
+        "id": "parenthesis",
+        "description": "Style for parenthesis"
+      },
+      {
+        "id": "unresolved",
+        "description": "Style for unresolved variables"
+      },
+      {
+        "id": "withAttribute",
+        "description": "Style for attributes from `with`"
+      }
+    ],
+    "semanticTokenScopes": [
+      {
+        "language": "nix",
+        "scopes": {
+          "boolean": [
+            "constant.language.boolean.nix"
+          ],
+          "constant.builtin": [
+            "support.const.nix"
+          ],
+          "function.builtin": [
+            "support.function.nix"
+          ],
+          "struct.builtin": [
+            "support.const.nix"
+          ],
+          "path": [
+            "constant.other.path.nix"
+          ],
+          "string": [
+            "string.quoted.double.nix"
+          ],
+          "string.escape": [
+            "constant.character.escape.nix"
+          ],
+          "variable": [
+            "variable.other.nix"
+          ],
+          "variable.unresolved": [
+            "invalid.nix"
+          ],
+          "parameter": [
+            "variable.parameter.name.nix"
+          ],
+          "property": [
+            "entity.other.attribute-name.single.nix"
+          ],
+          "*.withAttribute": [
+            "markup.underline"
+          ],
+          "operator": [
+            "entity.name.operator.nix"
+          ]
+        }
+      }
     ]
   },
   "devDependencies": {
