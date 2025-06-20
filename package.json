@@ -2,7 +2,7 @@
   "name": "nix-ide",
   "displayName": "Nix IDE",
   "description": "Nix language support - syntax highlighting, formatting, and error reporting.",
-  "version": "0.4.20",
+  "version": "0.4.21",
   "publisher": "jnoortheen",
   "icon": "images/icon.png",
   "license": "MIT",
