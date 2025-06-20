@@ -60,7 +60,10 @@ Full language support can be enabled by using a language server. Generally, any 
 
 ### Custom Formatter
 
-It can be changed by setting `nix.formatterPath` to any command which can accept file contents on stdin and return formatted text on stdout. If you are using an LSP server, then this configuration is not used.
+It can be changed by setting `nix.formatterPath` to any command which can accept file contents on stdin and return formatted text on stdout. 
+
+> [!IMPORTANT]
+> If you are using the above LSP plugin setting, then this configuration is not used.
 
 ```json5
 {
