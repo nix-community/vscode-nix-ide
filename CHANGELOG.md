@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.4.22](https://github.com/nix-community/vscode-nix-ide/compare/v0.4.21...v0.4.22) (2025-06-29)
+
+
+### Features
+
+* add backticks to surroundingPairs ([#491](https://github.com/nix-community/vscode-nix-ide/issues/491)) ([b8744ab](https://github.com/nix-community/vscode-nix-ide/commit/b8744ab40ca31a2012a9238d063a3d4bacfbde7c))
+
 ### [0.4.21](https://github.com/nix-community/vscode-nix-ide/compare/v0.4.20...v0.4.21) (2025-06-20)
 
 ### [0.4.20](https://github.com/nix-community/vscode-nix-ide/compare/v0.4.19...v0.4.20) (2025-06-20)
