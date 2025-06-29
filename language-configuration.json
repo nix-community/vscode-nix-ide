@@ -99,6 +99,11 @@
             "''",
             "''"
         ],
+        // Backticks don't have any special meaning in nix language, it's just for Markdown in comments.
+        [
+            "`",
+            "`"
+        ],
     ],
     "folding": {
         "markers": {
