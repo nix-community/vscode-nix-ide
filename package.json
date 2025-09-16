@@ -38,8 +38,8 @@
           ".nix"
         ],
         "icon": {
-          "dark": "images/icon.png",
-          "light": "images/icon.png"
+          "dark": "images/icon.svg",
+          "light": "images/icon.svg"
         },
         "configuration": "./language-configuration.json"
       }
