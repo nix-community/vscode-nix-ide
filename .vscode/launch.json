@@ -10,7 +10,7 @@
             "type": "extensionHost",
             "request": "launch",
             "runtimeExecutable": "${execPath}",
-            "preLaunchTask": "npmWatch",
+            "preLaunchTask": "Bun Debug Build",
             "args": [
                 "--extensionDevelopmentPath=${workspaceFolder}"
             ],
