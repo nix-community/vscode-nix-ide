@@ -133,6 +133,9 @@
       "[nix]": {
         "editor.insertSpaces": true,
         "editor.tabSize": 2
+      },
+      "explorer.fileNesting.patterns": {
+        "flake.nix": "flake.lock"
       }
     },
     "commands": [
