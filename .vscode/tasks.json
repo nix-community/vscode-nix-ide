@@ -8,7 +8,22 @@
 			"label": "npmWatch",
 			"isBackground": true,
 			"detail": "bun run watch",
-			"problemMatcher": "$esbuild-watch"
+			// This is needed so vscode doesn't block when this is ran as preLaunchTask.
+			"problemMatcher": {
+				"pattern": [
+					{
+						"regexp": ".",
+						"file": 1,
+						"line": 2,
+						"message": 5,
+					}
+				],
+				"background": {
+					"activeOnStart": true,
+					"beginsPattern": ".",
+					"endsPattern": ".",
+				}
+			}
 		}
 	]
 }
