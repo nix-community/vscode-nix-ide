@@ -2,13 +2,13 @@
 	"version": "2.0.0",
 	"tasks": [
 		{
-			"type": "npm",
-			"script": "watch",
+            "label": "Bun Debug Build",
+            "type": "shell",
+            "command": "bun run build --sourcemap",
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
 			"group": "build",
-			"label": "npmWatch",
-			"isBackground": true,
-			"detail": "bun run watch",
-			"problemMatcher": "$esbuild-watch"
-		}
+        }
 	]
 }
