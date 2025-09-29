@@ -1,0 +1,22 @@
+>[ { targets = [ "}:" ]; } ]
+#^ source.nix punctuation.definition.list.nix
+# ^ source.nix
+#  ^ source.nix punctuation.definition.attrset.nix
+#   ^ source.nix
+#    ^^^^^^^ source.nix entity.other.attribute-name.multipart.nix
+#           ^ source.nix
+#            ^ source.nix keyword.operator.bind.nix
+#             ^ source.nix
+#              ^ source.nix punctuation.definition.list.nix
+#               ^ source.nix
+#                ^ source.nix string.quoted.double.nix punctuation.definition.string.double.start.nix
+#                 ^^ source.nix string.quoted.double.nix
+#                   ^ source.nix string.quoted.double.nix punctuation.definition.string.double.end.nix
+#                    ^ source.nix
+#                     ^ source.nix punctuation.definition.list.nix
+#                      ^ source.nix punctuation.terminator.bind.nix
+#                       ^ source.nix
+#                        ^ source.nix punctuation.definition.attrset.nix
+#                         ^ source.nix
+#                          ^ source.nix punctuation.definition.list.nix
+>

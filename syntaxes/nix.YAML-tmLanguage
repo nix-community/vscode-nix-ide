@@ -262,7 +262,8 @@ repository:
   function-for-sure:
     patterns:
       # x: ... | {stuff}: ... | {a, b ? c, ... | arg @ {...
-      - begin: (?=(\b[a-zA-Z\_][a-zA-Z0-9\_\'\-]*\s*[:@]|\{[^}]*\}\s*:|\{[^#}"'/=]*[,\?]))
+      # Patch: Exclude double and single quotes from function param match to avoid matching }: inside strings
+      - begin: (?=(\b[a-zA-Z\_][a-zA-Z0-9\_\'\-]*\s*[:@]|\{[^}\"']*\}\s*:|\{[^#}"'/=]*[,\?]))
         end: (?=([\])};,]|\b(else|then)\b))
         patterns:
           - include: "#function-definition"
