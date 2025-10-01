@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.5.0](https://github.com/nix-community/vscode-nix-ide/compare/v0.4.24...v0.5.0) (2025-10-01)
+
+
+### ⚠ BREAKING CHANGES
+
+* remove special highlight of comment remarks like todo/fixme
+
+### Bug Fixes
+
+* **syntax:** syntax highlighting issue with colon after interpolation in nested attrset ([aa8a59d](https://github.com/nix-community/vscode-nix-ide/commit/aa8a59d845efa5bbe69713dfddadd345611e632b)), closes [#355](https://github.com/nix-community/vscode-nix-ide/issues/355)
+
+
+* remove special highlight of comment remarks like todo/fixme ([fe0a576](https://github.com/nix-community/vscode-nix-ide/commit/fe0a5763cbe937ffcb00846b053b9928fc919f7e)), closes [#476](https://github.com/nix-community/vscode-nix-ide/issues/476)
+
 ### [0.4.24](https://github.com/nix-community/vscode-nix-ide/compare/v0.4.23...v0.4.24) (2025-09-29)
 
 
