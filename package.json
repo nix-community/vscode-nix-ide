@@ -242,8 +242,8 @@
     ]
   },
   "devDependencies": {
-    "@commitlint/cli": "^19.8.1",
-    "@commitlint/config-conventional": "^19.8.1",
+    "@commitlint/cli": "^20.1.0",
+    "@commitlint/config-conventional": "^20.0.0",
     "@types/command-exists": "^1.2.3",
     "@types/node": "^24.0.3",
     "@types/vscode": "^1.96.0",
