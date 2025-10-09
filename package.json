@@ -136,6 +136,9 @@
       },
       "explorer.fileNesting.patterns": {
         "flake.nix": "flake.lock"
+      },
+      "files.associations": {
+        "flake.lock": "json"
       }
     },
     "commands": [
