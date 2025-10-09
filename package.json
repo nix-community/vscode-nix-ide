@@ -100,7 +100,7 @@
         },
         "nix.serverPath": {
           "type": "string",
-          "default": "nil",
+          "default": "nixd",
           "description": "Location of the nix language server command."
         },
         "nix.enableLanguageServer": {
