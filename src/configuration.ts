@@ -43,8 +43,12 @@ export class Config {
     return path;
   }
 
-  get serverPath(): string {
-    return this.get<string>("serverPath", "nil");
+  get serverPath(): Array<string> {
+    const path: Array<string> | string = this.get("serverPath", "nil");
+    if (typeof path === "string") {
+      return [path];
+    }
+    return path;
   }
 
   get LSPEnabled(): boolean {

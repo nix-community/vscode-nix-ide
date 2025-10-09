@@ -72,7 +72,7 @@ class Client extends LanguageClient {
 let client: Client;
 
 export async function activate(context: ExtensionContext): Promise<void> {
-  if (!commandExistsSync(config.serverPath)) {
+  if (!commandExistsSync(config.serverPath[0])) {
     const selection = await window.showErrorMessage<UriMessageItem>(
       `Command ${config.serverPath} not found in $PATH`,
       {
@@ -88,7 +88,8 @@ export async function activate(context: ExtensionContext): Promise<void> {
     }
   }
   const serverExecutable: Executable = {
-    command: config.serverPath,
+    command: config.serverPath[0],
+    args: config.serverPath.slice(1)
   };
   const serverOptions: ServerOptions = serverExecutable;
 

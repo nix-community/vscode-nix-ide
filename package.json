@@ -99,9 +99,18 @@
           ]
         },
         "nix.serverPath": {
-          "type": "string",
           "default": "nil",
-          "description": "Location of the nix language server command."
+          "description": "Location of the nix language server command.",
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "array",
+              "items": "string",
+              "minItems": 1
+            }
+          ]
         },
         "nix.enableLanguageServer": {
           "type": "boolean",
