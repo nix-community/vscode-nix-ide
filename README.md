@@ -21,7 +21,7 @@ Full language support can be enabled by using a language server. Generally, any 
 ```json5
 {
   "nix.enableLanguageServer": true,
-  "nix.serverPath": "nil", // or "nixd"
+  "nix.serverPath": "nil", // or "nixd", or ["executable", "argument1", ...]
   // LSP config can be passed via the ``nix.serverSettings.{lsp}`` as shown below.
   "nix.serverSettings": {
     // check https://github.com/oxalica/nil/blob/main/docs/configuration.md for all options available
