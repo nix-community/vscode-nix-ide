@@ -1,0 +1,144 @@
+># from https://github.com/nix-community/vscode-nix-ide/issues/508
+#^ source.nix comment.line.number-sign.nix
+# ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.nix comment.line.number-sign.nix
+>{
+#^ source.nix punctuation.definition.attrset-or-function.nix
+>  case_1 = (if 2 > 1 then "a" else "b");
+#^^ source.nix
+#  ^^^^^^ source.nix entity.other.attribute-name.multipart.nix
+#        ^ source.nix
+#         ^ source.nix keyword.operator.bind.nix
+#          ^ source.nix
+#           ^ source.nix punctuation.definition.expression.nix
+#            ^^ source.nix keyword.other.nix
+#              ^ source.nix
+#               ^ source.nix constant.numeric.nix
+#                ^ source.nix
+#                 ^ source.nix keyword.operator.nix
+#                  ^ source.nix
+#                   ^ source.nix constant.numeric.nix
+#                    ^ source.nix
+#                     ^^ source.nix keyword.other.nix
+#                       ^^ source.nix keyword.other.nix
+#                         ^ source.nix
+#                          ^ source.nix string.quoted.double.nix punctuation.definition.string.double.start.nix
+#                           ^ source.nix string.quoted.double.nix
+#                            ^ source.nix string.quoted.double.nix punctuation.definition.string.double.end.nix
+#                             ^ source.nix
+#                              ^^ source.nix keyword.other.nix
+#                                ^^ source.nix keyword.other.nix
+#                                  ^ source.nix
+#                                   ^ source.nix string.quoted.double.nix punctuation.definition.string.double.start.nix
+#                                    ^ source.nix string.quoted.double.nix
+#                                     ^ source.nix string.quoted.double.nix punctuation.definition.string.double.end.nix
+#                                      ^ source.nix punctuation.definition.expression.nix
+#                                       ^ source.nix punctuation.terminator.bind.nix
+>  case_2 = (if 2 < 1 then "a" else "b");
+#^^ source.nix
+#  ^^^^^^ source.nix entity.other.attribute-name.multipart.nix
+#        ^ source.nix
+#         ^ source.nix keyword.operator.bind.nix
+#          ^ source.nix
+#           ^ source.nix punctuation.definition.expression.nix
+#            ^^ source.nix keyword.other.nix
+#              ^ source.nix
+#               ^ source.nix constant.numeric.nix
+#                ^ source.nix
+#                 ^ source.nix keyword.operator.nix
+#                  ^ source.nix
+#                   ^ source.nix constant.numeric.nix
+#                    ^ source.nix
+#                     ^^ source.nix keyword.other.nix
+#                       ^^ source.nix keyword.other.nix
+#                         ^ source.nix
+#                          ^ source.nix string.quoted.double.nix punctuation.definition.string.double.start.nix
+#                           ^ source.nix string.quoted.double.nix
+#                            ^ source.nix string.quoted.double.nix punctuation.definition.string.double.end.nix
+#                             ^ source.nix
+#                              ^^ source.nix keyword.other.nix
+#                                ^^ source.nix keyword.other.nix
+#                                  ^ source.nix
+#                                   ^ source.nix string.quoted.double.nix punctuation.definition.string.double.start.nix
+#                                    ^ source.nix string.quoted.double.nix
+#                                     ^ source.nix string.quoted.double.nix punctuation.definition.string.double.end.nix
+#                                      ^ source.nix punctuation.definition.expression.nix
+#                                       ^ source.nix punctuation.terminator.bind.nix
+>  case_3 = (if 2 >= 1 then "a" else "b");
+#^^ source.nix
+#  ^^^^^^ source.nix entity.other.attribute-name.multipart.nix
+#        ^ source.nix
+#         ^ source.nix keyword.operator.bind.nix
+#          ^ source.nix
+#           ^ source.nix punctuation.definition.expression.nix
+#            ^^ source.nix keyword.other.nix
+#              ^ source.nix
+#               ^ source.nix constant.numeric.nix
+#                ^ source.nix
+#                 ^^ source.nix keyword.operator.nix
+#                   ^ source.nix
+#                    ^ source.nix constant.numeric.nix
+#                     ^ source.nix
+#                      ^^ source.nix keyword.other.nix
+#                        ^^ source.nix keyword.other.nix
+#                          ^ source.nix
+#                           ^ source.nix string.quoted.double.nix punctuation.definition.string.double.start.nix
+#                            ^ source.nix string.quoted.double.nix
+#                             ^ source.nix string.quoted.double.nix punctuation.definition.string.double.end.nix
+#                              ^ source.nix
+#                               ^^ source.nix keyword.other.nix
+#                                 ^^ source.nix keyword.other.nix
+#                                   ^ source.nix
+#                                    ^ source.nix string.quoted.double.nix punctuation.definition.string.double.start.nix
+#                                     ^ source.nix string.quoted.double.nix
+#                                      ^ source.nix string.quoted.double.nix punctuation.definition.string.double.end.nix
+#                                       ^ source.nix punctuation.definition.expression.nix
+#                                        ^ source.nix punctuation.terminator.bind.nix
+>  case_4 = (if 2 <= 1 then "a" else "b");
+#^^ source.nix
+#  ^^^^^^ source.nix entity.other.attribute-name.multipart.nix
+#        ^ source.nix
+#         ^ source.nix keyword.operator.bind.nix
+#          ^ source.nix
+#           ^ source.nix punctuation.definition.expression.nix
+#            ^^ source.nix keyword.other.nix
+#              ^ source.nix
+#               ^ source.nix constant.numeric.nix
+#                ^ source.nix
+#                 ^^ source.nix keyword.operator.nix
+#                   ^ source.nix
+#                    ^ source.nix constant.numeric.nix
+#                     ^ source.nix
+#                      ^^ source.nix keyword.other.nix
+#                        ^^ source.nix keyword.other.nix
+#                          ^ source.nix
+#                           ^ source.nix string.quoted.double.nix punctuation.definition.string.double.start.nix
+#                            ^ source.nix string.quoted.double.nix
+#                             ^ source.nix string.quoted.double.nix punctuation.definition.string.double.end.nix
+#                              ^ source.nix
+#                               ^^ source.nix keyword.other.nix
+#                                 ^^ source.nix keyword.other.nix
+#                                   ^ source.nix
+#                                    ^ source.nix string.quoted.double.nix punctuation.definition.string.double.start.nix
+#                                     ^ source.nix string.quoted.double.nix
+#                                      ^ source.nix string.quoted.double.nix punctuation.definition.string.double.end.nix
+#                                       ^ source.nix punctuation.definition.expression.nix
+#                                        ^ source.nix punctuation.terminator.bind.nix
+>  case_5 = (true -> true); # (implication operator)
+#^^ source.nix
+#  ^^^^^^ source.nix entity.other.attribute-name.multipart.nix
+#        ^ source.nix
+#         ^ source.nix keyword.operator.bind.nix
+#          ^ source.nix
+#           ^ source.nix punctuation.definition.expression.nix
+#            ^^^^ source.nix constant.language.nix
+#                ^ source.nix
+#                 ^^ source.nix keyword.operator.nix
+#                   ^ source.nix
+#                    ^^^^ source.nix constant.language.nix
+#                        ^ source.nix punctuation.definition.expression.nix
+#                         ^ source.nix punctuation.terminator.bind.nix
+#                          ^ source.nix
+#                           ^ source.nix comment.line.number-sign.nix
+#                            ^^^^^^^^^^^^^^^^^^^^^^^ source.nix comment.line.number-sign.nix
+>}
+#^ source.nix punctuation.definition.attrset.nix
