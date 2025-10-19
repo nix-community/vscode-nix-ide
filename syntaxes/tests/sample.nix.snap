@@ -36,6 +36,10 @@
 #       ^^^^^ source.nix string.quoted.double.nix
 #            ^ source.nix string.quoted.double.nix punctuation.definition.string.double.end.nix
 #             ^ source.nix punctuation.terminator.bind.nix
+>  # the following lines miss semi-colons on purpose
+#^^ source.nix
+#  ^ source.nix comment.line.number-sign.nix
+#   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.nix comment.line.number-sign.nix
 >  path = ./relative/path
 #^^ source.nix
 #  ^^^^ source.nix entity.other.attribute-name.multipart.nix
