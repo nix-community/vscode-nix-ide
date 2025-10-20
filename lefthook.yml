@@ -5,10 +5,12 @@
 
 pre-commit:
   parallel: true
+  fail_on_change: always
   jobs:
     - run: bun run lint
       glob: "*.{js,ts,jsx,tsx}"
 
 commit-msg:
+  fail_on_change: always
   jobs:
     - run: bun run commitlint --edit
