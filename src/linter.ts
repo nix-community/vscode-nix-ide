@@ -1,6 +1,6 @@
+import { sync as commandExistsSync } from "command-exists";
 import * as vscode from "vscode";
 import { Diagnostic, type ExtensionContext, type TextDocument } from "vscode";
-import { sync as commandExistsSync } from "command-exists";
 import { runInWorkspace } from "./process-runner";
 
 /**

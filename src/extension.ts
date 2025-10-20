@@ -1,5 +1,5 @@
-import * as vscode from "vscode";
 import type { ExtensionContext } from "vscode";
+import * as vscode from "vscode";
 import * as client from "./client";
 import { config } from "./configuration";
 import { formattingProviders } from "./formatter";

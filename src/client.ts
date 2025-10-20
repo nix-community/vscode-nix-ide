@@ -1,21 +1,21 @@
 // from PR of https://github.com/nix-community/vscode-nix-ide/pull/16/
 
+import { sync as commandExistsSync } from "command-exists";
 // biome-ignore lint/style/useNodejsImportProtocol: <explanation>
 import { inspect } from "util";
-import { sync as commandExistsSync } from "command-exists";
 import {
   type Disposable,
   type ExtensionContext,
-  Uri,
   env,
+  Uri,
   window,
   workspace,
 } from "vscode";
 import type {
   CancellationToken,
   ConfigurationParams,
-  LSPArray,
   LanguageClientOptions,
+  LSPArray,
   MessageSignature,
 } from "vscode-languageclient";
 import {
@@ -23,7 +23,7 @@ import {
   LanguageClient,
   type ServerOptions,
 } from "vscode-languageclient/node";
-import { type UriMessageItem, config } from "./configuration";
+import { config, type UriMessageItem } from "./configuration";
 
 class Client extends LanguageClient {
   disposables: Disposable[] = [];
@@ -89,7 +89,7 @@ export async function activate(context: ExtensionContext): Promise<void> {
   }
   const serverExecutable: Executable = {
     command: config.serverPath[0],
-    args: config.serverPath.slice(1)
+    args: config.serverPath.slice(1),
   };
   const serverOptions: ServerOptions = serverExecutable;
 
@@ -118,9 +118,12 @@ export async function activate(context: ExtensionContext): Promise<void> {
             if (!item?.section) {
               continue;
             }
-            const sectionSettings = settings[item.section as keyof typeof settings]
+            const sectionSettings =
+              settings[item.section as keyof typeof settings];
             if (!sectionSettings) {
-              client.warn(`failed to find "${item.section}" in "nix.serverSettings"`)
+              client.warn(
+                `failed to find "${item.section}" in "nix.serverSettings"`,
+              );
             }
             res.push(sectionSettings ?? null);
           }
