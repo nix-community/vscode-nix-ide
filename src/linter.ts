@@ -44,8 +44,8 @@ const getErrors = (text: string): ReadonlyArray<LintErrorType> => {
   while (match !== null) {
     results.push({
       msg: match[1],
-      row: Number.parseInt(match[2]),
-      col: Number.parseInt(match[3]),
+      row: Number.parseInt(match[2], 10),
+      col: Number.parseInt(match[3], 10),
     });
     match = pattern.exec(text);
   }

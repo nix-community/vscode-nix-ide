@@ -1,3 +1,5 @@
+import * as helpers from "./helpers";
+
 const nixInjectionGrammar = {
   fileTypes: [],
   injectionSelector: "L:text.html.markdown",
@@ -44,21 +46,7 @@ const nixInjectionGrammar = {
   scopeName: "markdown.nix.codeblock",
 };
 
-async function toJson() {
-  const outputFile = "dist/injection.json";
-  try {
-    // Convert the object to a formatted JSON string (2-space indentation)
-    const jsonString = JSON.stringify(nixInjectionGrammar, null, 2);
-
-    // Use Bun.write to save the string to a file
-    await Bun.write(outputFile, jsonString);
-  } catch (error) {
-    console.error("❌ Error converting or writing file:", error);
-  }
-  console.log(`✅ Success! Object successfully saved to ${outputFile}`);
-}
-
 if (import.meta.main) {
   // This code only runs when 'bun run index.ts' is executed directly.
-  toJson();
+  helpers.toJson("dist/injection.json", nixInjectionGrammar);
 }

@@ -1,8 +1,7 @@
 // from PR of https://github.com/nix-community/vscode-nix-ide/pull/16/
 
+import { inspect } from "node:util";
 import { sync as commandExistsSync } from "command-exists";
-// biome-ignore lint/style/useNodejsImportProtocol: <explanation>
-import { inspect } from "util";
 import {
   type Disposable,
   type ExtensionContext,

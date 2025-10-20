@@ -34,8 +34,7 @@
  * match until end of file: $^
  */
 
-export const schema =
-  "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json";
+import * as helpers from "./helpers";
 
 // function Pattern<T extends { new(...args: any[]): {} }>(target: T) {
 //     // Convert PascalCase to kebab-case (e.g., WhiteSpace -> white-space)
@@ -47,7 +46,7 @@ export const schema =
 // }
 
 export const source_nix = {
-  $schema: typeof schema,
+  name: "Nix",
   scopeName: "source.nix",
   fileTypes: ["nix"],
   uuid: "0514fd5f-acb6-436d-b42c-7643e6d36c8f",
@@ -1240,22 +1239,7 @@ export const source_nix = {
   },
 };
 
-async function toJson() {
-  const outputFile = "dist/nix.tmLanguage.json";
-  const objects = { name: "Nix", ...source_nix };
-  try {
-    // Convert the object to a formatted JSON string (2-space indentation)
-    const jsonString = JSON.stringify(objects, null, 2);
-
-    // Use Bun.write to save the string to a file
-    await Bun.write(outputFile, jsonString);
-  } catch (error) {
-    console.error("❌ Error converting or writing file:", error);
-  }
-  console.log(`✅ Success! Object successfully saved to ${outputFile}`);
-}
-
 if (import.meta.main) {
   // This code only runs when 'bun run index.ts' is executed directly.
-  toJson();
+  helpers.toJson("dist/nix.tmLanguage.json", source_nix);
 }
