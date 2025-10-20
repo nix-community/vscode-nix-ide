@@ -187,4 +187,5 @@ Grammar Info:
 }
 
 // main(process.argv.slice(2))
-main(["syntaxes/nix.YAML-tmLanguage", "syntaxes/nix.grammar.ts"]);
+// main(["syntaxes/nix.YAML-tmLanguage", "syntaxes/nix.grammar.ts"]);
+main(["syntaxes/injection.yml", "src/grammar/injection.ts"]);

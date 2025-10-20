@@ -1,10 +1,53 @@
-// Auto-generated TextMate grammar
-// Source: Nix Grammar
-// Generated: 2025-10-20T11:33:18.691Z
+/**
+ * [PackageDev] target_format: plist, ext: tmLanguage
+ * Made by Wout.Mertens@gmail.com
+ *
+ * This grammar tries to be complete, but regex-based highlighters
+ * can't be full parsers. Therefore it's a bit looser than the Nix
+ * parser itself and some legal constructs will be marked as illegal.
+ * It seems to work fine for nixpkgs.
+ *
+ * While reading this, bear in mind that multi-line matches are not
+ * allowed and the end regex is tested before enclosed patterns regexes
+ * However, you can look-ahead to an end pattern with (?=...), which allows
+ * you to match everything in a block
+ *
+ * To enforce multipart expressions, a wrapper pattern is used
+ * that matches the beginning and end with look-ahead.
+ * Then the parts are chained with look-aheads.
+ *
+ * Unfortunately this doesn't work if the end condition matches
+ * the end of a part, in that case the part is fully matched
+ * instead of with a look-ahead
+ * and legal expressions should still match properly.
+ *
+ * Known issues:
+ * - attrset:
+ *   - if the closing brace of an empty { } block is at column 1
+ *     of the line, it will terminate the expression and mark
+ *     expression-cont rules as invalid
+ *
+ * There are no named regexes, so here's a list for copy-paste:
+ * identifier: [a-zA-Z\_][a-zA-Z0-9\_\'\-]*
+ * expression terminator next: (?=([\])};,]|\b(else|then)\b))
+ * match anything coming next: (?=.?)
+ * match until end of file: $^
+ */
 
-import type { IGrammar } from "vscode-textmate";
+export const schema =
+  "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json";
 
-export const source_nix: IGrammar = {
+// function Pattern<T extends { new(...args: any[]): {} }>(target: T) {
+//     // Convert PascalCase to kebab-case (e.g., WhiteSpace -> white-space)
+//     const kebabCase = target.name
+//         .replace(/([a-z])([A-Z])/g, '$1-$2')
+//         .toLowerCase();
+//     Object.defineProperty(target, 'id', {value: `#${kebabCase}`});
+//     return target;
+// }
+
+export const source_nix = {
+  $schema: typeof schema,
   scopeName: "source.nix",
   fileTypes: ["nix"],
   uuid: "0514fd5f-acb6-436d-b42c-7643e6d36c8f",
@@ -1197,4 +1240,22 @@ export const source_nix: IGrammar = {
   },
 };
 
-export default source_nix;
+async function toJson() {
+  const outputFile = "dist/nix.tmLanguage.json";
+  const objects = { name: "Nix", ...source_nix };
+  try {
+    // Convert the object to a formatted JSON string (2-space indentation)
+    const jsonString = JSON.stringify(objects, null, 2);
+
+    // Use Bun.write to save the string to a file
+    await Bun.write(outputFile, jsonString);
+  } catch (error) {
+    console.error("❌ Error converting or writing file:", error);
+  }
+  console.log(`✅ Success! Object successfully saved to ${outputFile}`);
+}
+
+if (import.meta.main) {
+  // This code only runs when 'bun run index.ts' is executed directly.
+  toJson();
+}

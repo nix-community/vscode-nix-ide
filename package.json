@@ -271,7 +271,7 @@
     "yaml": "^2.8.1"
   },
   "scripts": {
-    "prebuild": "mkdir -p dist && bun run scripts/ts_to_tmljson.ts && js-yaml syntaxes/injection.yml > dist/injection.json",
+    "prebuild": "mkdir -p dist && bun run src/grammar/nix.ts && bun run src/grammar/injection.ts",
     "build": "bun build src/extension.ts --outdir=dist --external=vscode --target=node --format=cjs",
     "postinstall": "lefthook install",
     "clean": "rm -rd dist",
