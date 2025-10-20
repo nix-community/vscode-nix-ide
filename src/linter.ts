@@ -1,5 +1,6 @@
 import * as vscode from "vscode";
 import { Diagnostic, type ExtensionContext, type TextDocument } from "vscode";
+import { sync as commandExistsSync } from "command-exists";
 import { runInWorkspace } from "./process-runner";
 
 /**
@@ -82,6 +83,14 @@ const shellOutputToDiagnostics = (
 export async function startLinting(context: ExtensionContext): Promise<void> {
   const diagnostics = vscode.languages.createDiagnosticCollection("nix");
   context.subscriptions.push(diagnostics);
+
+  // Check if nix-instantiate is available
+  if (!commandExistsSync("nix-instantiate")) {
+    await vscode.window.showWarningMessage(
+      "nix-instantiate not found in $PATH. Linting is disabled.",
+    );
+    return;
+  }
 
   const lint = async (document: TextDocument) => {
     if (isSavedDocument(document)) {
