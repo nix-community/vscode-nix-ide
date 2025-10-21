@@ -1,4 +1,4 @@
-/** biome-ignore-all lint/suspicious/noExplicitAny: <explanation> */
+// biome-ignore-all lint/suspicious/noExplicitAny: false positive
 import * as tm from "tmlanguage-generator";
 
 export const bounded = (text: string) => `\\b${text}\\b`;
