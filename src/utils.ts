@@ -1,3 +1,4 @@
+import { window } from "vscode";
 import type { LSPObject } from "vscode-languageclient";
 import variables from "vscode-variables";
 
@@ -29,3 +30,17 @@ export const transformConfigValueByVscodeVariables = <
     return cfg;
   }
 };
+
+export const outputChannel = window.createOutputChannel("Nix");
+
+export function logOut(messageOrCallback: string | (() => string), data?: any) {
+  const timestamp = new Date().toISOString();
+  const message =
+    typeof messageOrCallback === "function"
+      ? messageOrCallback()
+      : messageOrCallback;
+  outputChannel.appendLine(`[${timestamp}] ${message}`);
+  if (data) {
+    outputChannel.appendLine(JSON.stringify(data, null, 2));
+  }
+}

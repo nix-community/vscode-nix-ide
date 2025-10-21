@@ -1,0 +1,3 @@
+[submodule "tree-sitter-nix"]
+	path = tree-sitter-nix
+	url = git@github.com:nix-community/tree-sitter-nix.git

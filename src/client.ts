@@ -23,6 +23,7 @@ import {
   type ServerOptions,
 } from "vscode-languageclient/node";
 import { config, type UriMessageItem } from "./configuration";
+import { outputChannel } from "./utils";
 
 class Client extends LanguageClient {
   disposables: Disposable[] = [];
@@ -97,7 +98,6 @@ export async function activate(context: ExtensionContext): Promise<void> {
     { scheme: "untitled", language: "nix" },
   ];
 
-  const outputChannel = window.createOutputChannel("Nix");
   const fileEvents = workspace.createFileSystemWatcher("**/*.nix");
 
   const clientOptions: LanguageClientOptions = {

@@ -4,7 +4,7 @@ import * as client from "./client";
 import { config } from "./configuration";
 import { formattingProviders } from "./formatter";
 import { startLinting } from "./linter";
-import { NixSemanticTokensProvider } from "./semantic-tokens";
+import { TreeSitterSemanticTokensProvider } from "./semantic-tokens";
 
 /**
  * Activate this extension.
@@ -35,7 +35,7 @@ export async function activate(context: ExtensionContext): Promise<void> {
 
     // Only register semantic tokens provider if enabled in config
     if (config.enableSemanticTokens) {
-      const tokenProvider = new NixSemanticTokensProvider();
+      const tokenProvider = new TreeSitterSemanticTokensProvider(context);
       const semanticTokensSub =
         vscode.languages.registerDocumentSemanticTokensProvider(
           { language: "nix" },
