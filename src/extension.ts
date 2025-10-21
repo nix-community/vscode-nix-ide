@@ -4,6 +4,7 @@ import * as client from "./client";
 import { config } from "./configuration";
 import { formattingProviders } from "./formatter";
 import { startLinting } from "./linter";
+import { NixSemanticTokensProvider } from "./semantic-tokens";
 
 /**
  * Activate this extension.
@@ -31,6 +32,18 @@ export async function activate(context: ExtensionContext): Promise<void> {
       vscode.languages.registerDocumentRangeFormattingEditProvider,
     ].map((func) => func("nix", formattingProviders));
     context.subscriptions.concat(subs);
+
+    // Only register semantic tokens provider if enabled in config
+    if (config.enableSemanticTokens) {
+      const tokenProvider = new NixSemanticTokensProvider();
+      const semanticTokensSub =
+        vscode.languages.registerDocumentSemanticTokensProvider(
+          { language: "nix" },
+          tokenProvider,
+          tokenProvider.getLegend(),
+        );
+      context.subscriptions.push(semanticTokensSub);
+    }
   }
 
   context.subscriptions.push(

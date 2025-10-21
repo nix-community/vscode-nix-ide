@@ -119,6 +119,16 @@ export async function activate(context: ExtensionContext): Promise<void> {
             }
             const sectionSettings =
               settings[item.section as keyof typeof settings];
+
+            // If semantic tokens are disabled, override the semantic settings
+            if (
+              item.section === "semanticTokens" &&
+              !config.enableSemanticTokens
+            ) {
+              res.push({ enable: false });
+              continue;
+            }
+
             if (!sectionSettings) {
               client.warn(
                 `failed to find "${item.section}" in "nix.serverSettings"`,

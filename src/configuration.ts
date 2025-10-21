@@ -27,6 +27,10 @@ export class Config {
     );
   }
 
+  get enableSemanticTokens(): boolean {
+    return this.get("enableSemanticTokens", true);
+  }
+
   get formatterPath(): Array<string> {
     const path: Array<string> | string = this.get("formatterPath", "nixfmt");
     if (typeof path === "string") {
@@ -67,7 +71,8 @@ export class Config {
     // e.g. `"nix.languageServer" or something like that, to deduplicate keys
     return (
       change.affectsConfiguration("nix.serverPath") ||
-      change.affectsConfiguration("nix.enableLanguageServer")
+      change.affectsConfiguration("nix.enableLanguageServer") ||
+      change.affectsConfiguration("nix.enableSemanticTokens")
     );
   }
 }

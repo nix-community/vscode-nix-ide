@@ -70,6 +70,11 @@
     "configuration": {
       "title": "NixIDE",
       "properties": {
+        "nix.enableSemanticTokens": {
+          "type": "boolean",
+          "default": true,
+          "markdownDescription": "Enable or disable semantic token highlighting for Nix files. Requires restarting the language server to take effect."
+        },
         "nix.formatterPath": {
           "default": "nixfmt",
           "markdownDescription": "Full path to the nix formatter executable. This setting won't take effect if `nix.enableLanguageServer` is enabled; if that's the case, you can instead set formatter via `nix.serverSettings` (see [README](https://github.com/nix-community/vscode-nix-ide#lsp-plugin-support) for examples)",
