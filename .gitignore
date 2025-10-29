@@ -140,3 +140,5 @@ paket-files/
 .direnv/
 .husky/
 .idea/
+
+target/
