@@ -140,3 +140,7 @@ paket-files/
 .direnv/
 .husky/
 .idea/
+
+# tree-sitter-nix build artifacts
+target/
+tree-sitter-nix/
