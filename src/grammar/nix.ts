@@ -1238,8 +1238,3 @@ export const source_nix = {
     },
   },
 };
-
-if (import.meta.main) {
-  // This code only runs when 'bun run index.ts' is executed directly.
-  helpers.toJson("dist/nix.tmLanguage.json", source_nix);
-}

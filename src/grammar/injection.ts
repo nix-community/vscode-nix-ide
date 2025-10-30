@@ -1,6 +1,4 @@
-import * as helpers from "./helpers";
-
-const nixInjectionGrammar = {
+export const nixInjectionGrammar = {
   fileTypes: [],
   injectionSelector: "L:text.html.markdown",
   patterns: [
@@ -45,8 +43,3 @@ const nixInjectionGrammar = {
   },
   scopeName: "markdown.nix.codeblock",
 };
-
-if (import.meta.main) {
-  // This code only runs when 'bun run index.ts' is executed directly.
-  helpers.toJson("dist/injection.json", nixInjectionGrammar);
-}

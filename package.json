@@ -272,7 +272,7 @@
     "yaml": "^2.8.1"
   },
   "scripts": {
-    "prebuild": "mkdir -p dist && bun run src/grammar/nix.ts && bun run src/grammar/injection.ts",
+    "prebuild": "mkdir -p dist && bun run src/grammar/build.ts",
     "build": "bun build src/extension.ts --outdir=dist --external=vscode --target=node --format=cjs",
     "postinstall": "lefthook install",
     "clean": "rm -rd dist",
