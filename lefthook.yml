@@ -7,7 +7,7 @@ pre-commit:
   parallel: true
   fail_on_change: always
   jobs:
-    - run: bun run lint
+    - run: bun run pretest
       glob: "*.{js,ts,jsx,tsx}"
 
 commit-msg:

@@ -34,8 +34,6 @@
  * match until end of file: $^
  */
 
-import * as helpers from "./helpers";
-
 // function Pattern<T extends { new(...args: any[]): {} }>(target: T) {
 //     // Convert PascalCase to kebab-case (e.g., WhiteSpace -> white-space)
 //     const kebabCase = target.name

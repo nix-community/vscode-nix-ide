@@ -281,9 +281,9 @@
     "publish:ovsx": "ovsx publish *.vsix --pat '$OVS_PAT'",
     "publish:vsce": "vsce publish",
     "publish": "bun run package && bun run publish:vsce && bun run publish:ovsx",
-    "pretest": "bun run build --sourcemap && vscode-tmgrammar-snap 'syntax-tests/*.nix'",
-    "test": "vscode-test",
-    "lint": "bun x biome check --write src"
+    "test": "bun run build --sourcemap && vscode-tmgrammar-snap 'syntax-tests/*.nix'",
+    "full-test": "vscode-test",
+    "pretest": "bun x biome check --write src"
   },
   "dependencies": {
     "command-exists": "^1.2.9",
