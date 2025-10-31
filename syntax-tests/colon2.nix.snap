@@ -1,172 +1,206 @@
->nps.stacks.monitoring.prometheus.config = lib.mkIf cfg.enablePrometheusExport {
-#^^^ source.nix variable.parameter.name.nix
-#   ^ source.nix keyword.operator.nix
-#    ^^^^^^ source.nix variable.parameter.name.nix
-#          ^ source.nix keyword.operator.nix
-#           ^^^^^^^^^^ source.nix variable.parameter.name.nix
-#                     ^ source.nix keyword.operator.nix
-#                      ^^^^^^^^^^ source.nix variable.parameter.name.nix
-#                                ^ source.nix keyword.operator.nix
-#                                 ^^^^^^ source.nix variable.parameter.name.nix
-#                                       ^ source.nix
-#                                        ^ source.nix invalid.illegal
-#                                         ^ source.nix
-#                                          ^^^ source.nix variable.parameter.name.nix
-#                                             ^ source.nix keyword.operator.nix
-#                                              ^^^^ source.nix variable.parameter.name.nix
-#                                                  ^ source.nix
-#                                                   ^^^ source.nix variable.parameter.name.nix
-#                                                      ^ source.nix keyword.operator.nix
-#                                                       ^^^^^^^^^^^^^^^^^^^^^^ source.nix variable.parameter.name.nix
-#                                                                             ^ source.nix
-#                                                                              ^ source.nix punctuation.definition.attrset-or-function.nix
->  scrape_configs = [
+>{
+#^ source.nix punctuation.definition.attrset-or-function.nix
+>  nps.stacks.monitoring.prometheus.config = lib.mkIf cfg.enablePrometheusExport {
 #^^ source.nix
-#  ^^^^^^^^^^^^^^ source.nix entity.other.attribute-name.multipart.nix
-#                ^ source.nix
-#                 ^ source.nix keyword.operator.bind.nix
-#                  ^ source.nix
-#                   ^ source.nix punctuation.definition.list.nix
->    {
+#  ^^^ source.nix entity.other.attribute-name.multipart.nix
+#     ^ source.nix
+#      ^^^^^^ source.nix entity.other.attribute-name.multipart.nix
+#            ^ source.nix
+#             ^^^^^^^^^^ source.nix entity.other.attribute-name.multipart.nix
+#                       ^ source.nix
+#                        ^^^^^^^^^^ source.nix entity.other.attribute-name.multipart.nix
+#                                  ^ source.nix
+#                                   ^^^^^^ source.nix entity.other.attribute-name.multipart.nix
+#                                         ^ source.nix
+#                                          ^ source.nix keyword.operator.bind.nix
+#                                           ^ source.nix
+#                                            ^^^ source.nix variable.parameter.name.nix
+#                                               ^ source.nix keyword.operator.nix
+#                                                ^^^^ source.nix variable.parameter.name.nix
+#                                                    ^ source.nix
+#                                                     ^^^ source.nix variable.parameter.name.nix
+#                                                        ^ source.nix keyword.operator.nix
+#                                                         ^^^^^^^^^^^^^^^^^^^^^^ source.nix variable.parameter.name.nix
+#                                                                               ^ source.nix
+#                                                                                ^ source.nix punctuation.definition.attrset-or-function.nix
+>    scrape_configs = [
 #^^^^ source.nix
-#    ^ source.nix punctuation.definition.attrset-or-function.nix
->      job_name = "blocky";
-#^^^^^^ source.nix
-#      ^^^^^^^^ source.nix entity.other.attribute-name.multipart.nix
-#              ^ source.nix
-#               ^ source.nix keyword.operator.bind.nix
-#                ^ source.nix
-#                 ^ source.nix string.quoted.double.nix punctuation.definition.string.double.start.nix
-#                  ^^^^^^ source.nix string.quoted.double.nix
-#                        ^ source.nix string.quoted.double.nix punctuation.definition.string.double.end.nix
-#                         ^ source.nix punctuation.terminator.bind.nix
->      honor_timestamps = true;
-#^^^^^^ source.nix
-#      ^^^^^^^^^^^^^^^^ source.nix entity.other.attribute-name.multipart.nix
-#                      ^ source.nix
-#                       ^ source.nix keyword.operator.bind.nix
-#                        ^ source.nix
-#                         ^^^^ source.nix constant.language.nix
-#                             ^ source.nix punctuation.terminator.bind.nix
->      metrics_path = "/metrics";
-#^^^^^^ source.nix
-#      ^^^^^^^^^^^^ source.nix entity.other.attribute-name.multipart.nix
+#    ^^^^^^^^^^^^^^ source.nix entity.other.attribute-name.multipart.nix
 #                  ^ source.nix
 #                   ^ source.nix keyword.operator.bind.nix
 #                    ^ source.nix
-#                     ^ source.nix string.quoted.double.nix punctuation.definition.string.double.start.nix
-#                      ^^^^^^^^ source.nix string.quoted.double.nix
-#                              ^ source.nix string.quoted.double.nix punctuation.definition.string.double.end.nix
-#                               ^ source.nix punctuation.terminator.bind.nix
->      scheme = "http";
+#                     ^ source.nix punctuation.definition.list.nix
+>      {
 #^^^^^^ source.nix
-#      ^^^^^^ source.nix entity.other.attribute-name.multipart.nix
-#            ^ source.nix
-#             ^ source.nix keyword.operator.bind.nix
-#              ^ source.nix
-#               ^ source.nix string.quoted.double.nix punctuation.definition.string.double.start.nix
-#                ^^^^ source.nix string.quoted.double.nix
-#                    ^ source.nix string.quoted.double.nix punctuation.definition.string.double.end.nix
-#                     ^ source.nix punctuation.terminator.bind.nix
->      static_configs = [{targets = ["${name}:6000"];}];
-#^^^^^^ source.nix
-#      ^^^^^^^^^^^^^^ source.nix entity.other.attribute-name.multipart.nix
-#                    ^ source.nix
-#                     ^ source.nix keyword.operator.bind.nix
-#                      ^ source.nix
-#                       ^ source.nix punctuation.definition.list.nix
-#                        ^ source.nix punctuation.definition.attrset.nix
-#                         ^^^^^^^ source.nix entity.other.attribute-name.multipart.nix
-#                                ^ source.nix
-#                                 ^ source.nix keyword.operator.bind.nix
-#                                  ^ source.nix
-#                                   ^ source.nix punctuation.definition.list.nix
-#                                    ^ source.nix string.quoted.double.nix punctuation.definition.string.double.start.nix
-#                                     ^^ source.nix string.quoted.double.nix meta.embedded punctuation.section.embedded.begin.nix
-#                                       ^^^^ source.nix string.quoted.double.nix meta.embedded variable.parameter.name.nix
-#                                           ^ source.nix string.quoted.double.nix meta.embedded punctuation.section.embedded.end.nix
-#                                            ^^^^^ source.nix string.quoted.double.nix
-#                                                 ^ source.nix string.quoted.double.nix punctuation.definition.string.double.end.nix
-#                                                  ^ source.nix punctuation.definition.list.nix
-#                                                   ^ source.nix punctuation.terminator.bind.nix
-#                                                    ^ source.nix punctuation.definition.attrset.nix
-#                                                     ^ source.nix punctuation.definition.list.nix
-#                                                      ^ source.nix punctuation.terminator.bind.nix
->    }
-#^^^^ source.nix
-#    ^ source.nix punctuation.definition.attrset.nix
->  ];
-#^^ source.nix
-#  ^ source.nix punctuation.definition.list.nix
-#   ^ source.nix punctuation.terminator.bind.nix
->};
-#^ source.nix punctuation.definition.attrset.nix
-# ^ source.nix invalid.illegal
->
->nps.stacks.${name} = {
-#^^^ source.nix variable.parameter.name.nix
-#   ^ source.nix keyword.operator.nix
-#    ^^^^^^ source.nix variable.parameter.name.nix
-#          ^ source.nix keyword.operator.nix
-#           ^^ source.nix meta.embedded punctuation.section.embedded.begin.nix
-#             ^^^^ source.nix meta.embedded variable.parameter.name.nix
-#                 ^ source.nix meta.embedded punctuation.section.embedded.end.nix
-#                  ^ source.nix
-#                   ^ source.nix invalid.illegal
-#                    ^ source.nix
-#                     ^ source.nix punctuation.definition.attrset-or-function.nix
->  settings = {
-#^^ source.nix
-#  ^^^^^^^^ source.nix entity.other.attribute-name.multipart.nix
-#          ^ source.nix
-#           ^ source.nix keyword.operator.bind.nix
-#            ^ source.nix
-#             ^ source.nix punctuation.definition.attrset-or-function.nix
->    prometheus = {
-#^^^^ source.nix
-#    ^^^^^^^^^^ source.nix entity.other.attribute-name.multipart.nix
-#              ^ source.nix
-#               ^ source.nix keyword.operator.bind.nix
+#      ^ source.nix punctuation.definition.attrset-or-function.nix
+>        job_name = "blocky";
+#^^^^^^^^ source.nix
+#        ^^^^^^^^ source.nix entity.other.attribute-name.multipart.nix
 #                ^ source.nix
-#                 ^ source.nix punctuation.definition.attrset-or-function.nix
->      enabled = cfg.enablePrometheusExport;
-#^^^^^^ source.nix
-#      ^^^^^^^ source.nix entity.other.attribute-name.multipart.nix
-#             ^ source.nix
-#              ^ source.nix keyword.operator.bind.nix
-#               ^ source.nix
-#                ^^^ source.nix variable.parameter.name.nix
-#                   ^ source.nix keyword.operator.nix
-#                    ^^^^^^^^^^^^^^^^^^^^^^ source.nix variable.parameter.name.nix
-#                                          ^ source.nix punctuation.terminator.bind.nix
->      level = "aggregated";
-#^^^^^^ source.nix
-#      ^^^^^ source.nix entity.other.attribute-name.multipart.nix
-#           ^ source.nix
-#            ^ source.nix keyword.operator.bind.nix
-#             ^ source.nix
-#              ^ source.nix string.quoted.double.nix punctuation.definition.string.double.start.nix
-#               ^^^^^^^^^^ source.nix string.quoted.double.nix
-#                         ^ source.nix string.quoted.double.nix punctuation.definition.string.double.end.nix
-#                          ^ source.nix punctuation.terminator.bind.nix
->      listen_address = "0.0.0.0";
-#^^^^^^ source.nix
-#      ^^^^^^^^^^^^^^ source.nix entity.other.attribute-name.multipart.nix
+#                 ^ source.nix keyword.operator.bind.nix
+#                  ^ source.nix
+#                   ^ source.nix string.quoted.double.nix punctuation.definition.string.double.start.nix
+#                    ^^^^^^ source.nix string.quoted.double.nix
+#                          ^ source.nix string.quoted.double.nix punctuation.definition.string.double.end.nix
+#                           ^ source.nix punctuation.terminator.bind.nix
+>        honor_timestamps = true;
+#^^^^^^^^ source.nix
+#        ^^^^^^^^^^^^^^^^ source.nix entity.other.attribute-name.multipart.nix
+#                        ^ source.nix
+#                         ^ source.nix keyword.operator.bind.nix
+#                          ^ source.nix
+#                           ^^^^ source.nix constant.language.nix
+#                               ^ source.nix punctuation.terminator.bind.nix
+>        metrics_path = "/metrics";
+#^^^^^^^^ source.nix
+#        ^^^^^^^^^^^^ source.nix entity.other.attribute-name.multipart.nix
 #                    ^ source.nix
 #                     ^ source.nix keyword.operator.bind.nix
 #                      ^ source.nix
 #                       ^ source.nix string.quoted.double.nix punctuation.definition.string.double.start.nix
-#                        ^^^^^^^ source.nix string.quoted.double.nix
-#                               ^ source.nix string.quoted.double.nix punctuation.definition.string.double.end.nix
-#                                ^ source.nix punctuation.terminator.bind.nix
->      listen_port = 6060;
+#                        ^^^^^^^^ source.nix string.quoted.double.nix
+#                                ^ source.nix string.quoted.double.nix punctuation.definition.string.double.end.nix
+#                                 ^ source.nix punctuation.terminator.bind.nix
+>        scheme = "http";
+#^^^^^^^^ source.nix
+#        ^^^^^^ source.nix entity.other.attribute-name.multipart.nix
+#              ^ source.nix
+#               ^ source.nix keyword.operator.bind.nix
+#                ^ source.nix
+#                 ^ source.nix string.quoted.double.nix punctuation.definition.string.double.start.nix
+#                  ^^^^ source.nix string.quoted.double.nix
+#                      ^ source.nix string.quoted.double.nix punctuation.definition.string.double.end.nix
+#                       ^ source.nix punctuation.terminator.bind.nix
+>        static_configs = [ { targets = [ "${name}:6000" ]; } ];
+#^^^^^^^^ source.nix
+#        ^^^^^^^^^^^^^^ source.nix entity.other.attribute-name.multipart.nix
+#                      ^ source.nix
+#                       ^ source.nix keyword.operator.bind.nix
+#                        ^ source.nix
+#                         ^ source.nix punctuation.definition.list.nix
+#                          ^ source.nix
+#                           ^ source.nix punctuation.definition.attrset.nix
+#                            ^ source.nix
+#                             ^^^^^^^ source.nix entity.other.attribute-name.multipart.nix
+#                                    ^ source.nix
+#                                     ^ source.nix keyword.operator.bind.nix
+#                                      ^ source.nix
+#                                       ^ source.nix punctuation.definition.list.nix
+#                                        ^ source.nix
+#                                         ^ source.nix string.quoted.double.nix punctuation.definition.string.double.start.nix
+#                                          ^^ source.nix string.quoted.double.nix meta.embedded punctuation.section.embedded.begin.nix
+#                                            ^^^^ source.nix string.quoted.double.nix meta.embedded variable.parameter.name.nix
+#                                                ^ source.nix string.quoted.double.nix meta.embedded punctuation.section.embedded.end.nix
+#                                                 ^^^^^ source.nix string.quoted.double.nix
+#                                                      ^ source.nix string.quoted.double.nix punctuation.definition.string.double.end.nix
+#                                                       ^ source.nix
+#                                                        ^ source.nix punctuation.definition.list.nix
+#                                                         ^ source.nix punctuation.terminator.bind.nix
+#                                                          ^ source.nix
+#                                                           ^ source.nix punctuation.definition.attrset.nix
+#                                                            ^ source.nix
+#                                                             ^ source.nix punctuation.definition.list.nix
+#                                                              ^ source.nix punctuation.terminator.bind.nix
+>        shell = /* sh */ ''
+#^^^^^^^^ source.nix
+#        ^^^^^ source.nix entity.other.attribute-name.multipart.nix
+#             ^ source.nix
+#              ^ source.nix keyword.operator.bind.nix
+#               ^ source.nix
+#                ^^^^^^ source.nix comment.block.nix
+#                      ^^ source.nix comment.block.nix
+#                        ^ source.nix
+#                         ^^ source.nix string.quoted.other.nix punctuation.definition.string.other.start.nix
+>          echo "Starting Prometheus scrape for Blocky at ${name}:6000"
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.nix string.quoted.other.nix
+#                                                         ^^ source.nix string.quoted.other.nix meta.embedded punctuation.section.embedded.begin.nix
+#                                                           ^^^^ source.nix string.quoted.other.nix meta.embedded variable.parameter.name.nix
+#                                                               ^ source.nix string.quoted.other.nix meta.embedded punctuation.section.embedded.end.nix
+#                                                                ^^^^^^^ source.nix string.quoted.other.nix
+>        '';
+#^^^^^^^^ source.nix string.quoted.other.nix
+#        ^^ source.nix string.quoted.other.nix punctuation.definition.string.other.end.nix
+#          ^ source.nix punctuation.terminator.bind.nix
+>      }
 #^^^^^^ source.nix
-#      ^^^^^^^^^^^ source.nix entity.other.attribute-name.multipart.nix
+#      ^ source.nix punctuation.definition.attrset.nix
+>    ];
+#^^^^ source.nix
+#    ^ source.nix punctuation.definition.list.nix
+#     ^ source.nix punctuation.terminator.bind.nix
+>  };
+#^^ source.nix
+#  ^ source.nix punctuation.definition.attrset.nix
+#   ^ source.nix punctuation.terminator.bind.nix
+>  nps.stacks.${name} = {
+#^^ source.nix
+#  ^^^ source.nix entity.other.attribute-name.multipart.nix
+#     ^ source.nix
+#      ^^^^^^ source.nix entity.other.attribute-name.multipart.nix
+#            ^ source.nix
+#             ^^ source.nix meta.embedded punctuation.section.embedded.begin.nix
+#               ^^^^ source.nix meta.embedded variable.parameter.name.nix
+#                   ^ source.nix meta.embedded punctuation.section.embedded.end.nix
+#                    ^ source.nix
+#                     ^ source.nix keyword.operator.bind.nix
+#                      ^ source.nix
+#                       ^ source.nix punctuation.definition.attrset-or-function.nix
+>    settings = {
+#^^^^ source.nix
+#    ^^^^^^^^ source.nix entity.other.attribute-name.multipart.nix
+#            ^ source.nix
+#             ^ source.nix keyword.operator.bind.nix
+#              ^ source.nix
+#               ^ source.nix punctuation.definition.attrset-or-function.nix
+>      prometheus = {
+#^^^^^^ source.nix
+#      ^^^^^^^^^^ source.nix entity.other.attribute-name.multipart.nix
+#                ^ source.nix
+#                 ^ source.nix keyword.operator.bind.nix
+#                  ^ source.nix
+#                   ^ source.nix punctuation.definition.attrset-or-function.nix
+>        enabled = cfg.enablePrometheusExport;
+#^^^^^^^^ source.nix
+#        ^^^^^^^ source.nix entity.other.attribute-name.multipart.nix
+#               ^ source.nix
+#                ^ source.nix keyword.operator.bind.nix
 #                 ^ source.nix
-#                  ^ source.nix keyword.operator.bind.nix
+#                  ^^^ source.nix variable.parameter.name.nix
+#                     ^ source.nix keyword.operator.nix
+#                      ^^^^^^^^^^^^^^^^^^^^^^ source.nix variable.parameter.name.nix
+#                                            ^ source.nix punctuation.terminator.bind.nix
+>        level = "aggregated";
+#^^^^^^^^ source.nix
+#        ^^^^^ source.nix entity.other.attribute-name.multipart.nix
+#             ^ source.nix
+#              ^ source.nix keyword.operator.bind.nix
+#               ^ source.nix
+#                ^ source.nix string.quoted.double.nix punctuation.definition.string.double.start.nix
+#                 ^^^^^^^^^^ source.nix string.quoted.double.nix
+#                           ^ source.nix string.quoted.double.nix punctuation.definition.string.double.end.nix
+#                            ^ source.nix punctuation.terminator.bind.nix
+>        listen_address = "0.0.0.0";
+#^^^^^^^^ source.nix
+#        ^^^^^^^^^^^^^^ source.nix entity.other.attribute-name.multipart.nix
+#                      ^ source.nix
+#                       ^ source.nix keyword.operator.bind.nix
+#                        ^ source.nix
+#                         ^ source.nix string.quoted.double.nix punctuation.definition.string.double.start.nix
+#                          ^^^^^^^ source.nix string.quoted.double.nix
+#                                 ^ source.nix string.quoted.double.nix punctuation.definition.string.double.end.nix
+#                                  ^ source.nix punctuation.terminator.bind.nix
+>        listen_port = 6060;
+#^^^^^^^^ source.nix
+#        ^^^^^^^^^^^ source.nix entity.other.attribute-name.multipart.nix
 #                   ^ source.nix
-#                    ^^^^ source.nix constant.numeric.nix
-#                        ^ source.nix punctuation.terminator.bind.nix
+#                    ^ source.nix keyword.operator.bind.nix
+#                     ^ source.nix
+#                      ^^^^ source.nix constant.numeric.nix
+#                          ^ source.nix punctuation.terminator.bind.nix
+>      };
+#^^^^^^ source.nix
+#      ^ source.nix punctuation.definition.attrset.nix
+#       ^ source.nix punctuation.terminator.bind.nix
 >    };
 #^^^^ source.nix
 #    ^ source.nix punctuation.definition.attrset.nix
@@ -175,6 +209,6 @@
 #^^ source.nix
 #  ^ source.nix punctuation.definition.attrset.nix
 #   ^ source.nix punctuation.terminator.bind.nix
->};
+>}
 #^ source.nix punctuation.definition.attrset.nix
-# ^ source.nix invalid.illegal
+>
