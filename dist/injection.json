@@ -3,12 +3,11 @@
   "injectionSelector": "L:text.html.markdown",
   "patterns": [
     {
-      "include": "#nixCodeBlock"
+      "include": "#nix-code-block"
     }
   ],
-  "scopeName": "markdown.nix.codeblock",
   "repository": {
-    "nixCodeBlock": {
+    "nix-code-block": {
       "begin": "(^|\\G)(\\s*)(\\`{3,}|~{3,})\\s*(?i:(nix)(\\s+[^`~]*)?$)",
       "name": "markup.fenced_code.block.markdown",
       "end": "(^|\\G)(\\2|\\s{0,3})(\\3)\\s*$",
@@ -41,5 +40,6 @@
         }
       ]
     }
-  }
+  },
+  "scopeName": "markdown.nix.codeblock"
 }
