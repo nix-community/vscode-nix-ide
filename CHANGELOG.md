@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.5.1](https://github.com/nix-community/vscode-nix-ide/compare/v0.5.0...v0.5.1) (2025-11-08)
+
+
+### Features
+
+* commit generated syntax to repo ([effbf34](https://github.com/nix-community/vscode-nix-ide/commit/effbf3494a43250a537834805b305793994b9ca8)), closes [#512](https://github.com/nix-community/vscode-nix-ide/issues/512)
+* warn if nis-instantiate is not available in PATH ([28e38ab](https://github.com/nix-community/vscode-nix-ide/commit/28e38ab1c9377016f0669e06d1f1866d6c4a7502))
+
 ## [0.5.0](https://github.com/nix-community/vscode-nix-ide/compare/v0.4.24...v0.5.0) (2025-10-10)
 
 
