@@ -1,6 +1,6 @@
 {
   "name": "nix-ide",
-  "displayName": "Nix",
+  "displayName": "Nix IDE",
   "description": "Nix language support - syntax highlighting, formatting, and error reporting.",
   "version": "0.5.4",
   "publisher": "jnoortheen",
