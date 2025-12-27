@@ -1,6 +1,6 @@
 {
   "name": "nix-ide",
-  "displayName": "Nix IDE",
+  "displayName": "Nix",
   "description": "Nix language support - syntax highlighting, formatting, and error reporting.",
   "version": "0.5.3",
   "publisher": "jnoortheen",
@@ -68,7 +68,7 @@
       }
     ],
     "configuration": {
-      "title": "NixIDE",
+      "title": "Nix",
       "properties": {
         "nix.formatterPath": {
           "default": "nixfmt",
@@ -153,7 +153,7 @@
     "commands": [
       {
         "title": "Restart Language Server",
-        "category": "Nix IDE",
+        "category": "Nix",
         "command": "nix-ide.restartLanguageServer"
       }
     ],

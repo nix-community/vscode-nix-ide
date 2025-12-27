@@ -1,4 +1,4 @@
-# Nix IDE ✨💡🌟
+# Nix ✨💡🌟
 
 Adds [Nix](https://nixos.org/) language support for [Visual Studio Code](https://code.visualstudio.com/).
 
