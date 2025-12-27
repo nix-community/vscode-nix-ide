@@ -19,3 +19,5 @@ jobs:
       - uses: oven-sh/setup-bun@v2
       - run: bun install
       - run: bun run pretest
+      - run: bun run package
+        if: ${{ matrix.os == 'ubuntu-latest' }}
