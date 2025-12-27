@@ -54,6 +54,10 @@ export class Config {
     return this.get<boolean>("enableLanguageServer", false);
   }
 
+  get formattingEnabled(): boolean {
+    return this.get<boolean>("enableFormatting", true);
+  }
+
   get hiddenErrorKinds(): string[] {
     return this.get("hiddenLanguageServerErrors", []);
   }

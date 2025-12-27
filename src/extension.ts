@@ -26,11 +26,13 @@ export async function activate(context: ExtensionContext): Promise<void> {
     }
   } else {
     await startLinting(context);
-    const subs = [
-      vscode.languages.registerDocumentFormattingEditProvider,
-      vscode.languages.registerDocumentRangeFormattingEditProvider,
-    ].map((func) => func("nix", formattingProviders));
-    context.subscriptions.concat(subs);
+    if (config.formattingEnabled) {
+      const subs = [
+        vscode.languages.registerDocumentFormattingEditProvider,
+        vscode.languages.registerDocumentRangeFormattingEditProvider,
+      ].map((func) => func("nix", formattingProviders));
+      context.subscriptions.concat(subs);
+    }
   }
 
   context.subscriptions.push(

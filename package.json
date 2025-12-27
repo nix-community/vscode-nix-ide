@@ -117,6 +117,11 @@
           "default": false,
           "description": "Use LSP instead of nix-instantiate and the formatter configured via `nix.formatterPath`."
         },
+        "nix.enableFormatting": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable auto-formatting with the formatter configured via `nix.formatterPath`. Only applies when LSP is not enabled. Set to false to disable formatting and avoid errors when the formatter is not available in PATH."
+        },
         "nix.serverSettings": {
           "type": "object",
           "default": {},
