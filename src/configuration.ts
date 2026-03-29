@@ -43,7 +43,7 @@ export class Config {
   }
 
   get serverPath(): Array<string> {
-    const path: Array<string> | string = this.get("serverPath", "nil");
+    const path: Array<string> | string = this.get("serverPath", "nixd");
     if (typeof path === "string") {
       return [path];
     }
