@@ -2,7 +2,7 @@
   "name": "nix-ide",
   "displayName": "Nix IDE",
   "description": "Full Nix language support with/without external language servers",
-  "version": "0.5.5",
+  "version": "0.5.6",
   "publisher": "jnoortheen",
   "icon": "images/icon.png",
   "license": "MIT",
