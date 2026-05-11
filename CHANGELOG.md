@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.5.6](https://github.com/nix-community/vscode-nix-ide/compare/v0.5.5...v0.5.6) (2026-05-11)
+
+
+### Bug Fixes
+
+* array concatenation ([#526](https://github.com/nix-community/vscode-nix-ide/issues/526)) ([a23e198](https://github.com/nix-community/vscode-nix-ide/commit/a23e1987d7cbbdb63a7799f0201e139786a3ee00))
+
 ### [0.5.5](https://github.com/nix-community/vscode-nix-ide/compare/v0.5.4...v0.5.5) (2025-12-27)
 
 
