@@ -30,7 +30,7 @@ export async function activate(context: ExtensionContext): Promise<void> {
       vscode.languages.registerDocumentFormattingEditProvider,
       vscode.languages.registerDocumentRangeFormattingEditProvider,
     ].map((func) => func("nix", formattingProviders));
-    context.subscriptions.concat(subs);
+    context.subscriptions.push(...subs);
   }
 
   context.subscriptions.push(
