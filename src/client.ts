@@ -70,25 +70,39 @@ class Client extends LanguageClient {
 
 let client: Client;
 
+const defaultServerCandidates = [["nixd"], ["nil"]];
+
+function resolveServerPath(): Array<string> {
+  const configured = config.serverPath;
+  if (configured.length > 0) {
+    return configured;
+  }
+
+  for (const candidate of defaultServerCandidates) {
+    if (commandExistsSync(candidate[0])) {
+      return candidate;
+    }
+  }
+
+  return ["nixd"];
+}
+
 export async function activate(context: ExtensionContext): Promise<void> {
-  if (!commandExistsSync(config.serverPath[0])) {
-    const selection = await window.showErrorMessage<UriMessageItem>(
-      `Command ${config.serverPath} not found in $PATH`,
-      {
-        title: "Install language server",
-        uri: Uri.parse(
-          "https://github.com/nix-community/vscode-nix-ide?tab=readme-ov-file#language-servers",
-        ),
-      },
-    );
+  const serverPath = resolveServerPath();
+
+  if (!commandExistsSync(serverPath[0])) {
+    const selection = await window.showErrorMessage<UriMessageItem>(`Command ${serverPath} not found in $PATH`, {
+      title: "Install language server",
+      uri: Uri.parse("https://github.com/nix-community/vscode-nix-ide?tab=readme-ov-file#language-servers"),
+    });
     if (selection?.uri !== undefined) {
       await env.openExternal(selection?.uri);
       return;
     }
   }
   const serverExecutable: Executable = {
-    command: config.serverPath[0],
-    args: config.serverPath.slice(1),
+    command: serverPath[0],
+    args: serverPath.slice(1),
   };
   const serverOptions: ServerOptions = serverExecutable;
 

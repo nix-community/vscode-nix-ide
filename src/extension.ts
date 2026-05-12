@@ -9,7 +9,7 @@ import { startLinting } from "./linter";
  * Activate this extension.
  *
  * If LSP is enabled
- *    then support IDE features with {@link https://github.com/oxalica/nil|nil}
+ *    then support IDE features with an available LSP
  * Else
  *    Format with nixpkgs-format
  *    validate with nix-instantiate
@@ -18,13 +18,10 @@ import { startLinting } from "./linter";
  * @return A promise for the initialization
  */
 export async function activate(context: ExtensionContext): Promise<void> {
-  if (config.LSPEnabled) {
-    try {
-      await client.activate(context);
-    } catch (err) {
-      console.error(err);
-    }
-  } else {
+  try {
+    await client.activate(context);
+  } catch (err) {
+    console.error(err);
     await startLinting(context);
     const subs = [
       vscode.languages.registerDocumentFormattingEditProvider,
@@ -39,6 +36,10 @@ export async function activate(context: ExtensionContext): Promise<void> {
       async () => {
         if (config.LSPEnabled) {
           await client.restart(context);
+        } else {
+          await client.activate(context).catch(async () => {
+            await startLinting(context);
+          });
         }
       },
     ),
