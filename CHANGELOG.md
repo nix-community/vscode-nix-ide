@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.5.9](https://github.com/nix-community/vscode-nix-ide/compare/v0.5.8...v0.5.9) (2026-05-14)
+
+
+### Bug Fixes
+
+* do not attempt to find nixd unless configured ([0ef06e3](https://github.com/nix-community/vscode-nix-ide/commit/0ef06e3374caa2ff5f4a1d5b929ddf70ecf6b0ac)), closes [#529](https://github.com/nix-community/vscode-nix-ide/issues/529)
+
 ### [0.5.8](https://github.com/nix-community/vscode-nix-ide/compare/v0.5.7...v0.5.8) (2026-05-12)
 
 ### [0.5.7](https://github.com/nix-community/vscode-nix-ide/compare/v0.5.6...v0.5.7) (2026-05-12)
