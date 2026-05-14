@@ -18,6 +18,16 @@ import { startLinting } from "./linter";
  * @return A promise for the initialization
  */
 export async function activate(context: ExtensionContext): Promise<void> {
+  if (!config.LSPEnabled) {
+    await startLinting(context);
+    const subs = [
+      vscode.languages.registerDocumentFormattingEditProvider,
+      vscode.languages.registerDocumentRangeFormattingEditProvider,
+    ].map((func) => func("nix", formattingProviders));
+    context.subscriptions.push(...subs);
+    return;
+  }
+
   try {
     await client.activate(context);
   } catch (err) {

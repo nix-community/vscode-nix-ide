@@ -88,13 +88,22 @@ function resolveServerPath(): Array<string> {
 }
 
 export async function activate(context: ExtensionContext): Promise<void> {
+  if (!config.LSPEnabled) {
+    throw new Error("Language server is not enabled in configuration");
+  }
+
   const serverPath = resolveServerPath();
 
   if (!commandExistsSync(serverPath[0])) {
-    const selection = await window.showErrorMessage<UriMessageItem>(`Command ${serverPath} not found in $PATH`, {
-      title: "Install language server",
-      uri: Uri.parse("https://github.com/nix-community/vscode-nix-ide?tab=readme-ov-file#language-servers"),
-    });
+    const selection = await window.showErrorMessage<UriMessageItem>(
+      `Command ${serverPath} not found in $PATH`,
+      {
+        title: "Install language server",
+        uri: Uri.parse(
+          "https://github.com/nix-community/vscode-nix-ide?tab=readme-ov-file#language-servers",
+        ),
+      },
+    );
     if (selection?.uri !== undefined) {
       await env.openExternal(selection?.uri);
       return;
