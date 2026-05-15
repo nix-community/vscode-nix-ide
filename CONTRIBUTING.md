@@ -6,7 +6,7 @@
 
 ## Development
 
-There is [direnv](https://direnv.net/) and [nix-shell](https://nixos.wiki/wiki/Development_environment_with_nix-shell) support so a dev environment can be created with the `nix-shell` command or a one-time `direnv allow` at the root of the repo.
+There is [direnv](https://direnv.net/) and [nix-shell](https://wiki.nixos.org/wiki/Development_environment_with_nix-shell) support so a dev environment can be created with the `nix-shell` command or a one-time `direnv allow` at the root of the repo.
 
 Press `F5` in VSCode to run an Extension Development Host instance with the extension installed.
 
