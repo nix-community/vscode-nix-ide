@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.5.10](https://github.com/nix-community/vscode-nix-ide/compare/v0.5.9...v0.5.10) (2026-07-14)
+
+
+### Bug Fixes
+
+* reinit of same diagnostic collection twice in case of server-restart command ([f03c82c](https://github.com/nix-community/vscode-nix-ide/commit/f03c82caf7c6d59f0965585a4bcc88a261863b62))
+
 ### [0.5.9](https://github.com/nix-community/vscode-nix-ide/compare/v0.5.8...v0.5.9) (2026-05-14)
 
 
