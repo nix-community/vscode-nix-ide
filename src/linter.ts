@@ -26,6 +26,8 @@ interface LintErrorType {
   col: number;
 }
 
+let nixDiagnostics: vscode.DiagnosticCollection | null = null;
+
 /**
  * Exec pattern against the given text and return an array of all matches.
  *
@@ -75,14 +77,41 @@ const shellOutputToDiagnostics = (
   return diagnostics;
 };
 
+async function lintDocument(document: TextDocument) {
+  if (!isSavedDocument(document)) {
+    return;
+  }
+  const workspaceFolder = vscode.workspace.getWorkspaceFolder(document.uri);
+  let d: ReadonlyArray<Diagnostic>;
+  try {
+    const result = await runInWorkspace(workspaceFolder, [
+      "nix-instantiate",
+      "--parse",
+      document.fileName,
+    ]);
+    d = shellOutputToDiagnostics(document, result.stderr);
+  } catch (error) {
+    if (error instanceof Error) {
+      await vscode.window.showErrorMessage(error.message);
+    }
+    nixDiagnostics?.delete(document.uri);
+    return;
+  }
+  nixDiagnostics?.set(document.uri, d as Diagnostic[]);
+}
+
 /**
  * Start linting files.
  *
  * @param context The extension context
  */
 export async function startLinting(context: ExtensionContext): Promise<void> {
-  const diagnostics = vscode.languages.createDiagnosticCollection("nix");
-  context.subscriptions.push(diagnostics);
+  if (nixDiagnostics !== null) {
+    // the linter is probably inited already
+    return;
+  }
+  nixDiagnostics = vscode.languages.createDiagnosticCollection("nix");
+  context.subscriptions.push(nixDiagnostics);
 
   // Check if nix-instantiate is available
   if (!commandExistsSync("nix-instantiate")) {
@@ -92,36 +121,22 @@ export async function startLinting(context: ExtensionContext): Promise<void> {
     return;
   }
 
-  const lint = async (document: TextDocument) => {
-    if (isSavedDocument(document)) {
-      const workspaceFolder = vscode.workspace.getWorkspaceFolder(document.uri);
-      let d: ReadonlyArray<Diagnostic>;
-      try {
-        const result = await runInWorkspace(workspaceFolder, [
-          "nix-instantiate",
-          "--parse",
-          document.fileName,
-        ]);
-        d = shellOutputToDiagnostics(document, result.stderr);
-      } catch (error) {
-        if (error instanceof Error) {
-          await vscode.window.showErrorMessage(error.message);
-        }
-        diagnostics.delete(document.uri);
-        return;
-      }
-      diagnostics.set(document.uri, d as Diagnostic[]);
-    }
-  };
-
-  vscode.workspace.onDidOpenTextDocument(lint, null, context.subscriptions);
-  vscode.workspace.onDidSaveTextDocument(lint, null, context.subscriptions);
+  vscode.workspace.onDidOpenTextDocument(
+    lintDocument,
+    null,
+    context.subscriptions,
+  );
+  vscode.workspace.onDidSaveTextDocument(
+    lintDocument,
+    null,
+    context.subscriptions,
+  );
   for await (const textDocument of vscode.workspace.textDocuments) {
-    await lint(textDocument);
+    await lintDocument(textDocument);
   }
   // Remove diagnostics for closed files
   vscode.workspace.onDidCloseTextDocument(
-    (d) => diagnostics.delete(d.uri),
+    (d) => nixDiagnostics?.delete(d.uri),
     null,
     context.subscriptions,
   );

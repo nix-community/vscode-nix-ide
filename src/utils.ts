@@ -14,7 +14,7 @@ export const transformConfigValueByVscodeVariables = <
   try {
     if (typeof cfg === "string") {
       cfg = variables(cfg) as T;
-    } else if (!!cfg && typeof cfg === "object") {
+    } else if (cfg && typeof cfg === "object") {
       for (const key of Object.keys(cfg)) {
         cfg[key] = transformConfigValueByVscodeVariables(cfg[key]);
       }

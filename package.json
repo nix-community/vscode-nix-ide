@@ -152,7 +152,7 @@
     },
     "commands": [
       {
-        "title": "Restart Language Server",
+        "title": "Restart The Nix Language Server Process",
         "category": "Nix",
         "command": "nix-ide.restartLanguageServer"
       }

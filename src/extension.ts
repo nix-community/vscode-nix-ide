@@ -23,7 +23,7 @@ async function onConfigChange(
     return;
   }
   const choice = await vscode.window.showWarningMessage(
-    "Configuration change requires restarting the language server",
+    "Configuration change requires (re)starting the language server",
     "Restart",
   );
   if (choice === "Restart") {
@@ -53,16 +53,15 @@ async function registerNoLspSubs(context: ExtensionContext) {
  * @return A promise for the initialization
  */
 export async function activate(context: ExtensionContext): Promise<void> {
+  vscode.workspace.onDidChangeConfiguration(async (event) => {
+    await onConfigChange(event, context);
+  });
   context.subscriptions.push(
     vscode.commands.registerCommand(
       "nix-ide.restartLanguageServer",
       restartLSP,
     ),
   );
-
-  vscode.workspace.onDidChangeConfiguration(async (event) => {
-    await onConfigChange(event, context);
-  });
 
   if (!config.LSPEnabled) {
     await registerNoLspSubs(context);
