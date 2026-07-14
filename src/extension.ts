@@ -5,6 +5,41 @@ import { config } from "./configuration";
 import { formattingProviders } from "./formatter";
 import { startLinting } from "./linter";
 
+async function restartLSP(context: ExtensionContext) {
+  if (config.LSPEnabled) {
+    await client.restart(context);
+  } else {
+    await client.activate(context).catch(async () => {
+      await startLinting(context);
+    });
+  }
+}
+
+async function onConfigChange(
+  event: vscode.ConfigurationChangeEvent,
+  context: ExtensionContext,
+) {
+  if (!config.requiresServerRestart(event)) {
+    return;
+  }
+  const choice = await vscode.window.showWarningMessage(
+    "Configuration change requires restarting the language server",
+    "Restart",
+  );
+  if (choice === "Restart") {
+    await restartLSP(context);
+  }
+}
+
+async function registerNoLspSubs(context: ExtensionContext) {
+  await startLinting(context);
+  const subs = [
+    vscode.languages.registerDocumentFormattingEditProvider,
+    vscode.languages.registerDocumentRangeFormattingEditProvider,
+  ].map((func) => func("nix", formattingProviders));
+  context.subscriptions.push(...subs);
+}
+
 /**
  * Activate this extension.
  *
@@ -18,13 +53,19 @@ import { startLinting } from "./linter";
  * @return A promise for the initialization
  */
 export async function activate(context: ExtensionContext): Promise<void> {
+  context.subscriptions.push(
+    vscode.commands.registerCommand(
+      "nix-ide.restartLanguageServer",
+      restartLSP,
+    ),
+  );
+
+  vscode.workspace.onDidChangeConfiguration(async (event) => {
+    await onConfigChange(event, context);
+  });
+
   if (!config.LSPEnabled) {
-    await startLinting(context);
-    const subs = [
-      vscode.languages.registerDocumentFormattingEditProvider,
-      vscode.languages.registerDocumentRangeFormattingEditProvider,
-    ].map((func) => func("nix", formattingProviders));
-    context.subscriptions.push(...subs);
+    await registerNoLspSubs(context);
     return;
   }
 
@@ -32,40 +73,8 @@ export async function activate(context: ExtensionContext): Promise<void> {
     await client.activate(context);
   } catch (err) {
     console.error(err);
-    await startLinting(context);
-    const subs = [
-      vscode.languages.registerDocumentFormattingEditProvider,
-      vscode.languages.registerDocumentRangeFormattingEditProvider,
-    ].map((func) => func("nix", formattingProviders));
-    context.subscriptions.push(...subs);
+    await registerNoLspSubs(context);
   }
-
-  context.subscriptions.push(
-    vscode.commands.registerCommand(
-      "nix-ide.restartLanguageServer",
-      async () => {
-        if (config.LSPEnabled) {
-          await client.restart(context);
-        } else {
-          await client.activate(context).catch(async () => {
-            await startLinting(context);
-          });
-        }
-      },
-    ),
-  );
-
-  vscode.workspace.onDidChangeConfiguration(async (event) => {
-    if (config.requiresServerRestart(event)) {
-      const choice = await vscode.window.showWarningMessage(
-        "Configuration change requires restarting the language server",
-        "Restart",
-      );
-      if (choice === "Restart") {
-        await client.restart(context);
-      }
-    }
-  });
 }
 
 export async function deactivate(): Promise<void> {
