@@ -58,6 +58,31 @@ Full language support can be enabled by using a language server. Generally, any 
 }
 ```
 
+<details>
+<summary>Home Manager integrated as a NixOS module</summary>
+
+When Home Manager is integrated into a NixOS configuration, its options are
+stored under that configuration instead of `homeConfigurations`. Configure
+the `home-manager` option set like this:
+
+```json5
+{
+  "nix.serverSettings": {
+    "nixd": {
+      "options": {
+        "home-manager": {
+          "expr": "(builtins.getFlake (builtins.toString ./.)).nixosConfigurations.<name>.options.home-manager.users.type.getSubOptions []",
+        },
+      },
+    },
+  },
+}
+```
+
+Replace `<name>` with the key of the matching `nixosConfigurations` entry.
+
+</details>
+
 ### Custom Formatter
 
 It can be changed by setting `nix.formatterPath` to any command which can accept file contents on stdin and return formatted text on stdout. 
