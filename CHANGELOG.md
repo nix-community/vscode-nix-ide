@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.5.11](https://github.com/nix-community/vscode-nix-ide/compare/v0.5.10...v0.5.11) (2026-07-21)
+
+
+### Bug Fixes
+
+* formatter {file} stripping ([#542](https://github.com/nix-community/vscode-nix-ide/issues/542)) ([1a322da](https://github.com/nix-community/vscode-nix-ide/commit/1a322dadd90d5c98a5c1d9290e8a8ad8c4d296a5))
+* preserve extension context when restarting language server ([#541](https://github.com/nix-community/vscode-nix-ide/issues/541)) ([66b62cc](https://github.com/nix-community/vscode-nix-ide/commit/66b62cc11d7bb2335c2ceae7fc6057c4accbf0aa))
+
 ### [0.5.10](https://github.com/nix-community/vscode-nix-ide/compare/v0.5.9...v0.5.10) (2026-07-14)
 
 
