@@ -9,8 +9,6 @@ import {
 import { config } from "./configuration";
 import { type IProcessResult, runInWorkspace } from "./process-runner";
 
-const FORMATTER: Array<string> = config.formatterPath;
-
 /**
  * Get text edits to format a range in a document.
  *
@@ -25,20 +23,23 @@ const getFormatRangeEdits = async (
   const actualRange = document.validateRange(
     range || new Range(0, 0, Number.MAX_VALUE, Number.MAX_VALUE),
   );
+  // The configured command is a template shared by every document. Resolving it
+  // into a new array keeps `{file}` available for later requests and lets each
+  // invocation observe the current configuration.
+  const formatter = config.formatterPath.map((argument) =>
+    argument.replace("{file}", document.fileName),
+  );
   let result: IProcessResult;
   try {
-    FORMATTER.forEach((elm, i) => {
-      FORMATTER[i] = elm.replace("{file}", document.fileName);
-    });
     result = await runInWorkspace(
       vscode.workspace.getWorkspaceFolder(document.uri),
-      FORMATTER,
+      formatter,
       document.getText(actualRange),
     );
   } catch (error) {
     if (error instanceof Error) {
       await vscode.window.showErrorMessage(
-        `Failed to run ${FORMATTER.join(" ")}: ${error.message}`,
+        `Failed to run ${formatter.join(" ")}: ${error.message}`,
       );
     }
     // Re-throw the error to make the promise fail
