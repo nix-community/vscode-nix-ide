@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.5.12](https://github.com/nix-community/vscode-nix-ide/compare/v0.5.11...v0.5.12) (2026-07-22)
+
 ### [0.5.11](https://github.com/nix-community/vscode-nix-ide/compare/v0.5.10...v0.5.11) (2026-07-21)
 
 
