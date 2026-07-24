@@ -3,8 +3,10 @@ import type { CancellationToken, TextDocument } from "vscode";
 
 const formatterInvocations: string[][] = [];
 
+class MockRange {}
+
 mock.module("vscode", () => ({
-  Range: class Range {},
+  Range: MockRange,
   TextEdit: { replace: () => ({}) },
   window: { showErrorMessage: async () => undefined },
   workspace: { getWorkspaceFolder: () => undefined },

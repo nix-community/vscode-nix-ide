@@ -57,9 +57,8 @@ export async function activate(context: ExtensionContext): Promise<void> {
     await onConfigChange(event, context);
   });
   context.subscriptions.push(
-    vscode.commands.registerCommand(
-      "nix-ide.restartLanguageServer",
-      () => restartLSP(context),
+    vscode.commands.registerCommand("nix-ide.restartLanguageServer", () =>
+      restartLSP(context),
     ),
   );
 
