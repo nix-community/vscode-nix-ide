@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.5.13](https://github.com/nix-community/vscode-nix-ide/compare/v0.5.12...v0.5.13) (2026-07-24)
+
+
+### Bug Fixes
+
+* linter errors ([ca59674](https://github.com/nix-community/vscode-nix-ide/commit/ca596749efa44a769a588acbccade7d058ae9cc3))
+* regression caused by client update ([5048d72](https://github.com/nix-community/vscode-nix-ide/commit/5048d72705afae8ed54c04f1e9f2172d2f437330)), closes [#545](https://github.com/nix-community/vscode-nix-ide/issues/545)
+* remove angle brackets from language configuration brackets list ([#544](https://github.com/nix-community/vscode-nix-ide/issues/544)) ([a17c266](https://github.com/nix-community/vscode-nix-ide/commit/a17c266c354facf13be7036775482a4ce0f94773))
+
 ### [0.5.12](https://github.com/nix-community/vscode-nix-ide/compare/v0.5.11...v0.5.12) (2026-07-22)
 
 ### [0.5.11](https://github.com/nix-community/vscode-nix-ide/compare/v0.5.10...v0.5.11) (2026-07-21)
