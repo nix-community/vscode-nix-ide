@@ -120,7 +120,7 @@ export async function activate(context: ExtensionContext): Promise<void> {
     { scheme: "untitled", language: "nix" },
   ];
 
-  const outputChannel = window.createOutputChannel("Nix");
+  const outputChannel = window.createOutputChannel("Nix", { log: true });
   const fileEvents = workspace.createFileSystemWatcher("**/*.nix");
 
   const clientOptions: LanguageClientOptions = {
