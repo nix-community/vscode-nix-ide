@@ -263,7 +263,7 @@
     "@vscode/test-cli": "^0.0.15",
     "@vscode/test-electron": "^3.0.0",
     "@vscode/vsce": "^3.9.2",
-    "js-yaml": "^5.2.1",
+    "js-yaml": "^5.2.2",
     "lefthook": "^2.1.10",
     "ovsx": "^1.0.2",
     "tmlanguage-generator": "^0.6.8",
